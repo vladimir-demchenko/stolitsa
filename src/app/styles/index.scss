@@ -1,0 +1,19 @@
+@import "reset";
+@import "variables/global";
+@import 'https://fonts.googleapis.com/css2?family=Inter:wght@300;600&family=Unbounded:wght@400;500;700;800&display=swap';
+
+
+html {
+  font-family: Unbounded, sans-serif;
+}
+
+.curves {
+  position: absolute;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1360px;
+  padding: 240px 0 0;
+  margin: 0 auto;
+}

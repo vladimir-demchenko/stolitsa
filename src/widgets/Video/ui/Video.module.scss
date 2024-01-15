@@ -1,0 +1,43 @@
+.video {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  position: relative;
+}
+
+.title {
+  width: 700px;
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Заголовок 2 */
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 115%; /* 73.6px */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+.highlighted {
+  color: var(--cyan)
+}
+
+.placeholder {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.purpleCurve {
+  right: 25px;
+  top: 200px;
+}
+
+.greenCurve {
+  bottom: -250px;
+  left: 0;
+}

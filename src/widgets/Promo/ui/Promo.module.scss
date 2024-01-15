@@ -1,0 +1,50 @@
+.promo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 130px;
+  height: 100vh;
+  background: lightgray 50%;
+  border-radius: 0 0 40px 40px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.logoLink {
+  width: 550px;
+  height: auto;
+}
+
+.promoButton {
+  width: 670px;
+}
+
+.curved {
+  left: 0;
+  bottom: -55%;
+}
+
+.logo {
+  width: 550px;
+  height: auto;
+
+  // transform: scale(1.5);transformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransform
+  
+  // animation: scroll-reveal ease-out;animationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimation
+  // animation-timeline: scroll();animation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timeline
+}
+
+@keyframes scroll-reveal {
+  to {
+    transform: scale(1);
+  }
+}

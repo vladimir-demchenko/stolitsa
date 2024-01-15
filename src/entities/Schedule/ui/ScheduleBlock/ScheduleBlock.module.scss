@@ -1,0 +1,35 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 68px;
+}
+
+.title {
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Заголовок 2 */
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 115%; /* 73.6px */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.orange {
+  color: var(--orange);
+}
+
+.cyan {
+  color: var(--cyan);
+}
+
+.purple {
+  color: var(--purple);
+}
+
+.blocksList {
+  display: grid;
+  gap: 38px 20px;
+  grid-template-columns: repeat(3, 440px);
+}

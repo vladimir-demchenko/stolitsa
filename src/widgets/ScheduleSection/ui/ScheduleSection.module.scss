@@ -1,0 +1,35 @@
+.schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  position: relative;
+}
+
+.scheduleButton {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.blockList {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.blueCurve {
+  left: -15px;
+  top: 580px;
+}
+
+.cyanCurve {
+  right: 0;
+  top: 69%;
+}
+
+.orangeCurve {
+  left: 150px;
+  bottom: -11.4%;
+}

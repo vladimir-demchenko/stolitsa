@@ -1,0 +1,86 @@
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  display: flex;
+  gap: 266px;
+  align-items: center;
+}
+
+.title {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Заголовок 2 */
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 115%; /* 73.6px */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+
+.slideContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  user-select: none;
+}
+
+.slideImg {
+  width: 100%;
+  height: 550px;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 20px;
+}
+
+.slideTitle {
+  padding: 16px 24px;
+  border-radius: 20px;
+  color: var(--black);
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Даты и локация */
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 36px */
+}
+
+.purple {
+  border: 2px solid var(--purple)
+}
+
+.orange {
+  border: 2px solid var(--orange);
+}
+
+.lightGreen {
+  border: 2px solid var(--light-green);
+}
+
+.cyan {
+  border: 2px solid var(--cyan);
+}
+
+.cyanCurve {
+  right: 40px;
+  bottom: -78px;
+}
+
+.yellowCurve {
+  top: 50%;
+  left: 50%;
+}
+
+.orangeCurve {
+  top: 50%;
+}
