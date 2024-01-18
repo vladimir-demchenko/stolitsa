@@ -6,7 +6,9 @@ import cls from './Button.module.scss';
 export enum ButtonTheme {
   ORANGE = 'orange',
   GREEN = 'green',
-  PURPLE = 'purple'
+  PURPLE = 'purple',
+  CLEAR = 'clear',
+  BORDERED = 'bordered'
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

@@ -33,3 +33,24 @@
   left: 150px;
   bottom: -11.4%;
 }
+
+@media (width <= 768px) {
+  .blueCurve {
+    width: 413.438px;
+    height: 319.282px;
+    top: 200px;
+    left: -50px;
+  }
+
+  .cyanCurve {
+    width: 443.438px;
+    height: 349.282px;
+  }
+
+  .orangeCurve {
+    width: 350.303px;
+    height: 291.203px;
+    left: -40px;
+    bottom: -5%;
+  }
+}
