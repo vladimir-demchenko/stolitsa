@@ -7,7 +7,7 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 export const FAQ = () => {
   return (
     <div className={classNames('container', {}, [cls.faq])}>
-      <h2 className={cls.title}>ВАШИ ВОПРОСЫ</h2>
+      <h2 className={cls.title}>ТВОИ ВОПРОСЫ</h2>
       <div className={cls.questionList}>
         {faqConst.map((faq) => (
           <FAQItem key={faq.id} question={faq.question} answer={faq.answer} />
