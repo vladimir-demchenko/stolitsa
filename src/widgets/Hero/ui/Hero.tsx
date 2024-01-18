@@ -7,7 +7,7 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 export const Hero = () => {
   return (
     <div className={classNames('container', {}, [cls.hero])}>
-      <h2 className={cls.title}>молодежный палаточный патриотический <span className={cls.highlighted}>слет</span></h2>
+      <h2 className={cls.title}>молодёжный палаточный патриотический <span className={cls.highlighted}>слёт</span></h2>
       <div className={cls.heroGrid}>
         <div className={cls.imgContainer}>
           <svg className={classNames('curves', {}, [cls.heroCurve])} xmlns="http://www.w3.org/2000/svg" width="724" height="470" viewBox="0 0 724 470" fill="none">
@@ -16,7 +16,7 @@ export const Hero = () => {
           <img className={cls.heroImg} src={HeroImg} alt='молодежный палаточный патриотический слет' />
         </div>
         <p className={cls.heroText}>образовательный и командообразующий
-          палаточный слет для молодежного актива города Москвы, который ежегодно проводится в нестандартных условиях лесной местности в формате палаточного лагеря</p>
+          палаточный слёт для молодёжного актива города Москвы, который ежегодно проводится в нестандартных условиях лесной местности в формате палаточного лагеря</p>
         <Button theme={ButtonTheme.GREEN} className={cls.heroButton}>Подать заявку</Button>
       </div>
     </div>

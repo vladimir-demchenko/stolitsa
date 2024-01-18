@@ -1,5 +1,5 @@
 import LogoWhite from 'shared/assets/icons/logo_white.svg'
-import LogoMos from 'shared/assets/icons/logo_mos.svg';
+import LogoMos from 'shared/assets/icons/logo_mos_partners.svg';
 import PromoBg from 'shared/assets/img/promoBg.png';
 
 import cls from './Promo.module.scss'
