@@ -31,20 +31,51 @@
 .curved {
   left: 0;
   bottom: -55%;
+  stroke-width: 15px;
 }
 
 .logo {
   width: 550px;
   height: auto;
 
-  // transform: scale(1.5);transformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransform
+  // transform: scale(1.5);transformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransform
   
-  // animation: scroll-reveal ease-out;animationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimation
-  // animation-timeline: scroll();animation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timeline
+  // animation: scroll-reveal ease-out;animationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimation
+  // animation-timeline: scroll();animation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timeline
 }
 
 @keyframes scroll-reveal {
   to {
     transform: scale(1);
+  }
+}
+
+@media (width <=786px) {
+  .promo {
+    height: 100svh;
+  }
+
+  .logoWrapper {
+    flex-direction: column;
+  }
+
+  .logo {
+    width: 220px;
+  }
+
+  .logoLink {
+    width: 220px;
+  }
+
+  .promoButton {
+    width: 200px;
+  }
+
+  .curved {
+    width: 185.41px;
+    height: 149.205px;
+    left: -45px;
+    bottom: -100px;
+    stroke-width: 15px;
   }
 }

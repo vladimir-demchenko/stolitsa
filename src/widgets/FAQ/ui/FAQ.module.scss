@@ -1,0 +1,54 @@
+.faq {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.title {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Заголовок 2 */
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 115%; /* 73.6px */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 100px;
+}
+
+.questionList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 1;
+}
+
+.questionButton {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.greenCurve {
+  top: 750px;
+  right: -220px;
+}
+
+@media (width <= 768px) {
+  .title {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .greenCurve {
+    width: 384px;
+    height: 219px;
+    transform: rotate(-86deg);
+    top: 450px;
+    right: -100px;
+  }
+}

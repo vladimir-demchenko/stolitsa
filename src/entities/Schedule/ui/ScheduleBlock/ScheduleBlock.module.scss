@@ -33,3 +33,17 @@
   gap: 38px 20px;
   grid-template-columns: repeat(3, 440px);
 }
+
+@media (width <= 768px) {
+  .block {
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .blocksList {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

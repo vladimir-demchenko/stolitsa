@@ -1,0 +1,48 @@
+.button {
+  font-size: 20px;
+  padding: 8px 24px;
+  height: 46px;
+  width: 100%;
+}
+
+.title {
+  color: var(--black);
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Заголовок смен */
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%; /* 33.8px */
+  margin-bottom: 32px;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.item {
+  width: 100%;
+}
+
+.subtext {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 130%; /* 20.8px */
+}
+
+.link {
+  color: #255FA5;
+}
+
+@media (width <= 768px) {
+  .title {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,91 @@
+.footer {
+  margin-top: 240px;
+  border-radius: 20px 20px 0 0;
+  background-color: var(--purple);
+  padding: 50px 40px 80px;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 150px;
+  justify-items: center;
+}
+
+.footerSubtitle {
+  color: #FFF;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Заголовок смен */
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%; /* 33.8px */
+  margin-bottom: 24px;
+}
+
+.footerList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footerLink {
+  color: var(--light-purple);
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Текст футер */
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 115%; /* 18.4px */
+  text-decoration: none;
+
+  &:active {
+    color: var(--light-purple);
+  }
+}
+
+@media (width <= 768px) {
+  .footer {
+    margin-top: 50px;
+    padding: 12px 10px 20px;
+  }
+
+  .footerGrid {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, min-content);
+    gap: 18px;
+  }
+
+  .logoWrapper {
+    width: 60px;
+  }
+
+  .footerSubtitle {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .footerList {
+    gap: 4px;
+  }
+
+  .footerLink {
+    font-size: 10px;
+  }
+
+  .footerDocuments {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .footerSocial {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -5,6 +5,9 @@ import { Hero } from 'widgets/Hero';
 import { Carousel } from 'widgets/Carousel';
 import { Video } from 'widgets/Video';
 import { ScheduleSection } from 'widgets/ScheduleSection';
+import { FAQ } from 'widgets/FAQ';
+import { Partners } from 'widgets/Partners';
+import { Footer } from 'widgets/Footer';
 
 export const MainPage: FC = () => {
   return (
@@ -14,6 +17,9 @@ export const MainPage: FC = () => {
       <Carousel />
       <Video />
       <ScheduleSection />
+      <FAQ />
+      <Partners />
+      <Footer />
     </div>
   );
 };
