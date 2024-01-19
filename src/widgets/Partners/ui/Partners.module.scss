@@ -50,6 +50,12 @@
   top: 60px;
 }
 
+.partnersLink {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 @media (width <= 768px) {
   .partners {
     gap: 30px;
