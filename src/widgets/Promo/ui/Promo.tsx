@@ -16,10 +16,10 @@ export const Promo = () => {
   }
 
   return (
-    <div className={cls.promo} style={{ "backgroundImage": `url(${PromoBg})` }}>
+    <div className={cls.promo}>
       <div className={cls.logoWrapper}>
         <LogoWhite className={cls.logo} />
-        <a href="https://mosmolodezh.ru" target="_blank" className={cls.logoLink}><LogoMos /></a>
+        <a href="https://mosmolodezh.ru" target="_blank" className={cls.logoLink}><LogoMos style={{ width: '100%', height: '100%' }} /></a>
       </div>
       <Button className={cls.promoButton} onClick={() => setOpen(true)}>
         Личный кабинет

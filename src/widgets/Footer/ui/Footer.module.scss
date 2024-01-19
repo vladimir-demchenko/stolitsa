@@ -46,6 +46,12 @@
   }
 }
 
+.footerItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 @media (width <= 768px) {
   .footer {
     margin-top: 50px;
@@ -87,5 +93,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  .footerItem {
+    gap: 5px;
+  }
+
+  .footerIcon {
+    width: 8px;
+    height: auto;
   }
 }

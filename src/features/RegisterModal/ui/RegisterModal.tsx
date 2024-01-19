@@ -29,9 +29,9 @@ export const RegisterModal = ({ open, onCancel }: { open: boolean, onCancel: (..
             <Form.Item className={cls.item}><Input placeholder='Электронная почта' /></Form.Item>
             <Form.Item className={cls.item}><Input.Password placeholder='Пароль' /></Form.Item>
             <Form.Item className={cls.item}><Button type='submit' className={cls.button}>Войти</Button></Form.Item>
-            <Form.Item className={cls.item}><Button theme={ButtonTheme.BORDERED} className={cls.button}>Забыли пароль?</Button></Form.Item>
+            <Form.Item className={cls.item}><Button theme={ButtonTheme.BORDERED} className={cls.button}>Забыл пароль?</Button></Form.Item>
           </Form>
-          <p className={cls.subtext}>Нет личного кабинета? <a className={cls.link}>Зарегистрируйтесь!</a></p>
+          <p className={cls.subtext}>Нет личного кабинета? <a className={cls.link}>Зарегистрируйся!</a></p>
         </div>
       </Modal>
     </ConfigProvider>
