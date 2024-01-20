@@ -17,10 +17,10 @@ function getColor(index: number) {
 }
 
 export const ScheduleItem = ({ title, date, tags, descriptions, expireTime }: ItemType) => {
-  const [modal, setModal] = useState({ open: false, item: { title: '', date: '', descriptions: '', expireTime: '' } })
+  const [modal, setModal] = useState({ open: false, item: { title: '', date: '', descriptions: [''], expireTime: '' } })
 
   const onCancel = () => {
-    setModal({ open: false, item: { title: '', date: '', descriptions: '', expireTime: '' } })
+    setModal({ open: false, item: { title: '', date: '', descriptions: [''], expireTime: '' } })
   }
 
   return (

@@ -2,7 +2,7 @@ export interface ItemType {
   title: string;
   date: string;
   tags: string[];
-  descriptions: string;
+  descriptions: string[];
   expireTime: string;
 }
 
