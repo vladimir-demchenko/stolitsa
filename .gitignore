@@ -10,3 +10,4 @@ build
 .env.production
 .env.development
 .vscode
+package-lock.json

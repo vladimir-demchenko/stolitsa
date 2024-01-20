@@ -6,6 +6,9 @@
   gap: 18px;
   border-radius: 20px;
   background: rgb(255 255 255 / 70%);
+  
+  /* тень */
+  box-shadow: 2px 2px 23px 1px rgb(0 0 0 / 25%);
 }
 
 .date {
@@ -67,4 +70,28 @@
 
 .green {
   border: 1px solid var(--light-green);
+}
+
+@media (width <= 768px) {
+  .card {
+    gap: 12px;
+    padding: 12px 10px;
+  }
+
+  .date {
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .tagsList {
+    gap: 8px;
+  }
+
+  .tag {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
 }

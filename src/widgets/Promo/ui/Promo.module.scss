@@ -5,12 +5,13 @@
   align-items: center;
   gap: 130px;
   height: 100vh;
-  background: lightgray 50%;
+  background: linear-gradient(0deg, rgb(0 0 0 / 20%) 0%, rgb(0 0 0 / 20%) 100%), url('/src/shared/assets/img/promoBg.png'), lightgray 50%; 
   border-radius: 0 0 40px 40px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   position: relative;
+  z-index: 1;
 }
 
 .logoWrapper {
@@ -20,8 +21,8 @@
 }
 
 .logoLink {
-  width: 550px;
-  height: auto;
+  width: auto;
+  height: 100%;
 }
 
 .promoButton {
@@ -30,21 +31,52 @@
 
 .curved {
   left: 0;
-  bottom: -55%;
+  bottom: -75%;
+  z-index: -1;
 }
 
 .logo {
   width: 550px;
   height: auto;
 
-  // transform: scale(1.5);transformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransform
+  // transform: scale(1.5);transformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransformtransform
   
-  // animation: scroll-reveal ease-out;animationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimation
-  // animation-timeline: scroll();animation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timeline
+  // animation: scroll-reveal ease-out;animationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimationanimation
+  // animation-timeline: scroll();animation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timelineanimation-timeline
 }
 
 @keyframes scroll-reveal {
   to {
     transform: scale(1);
+  }
+}
+
+@media (width <=786px) {
+  .promo {
+    height: 100svh;
+  }
+
+  .logoWrapper {
+    flex-direction: column;
+  }
+
+  .logo {
+    width: 220px;
+  }
+
+  .logoLink {
+    width: 220px;
+  }
+
+  .promoButton {
+    width: 200px;
+  }
+
+  .curved {
+    width: 185.41px;
+    height: 149.205px;
+    left: -45px;
+    bottom: -100px;
+    stroke-width: 15px;
   }
 }

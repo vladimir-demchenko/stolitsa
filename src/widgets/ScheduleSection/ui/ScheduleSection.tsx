@@ -7,20 +7,23 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 export const ScheduleSection = () => {
   return (
     <div className={classNames('container', {}, [cls.schedule])}>
-      <Button className={cls.scheduleButton} theme={ButtonTheme.PURPLE}>Подавай заявку уже сейчас!</Button>
+      <h2 className={cls.title}>Выбирай смену <br />и подавай заявку!</h2>
       <div className={cls.blockList}>
         {ScheduleConst.map((block) => (
           <ScheduleBlock key={block.month} month={block.month} color={block.color} items={block.items} />
         ))}
       </div>
-      <svg className={classNames('curves', {}, [cls.blueCurve])} xmlns="http://www.w3.org/2000/svg" width="656" height="842" viewBox="0 0 656 842" fill="none">
-        <path d="M648.182 8.02734C576.618 21.5824 434.027 79.1894 436.172 201.176C438.854 353.66 557.459 237.737 562.758 340.699C568.056 443.661 191.311 413.581 169.393 488.753C147.475 563.925 287.711 529.337 288.211 593.835C283.974 634.39 245.3 726.4 124.5 770C3.70025 813.6 -0.166431 830.833 13.0002 834" stroke="#255FA5" stroke-width="15" stroke-linecap="round" />
+      <svg className={classNames('curves', {}, [cls.greenCurve])} xmlns="http://www.w3.org/2000/svg" width="830" height="721" viewBox="0 0 830 721" fill="none">
+        <path d="M937.499 38C806.499 -128.5 44 512.5 12 268.5C-20 24.5001 479.023 173.066 714.244 365.755C841.5 470 444.859 533.57 759.137 647.002C879.937 690.602 883.804 707.835 870.637 711.002" stroke="#ABC704" stroke-width="20" stroke-linecap="round" />
       </svg>
-      <svg className={classNames('curves', {}, [cls.cyanCurve])} xmlns="http://www.w3.org/2000/svg" width="556" height="546" viewBox="0 0 556 546" fill="none">
-        <path d="M259.84 7.72932C147.999 31.1817 -55.1057 105.169 27.2015 213.497C130.086 348.908 278.932 234.711 330.55 332.291C382.169 429.872 214.231 573.061 195.139 529.928C176.048 486.794 510.155 314.614 548.339 395.931" stroke="#01B2E0" stroke-width="15" stroke-linecap="round" />
+      <svg className={classNames('curves', {}, [cls.cyanCurve])} xmlns="http://www.w3.org/2000/svg" width="515" height="659" viewBox="0 0 515 659" fill="none">
+        <path d="M613.5 10.5031C501.659 33.9555 -104 0.00292649 30.2018 324.501C95.1952 481.654 281.932 345.714 333.551 443.295C385.169 540.876 217.232 684.065 198.14 640.931C179.048 597.798 513.156 425.617 551.339 506.934" stroke="#01B2E0" stroke-width="20" stroke-linecap="round" />
       </svg>
-      <svg className={classNames('curves', {}, [cls.orangeCurve])} xmlns="http://www.w3.org/2000/svg" width="701" height="507" viewBox="0 0 701 507" fill="none">
-        <path d="M693.414 498.706C542.531 260.991 26.2159 500.24 268.755 369.568C607.049 187.308 269.595 265.627 169.614 251.226C67.6662 236.541 458.978 237.842 7.68522 7.65214" stroke="#FD7D32" stroke-width="15" stroke-linecap="round" />
+      <svg className={classNames('curves', {}, [cls.orangeCurve])} xmlns="http://www.w3.org/2000/svg" width="362" height="905" viewBox="0 0 362 905" fill="none">
+        <path d="M-41.5001 894.503C229.5 735.003 57.0838 192.102 216.124 417.06C437.953 730.833 319.405 405.326 321.61 304.337C323.859 201.361 485 -9.49709 -57.9999 11.5031" stroke="#FD7D32" stroke-width="20" stroke-linecap="round" />
+      </svg>
+      <svg className={classNames('curves', {}, [cls.purpleCurve])} xmlns="http://www.w3.org/2000/svg" width="479" height="864" viewBox="0 0 479 864" fill="none">
+        <path d="M557.64 10.6071C501.665 98.4461 -39.5191 301.979 13.7995 182.198C50.4556 99.8487 286.453 117.045 328.074 189.279C375.116 270.92 246.165 481.836 140.352 525.137C34.5396 568.439 52.2338 442.515 154.125 427.371C256.017 412.226 327.426 543.688 207.347 738.756C96.391 919.003 437.486 847.632 535.5 789.003" stroke="#701487" stroke-width="20" stroke-linecap="round" />
       </svg>
     </div>
   )

@@ -25,6 +25,15 @@
   color: var(--cyan)
 }
 
+.videoWrapper {
+  width: 900px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 20px;
+  position: relative;
+  z-index: 1;
+}
+
 .placeholder {
   display: flex;
   justify-content: center;
@@ -33,11 +42,50 @@
 }
 
 .purpleCurve {
-  right: 25px;
+  right: 0;
   top: 200px;
 }
 
-.greenCurve {
-  bottom: -250px;
-  left: 0;
+.orangeCurve {
+  bottom: 0;
+  left: -60px;
+}
+
+@media (width <=768px) {
+  .video {
+    gap: 30px;
+  }
+
+  .title {
+    width: 100%;
+    font-size: 24px;
+  }
+
+  .videoWrapper {
+    width: 100%;
+  }
+
+  .placeholder {
+    width: 100%;
+
+    & > img {
+      width: 100%;
+    }
+  }
+
+  .purpleCurve {
+    width: 170px;
+    height: 101px;
+    transform: rotate(-45deg);
+    top: 65px;
+    right: -5px;
+  }
+
+  .greenCurve {
+    width: 160px;
+    height: 97px;
+    bottom: -50px;
+    left: -60px;
+    transform: rotate(-20deg);
+  }
 }
