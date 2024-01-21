@@ -1,0 +1,160 @@
+.firstStep {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px 20px;
+}
+
+.formItem {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  padding: 40px 20px;
+  border-radius: 10px;
+  background: rgb(255 255 255 / 80%);
+
+  /* тень и бэк */
+  box-shadow: 2px 2px 23px 1px rgb(0 0 0 / 25%);
+  backdrop-filter: blur(5px);
+}
+
+.formLabel {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Даты и локация */
+  font-family: var(--font-family);
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 36px */
+
+  &::after {
+    display: inline-block;
+    margin-inline-start: 4px;
+    color: #EB5757;
+    line-height: 1;
+    content: '*'
+  }
+}
+
+.inputsWrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.labelForInput {
+  color: #909090;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Текст 1 */
+  font-family: var(--font-family);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 28.6px */
+}
+
+.itemHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.help {
+  color: #909090;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Текст 1 */
+  font-family: var(--font-family);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 28.6px */
+}
+
+.firstBlock {
+  display: flex;
+  flex-direction: row;
+  gap: 67px;
+  grid-column: 1/ span 2;
+}
+
+.itemList {
+  list-style: "—";
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  &_item {
+    margin-inline-start: 10px;
+    padding-inline-start: 8px;
+  }
+  
+  &_text {
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+
+    /* Текст 1 */
+    font-family: var(--font-family);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%; /* 28.6px */
+  }
+}
+
+.formItem:nth-child(3) {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.formItem:nth-child(4) {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.formItem:nth-child(5) {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+.formItem:nth-child(6) {
+  grid-column: 1;
+  grid-row: 5;
+}
+
+.formItem:nth-child(7) {
+  grid-column: 2;
+  grid-row: 5;
+}
+
+.formItem:nth-child(8) {
+  grid-column: 1;
+  grid-row: 6;
+}
+
+.formItem:nth-child(9) {
+  grid-column: 2;
+  grid-row: 6;
+}
+
+.formItem:nth-child(10) {
+  grid-column: 1;
+  grid-row: 7;
+}
+
+.formItem:nth-child(11) {
+  grid-column: 1;
+  grid-row: 8;
+}
+
+.formItem:nth-child(12) {
+  grid-column: 2;
+  grid-row: 8;
+}

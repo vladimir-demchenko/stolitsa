@@ -8,6 +8,11 @@ html {
   overflow-x: hidden;
 }
 
+.app {
+  position: relative;
+  overflow-x: hidden;
+}
+
 .curves {
   position: absolute;
   z-index: 0;

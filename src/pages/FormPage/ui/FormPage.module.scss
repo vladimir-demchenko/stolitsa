@@ -1,0 +1,79 @@
+.container {
+  max-width: 1370px;
+  margin: 0 auto;
+  padding: 120px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.titleWrapper {
+  display: flex;
+  gap: 100px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.title {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Заголовок 2 */
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 115%; /* 73.6px */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.highlighted {
+  color: var(--orange);
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Заголовок 2 */
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 115%; /* 73.6px */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.hint {
+  color: var(--red);
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Текст 1 */
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 28.6px */
+  margin-bottom: 30px;
+}
+
+.fromButton {
+  font-size: 44px;
+  padding: 24px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.greenCurve {
+  top: 160px;
+  right: -20%;
+}
+
+.blueCurve {
+  top: 40%;
+  left: -20%;
+}
+
+.orangeCurve {
+  bottom: 0;
+  right: -20%;
+}
