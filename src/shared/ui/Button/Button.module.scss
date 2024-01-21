@@ -1,16 +1,18 @@
 .button {
   display: flex;
   justify-content: center;
-  padding: 24px;
+
+  // padding: 24px;padding
   border-radius: 20px;
   font-family: var(--font-family);
   color: #fff;
   text-align: center;
-  font-size: 44px;
+
+  // font-size: 44px;font-size
   font-style: normal;
   font-weight: 700;
   line-height: 115%; /* 50.6px */
-  border: 2px solid transparent;
+  border: 0;
   transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
   cursor: pointer;
 }
@@ -19,9 +21,11 @@
   background-color: var(--orange);
   
   &:hover {
-    background-color: #fff;
-    color: var(--black);
-    border: 2px solid var(--orange);
+    background: #FF7328;
+  }
+
+  &:active {
+    background: linear-gradient(0deg, rgb(255 255 255 / 30%) 0%, rgb(255 255 255 / 30%) 100%), var(--orange);
   }
 }
 
@@ -29,9 +33,11 @@
   background-color: var(--light-green);
 
   &:hover {
-    background-color: #fff;
-    color: var(--black);
-    border: 2px solid var(--light-green);
+    background: #ABD100;
+  }
+
+  &:active {
+    background: linear-gradient(0deg, rgb(255 255 255 / 30%) 0%, rgb(255 255 255 / 30%) 100%), var(--light-green);
   }
 
 }
@@ -40,9 +46,11 @@
   background-color: var(--purple);
 
   &:hover {
-    background-color: #fff;
-    color: var(--black);
-    border: 2px solid var(--purple);
+    background: #7A0091;
+  }
+
+  &:active {
+    background: linear-gradient(0deg, rgb(255 255 255 / 30%) 0%, rgb(255 255 255 / 30%) 100%), var(--purple);
   }
 }
 
@@ -56,6 +64,24 @@
   background-color: #fff;
   border: 2px solid var(--orange);
   color: var(--black);
+}
+
+.blue {
+  background-color: var(--cyan);
+  color: #fff;
+
+  &:hover {
+    background: #00C6E0;
+  }
+
+  &:active {
+    background: linear-gradient(0deg, rgb(255 255 255 / 40%) 0%, rgb(255 255 255 / 40%) 100%), var(--cyan)
+  }
+}
+
+.invertBlue {
+  background-color: #fff;
+  color: #255FA5;
 }
 
 @media (width < 768px) {

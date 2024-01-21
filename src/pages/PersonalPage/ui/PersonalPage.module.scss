@@ -1,0 +1,296 @@
+.personal {
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+}
+
+.header {
+  display: flex;
+  padding: 40px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0 0 40px 40px;
+  background: var(--purple);
+}
+
+.helloText {
+  color: #FFF;
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Заголовок 3 */
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 115%; /* 50.6px */
+}
+
+.container {
+  display: flex;
+  max-width: 935px;
+  flex-direction: column;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 80px;
+}
+
+.card {
+  display: flex;
+  padding: 32px 30px;
+  border-radius: 20px;
+  background: #FCF0FF;
+}
+
+
+.personalCard {
+  gap: 27px;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  object-position: center center;
+}
+
+.personalInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  
+  &Additional {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.infoName {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+  
+  /* Текст-заголовок 1 */
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 115%; /* 36.8px */
+}
+
+.infoText {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+  
+  /* Заголовок смен */
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%; /* 33.8px */
+}
+
+.titleCard {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+  
+  /* Заголовок 3 */
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 115%; /* 50.6px */
+}
+
+.headerCard {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.shiftCard {
+  flex-direction: column;
+  gap: 18px;
+}
+
+.changeButton {
+  padding: 8px 24px;
+  font-size: 20px;
+  width: 300px;
+  height: 46px;
+  align-items: center;
+}
+
+.contentButton {
+  width: 600px;
+  padding: 8px 24px;
+  font-size: 20px;
+}
+
+.aboutCard {
+  flex-direction: column;
+  gap: 18px;
+}
+
+.creativeCard{
+  flex-direction: column;
+  gap: 18px;
+}
+
+.reminderCard {
+  background: var(--cyan);
+  flex-direction: column;
+  gap: 18px;
+}
+
+.reminderText {
+  color: #FFF;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Заголовок смен */
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%; /* 33.8px */
+}
+
+.confirmShift {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 935px;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Заголовок 3 */
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 115%; /* 50.6px */
+  margin-bottom: 30px;
+}
+
+.highlighted {
+  color: var(--purple);
+}
+
+.confirmButton {
+  width: 100%;
+  padding: 8px 24px;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.subtext {
+  color: #909090;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Текст для смен */
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 21.6px */
+}
+
+@media (width<= 768px) {
+  .personal {
+    gap: 50px;
+  }
+
+  .logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .header {
+    padding: 20px 40px;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .helloText {
+    font-size: 16px;
+  }
+
+  .container {
+    max-width: 345px;
+    gap: 20px;
+  }
+
+  .card {
+    padding: 18px 10px;
+    border-radius: 10px;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  .infoName {
+    font-size: 16px;
+  }
+
+  .infoText {
+    font-size: 12px;
+  }
+
+  .personalInfo {
+    gap: 16px;
+  }
+
+  .personalInfoAdditional {
+    gap: 10px;
+  }
+
+  .personalCard {
+    gap: 20px;
+  }
+
+  .titleCard {
+    font-size: 16px;
+  }
+
+  .changeButton {
+    padding: 4px !important;
+    font-size: 12px !important;
+    height: 22px;
+    width: 160px;
+  }
+
+  .contentButton {
+    width: 100%;
+    font-size: 12px !important;
+    padding: 10px 8px !important;
+  }
+
+  .reminderText {
+    font-size: 12px;
+  }
+
+  .confirmShift {
+    width: 335px;
+  }
+
+  .title {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .confirmButton {
+    margin-bottom: 8px;
+  }
+
+  .subtext {
+    font-size: 11px;
+    text-align: center;
+  }
+}

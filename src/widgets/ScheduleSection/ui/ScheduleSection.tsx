@@ -10,7 +10,7 @@ export const ScheduleSection = () => {
       <h2 className={cls.title}>Выбирай смену <br />и подавай заявку!</h2>
       <div className={cls.blockList}>
         {ScheduleConst.map((block) => (
-          <ScheduleBlock key={block.month} month={block.month} color={block.color} items={block.items} />
+          <ScheduleBlock key={block.month} block={block} />
         ))}
       </div>
       <svg className={classNames('curves', {}, [cls.greenCurve])} xmlns="http://www.w3.org/2000/svg" width="830" height="721" viewBox="0 0 830 721" fill="none">

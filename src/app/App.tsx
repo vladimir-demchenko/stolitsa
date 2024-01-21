@@ -2,12 +2,14 @@ import { MainPage } from 'pages/MainPage'
 import { Suspense } from 'react'
 
 import './styles/index.scss';
+import { PersonalPage } from 'pages/PersonalPage';
 
 const App = () => {
   return (
     <div className='app'>
       <Suspense fallback="">
-        <MainPage />
+        {/* <MainPage /> */}
+        <PersonalPage />
       </Suspense>
     </div>
   )

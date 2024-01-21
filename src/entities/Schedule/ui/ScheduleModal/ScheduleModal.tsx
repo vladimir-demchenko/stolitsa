@@ -6,6 +6,7 @@ import CollapseArrowUp from 'shared/assets/icons/collapseArrowUp.svg';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ru';
+import { isMobile } from 'react-device-detect';
 
 interface ScheduleModalProps {
   open: boolean;
@@ -36,13 +37,13 @@ export const ScheduleModal = ({ open, onCancel, item }: ScheduleModalProps) => {
         onCancel={onCancel}
         footer={[]}
         closeIcon={false}
-        width={770}
+        width={isMobile ? 325 : 770}
       >
         <div className={cls.modal}>
           <p className={cls.date}>{item?.date}</p>
           <div className={cls.header}>
             <h3 className={cls.title}>{item?.title}</h3>
-            <Button theme={ButtonTheme.CLEAR} onClick={onCancel}>
+            <Button className={cls.collapseBtn} theme={ButtonTheme.CLEAR} onClick={onCancel}>
               <CollapseArrowUp />
             </Button>
           </div>

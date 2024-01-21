@@ -89,3 +89,45 @@
 .green {
   border: 1px solid var(--light-green);
 }
+
+
+@media (width <=768px) {
+  .modal {
+    padding: 24px 10px;
+    gap: 12px;
+  }
+
+  .date {
+    font-size: 16px;
+  }
+
+  .header {
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .collapseBtn {
+    display: none;
+  }
+
+  .tag {
+    font-size: 11px;
+  }
+
+  .first {
+    padding: 6px 12px;
+  }
+
+  .modalButton {
+    width: 165px;
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .expireTime {
+    font-size: 10px;
+  }
+}
