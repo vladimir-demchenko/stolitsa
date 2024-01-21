@@ -49,7 +49,7 @@ export const SecondStep = () => {
       <Form.Item noStyle required name='poch'>
         <div className={cls.formItem}>
           <div className={cls.itemHeader}>
-            <label className={cls.formLabel}>Напиши почему ты хочешь принять участиев слёте</label>
+            <label className={cls.formLabel}>Напиши почему ты хочешь принять участие в слёте</label>
           </div>
           <Input.Textarea rows={5} placeholder='Новые знакомства, новые знания, отдохнуть и т.д.' />
         </div>

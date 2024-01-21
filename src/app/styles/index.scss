@@ -10,7 +10,7 @@ html {
 
 .app {
   display: grid;
-  grid-template-columns: [full-width-start] minmax(40px, 1fr) [content-start] min(100% - 80px, 1360px) [content-end] minmax(40px, 1fr) [full-width-end];
+  grid-template-columns: [full-width-start] minmax(10px, 1fr) [content-start] min(100% - 80px, 1360px) [content-end] minmax(10px, 1fr) [full-width-end];
   position: relative;
   overflow-x: hidden;
 }
@@ -44,7 +44,7 @@ html {
 
 .container {
   display: grid;
-  gap: 10px;
+  gap: 60px;
   grid-template-columns: inherit;
   grid-column: full-width;
   position: relative;

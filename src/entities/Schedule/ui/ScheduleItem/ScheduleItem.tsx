@@ -33,7 +33,7 @@ export const ScheduleItem = ({ title, date, tags, descriptions, expireTime }: It
         </Button>
       </div>
       <div className={cls.tagsList}>
-        <span className={classNames(cls.tag, {}, [cls.purple])}>{tags}</span>
+        <span className={classNames(cls.tag, {}, [cls.purple])}>{descriptions[0]}</span>
       </div>
       <ScheduleModal open={modal.open} onCancel={onCancel} item={modal.item} />
     </div>

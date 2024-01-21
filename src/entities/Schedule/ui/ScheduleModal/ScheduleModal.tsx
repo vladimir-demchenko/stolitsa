@@ -47,10 +47,10 @@ export const ScheduleModal = ({ open, onCancel, item }: ScheduleModalProps) => {
               <CollapseArrowUp />
             </Button>
           </div>
-          <span className={cls.first}>{item?.tags}</span>
+          {/* <span className={cls.first}>{item?.tags}</span> */}
           <div className={cls.tagsList}>
             {item?.descriptions?.map((description, index) => (
-              <span className={classNames(cls.description)}>{description}</span>
+              <span key={index} className={classNames(cls.description, { [cls.first]: index === 0 })}>{description}</span>
             ))}
           </div>
           <Button theme={ButtonTheme.PURPLE} className={cls.modalButton}>Подать заявку</Button>
