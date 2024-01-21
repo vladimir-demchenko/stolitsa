@@ -8,6 +8,7 @@ import UploadIcon from 'shared/assets/icons/upload.svg';
 
 import './Upload.scss';
 import { Checkbox } from 'shared/ui/Checkbox';
+import { isMobile } from 'react-device-detect';
 
 export const FirstStep = () => {
   return (
@@ -33,7 +34,7 @@ export const FirstStep = () => {
                 className={cls.upload}
               >
                 <Button theme={ButtonTheme.CLEAR}>
-                  <UploadIcon />
+                  <UploadIcon className='upload-icon' />
                 </Button>
               </Upload>
             </ConfigProvider>
@@ -69,13 +70,13 @@ export const FirstStep = () => {
           <Form.Item noStyle required name='seria'>
             <div className={cls.inputWrapper}>
               <span className={cls.labelForInput}>серия</span>
-              <Input placeholder='1234' />
+              <Input placeholder={isMobile ? 'серия' : '1234'} />
             </div>
           </Form.Item>
           <Form.Item noStyle required name='nomer'>
             <div className={cls.inputWrapper}>
               <span className={cls.labelForInput}>номер</span>
-              <Input placeholder='123456' />
+              <Input placeholder={isMobile ? 'номер' : '123456'} />
             </div>
           </Form.Item>
         </div>
@@ -110,7 +111,7 @@ export const FirstStep = () => {
       <Form.Item noStyle required name='stud'>
         <div className={cls.formItem}>
           <div className={cls.itemHeader}>
-            <label className={cls.formLabel}>Место учебы/работы</label>
+            <label className={cls.formLabel}>Место учёбы/работы</label>
             <p className={cls.help}>полное наименование учебного заведения или организации</p>
           </div>
           <Input placeholder='Введи название' />

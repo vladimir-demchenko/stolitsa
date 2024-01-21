@@ -8,11 +8,10 @@ export const SelectedShift = ({ item }: { item: ItemType }) => {
       <div className={cls.header}>
         <p className={cls.date}>{item?.date}</p>
         <h3 className={cls.title}>{item?.title}</h3>
-        {item?.tags.map((tag) => <span className={cls.tag} key={tag}>{tag}</span>)}
       </div>
       <div className={cls.descriptionList}>
-        {item?.descriptions?.map((description) => (
-          <span key={description} className={classNames(cls.description)}>{description}</span>
+        {item?.descriptions?.map((description, index) => (
+          <span key={description} className={classNames(cls.description, { [cls.first]: index === 0 })}>{description}</span>
         ))}
       </div>
     </div>

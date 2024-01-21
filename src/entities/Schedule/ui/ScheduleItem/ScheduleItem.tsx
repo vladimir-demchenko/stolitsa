@@ -29,7 +29,7 @@ export const ScheduleItem = ({ title, date, tags, descriptions, expireTime }: It
       <div className={cls.header}>
         <h3 className={cls.title}>{title}</h3>
         <Button theme={ButtonTheme.CLEAR} onClick={() => setModal({ open: true, item: { date: date, title: title, descriptions: descriptions, expireTime: expireTime } })}>
-          <CollapseArrow />
+          <CollapseArrow className={cls.arrow} />
         </Button>
       </div>
       <div className={cls.tagsList}>

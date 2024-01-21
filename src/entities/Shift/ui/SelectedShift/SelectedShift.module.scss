@@ -25,6 +25,16 @@
   flex-direction: column;
 }
 
+.first {
+  grid-column: 1 / span 2;
+  display: flex;
+  padding: 8px 24px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: 2px solid var(--purple) ;
+}
+
 .title {
   color: var(--orange);
   font-feature-settings: 'clig' off, 'liga' off;
@@ -107,5 +117,10 @@
   .descriptionList {
     grid-template-columns: repeat(1, 1fr);
     gap: 8px;
+  }
+
+  .first {
+    grid-column: 1/1;
+    padding: 6px 12px;
   }
 }

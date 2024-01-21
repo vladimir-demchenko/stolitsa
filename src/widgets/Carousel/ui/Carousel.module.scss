@@ -1,4 +1,8 @@
 .carousel {
+  position: relative;
+}
+
+.content {
   display: flex;
   flex-direction: column;
   gap: 23px;

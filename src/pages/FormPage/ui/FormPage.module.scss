@@ -56,7 +56,7 @@
   margin-bottom: 30px;
 }
 
-.fromButton {
+.formButton {
   font-size: 44px;
   padding: 24px;
   margin: 0 auto;
@@ -76,4 +76,47 @@
 .orangeCurve {
   bottom: 0;
   right: -20%;
+}
+
+@media (width <= 768px) {
+  .container {
+    max-width: 365px;
+    padding: 50px 0;
+  }
+
+  .titleWrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+
+
+  .title {
+    font-size: 24px;
+    letter-spacing: 0;
+  }
+
+  .highlighted {
+    font-size: 24px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .hint {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .formButton {
+    font-size: 12px;
+    padding: 10px 8px;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .blueCurve {
+    display: none;
+  }
 }

@@ -1,8 +1,13 @@
 .hero {
+  position: relative;
+}
+
+.content {
   display: flex;
   flex-direction: column;
   gap: 100px;
   position: relative;
+  z-index: 1;
 }
 
 .title {
@@ -68,7 +73,7 @@
 }
 
 .blueCurve {
-  right: -60px;
+  right: -20%;
   bottom:-650px;
 }
 
@@ -111,6 +116,12 @@
   }
 
   .heroButton {
-    width: 180px;
+    width: 100%;
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .blueCurve {
+    display: none;
   }
 }

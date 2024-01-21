@@ -3,8 +3,8 @@ import { BlockType, ItemType } from 'entities/Schedule/model/types';
 const juneItems: ItemType[] = [{
   date: '29 июня—2 июля',
   title: 'Объединяй',
-  tags: ['обмен опытом'],
-  descriptions: ['Лидеры молодежных сообществ', 'Реализовывать идеи', 'Объединять единомышленников', 'Обмениваться опытом'],
+  tags: ['лидеры молодежных сообществ'],
+  descriptions: ['Лидеры молодёжных сообществ', 'Реализовывать идеи', 'Объединять единомышленников', 'Обмениваться опытом'],
   expireTime: '2023-05-20'
 }];
 const julyItems: ItemType[] = [

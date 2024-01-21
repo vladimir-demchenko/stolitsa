@@ -17,6 +17,10 @@
   backdrop-filter: blur(5px);
 }
 
+.innerInput {
+  width: 565px;
+}
+
 .formLabel {
   color: #000;
   font-feature-settings: 'clig' off, 'liga' off;
@@ -82,4 +86,22 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+
+@media (width <= 768px) {
+  .secondStep {
+    gap: 10px;
+  }
+
+  .innerInput {
+    width: 100%;
+  }
+
+  .formItem {
+    gap: 16px;
+  }
+
+  .formLabel {
+    font-size: 14px;
+  }
 }

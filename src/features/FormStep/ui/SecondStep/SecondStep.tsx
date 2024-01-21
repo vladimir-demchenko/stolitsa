@@ -18,14 +18,14 @@ export const SecondStep = () => {
           </div>
           <div className={cls.checkboxWrapper}>
             <Checkbox value='net'>Нет</Checkbox>
-            <Checkbox value='da'><Input placeholder='Если да, то перечисли' /></Checkbox>
+            <Checkbox value='da'><Input className={cls.innerInput} placeholder='Если да, то перечисли' /></Checkbox>
           </div>
         </div>
       </Form.Item>
       <Form.Item noStyle required name='otkyda'>
         <div className={cls.formItem}>
           <div className={cls.itemHeader}>
-            <label className={cls.formLabel}>Откуда ты узнал о нашем слете?</label>
+            <label className={cls.formLabel}>Откуда ты узнал о нашем слёте?</label>
           </div>
           <Input.Textarea rows={5} placeholder='Добавь текст' />
         </div>
@@ -33,7 +33,7 @@ export const SecondStep = () => {
       <Form.Item noStyle required name='nav'>
         <div className={cls.formItem}>
           <div className={cls.itemHeader}>
-            <label className={cls.formLabel}>Какие навыки ты бы хотел получить, посетив наш слет?</label>
+            <label className={cls.formLabel}>Какие навыки ты бы хотел получить, посетив наш слёт?</label>
           </div>
           <Input.Textarea rows={5} placeholder='Добавь текст' />
         </div>
@@ -49,7 +49,7 @@ export const SecondStep = () => {
       <Form.Item noStyle required name='poch'>
         <div className={cls.formItem}>
           <div className={cls.itemHeader}>
-            <label className={cls.formLabel}>Напиши почему ты хочешь принять участиев слете</label>
+            <label className={cls.formLabel}>Напиши почему ты хочешь принять участиев слёте</label>
           </div>
           <Input.Textarea rows={5} placeholder='Новые знакомства, новые знания, отдохнуть и т.д.' />
         </div>

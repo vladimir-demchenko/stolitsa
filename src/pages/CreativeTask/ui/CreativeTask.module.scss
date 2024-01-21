@@ -1,0 +1,250 @@
+.container {
+  margin: 0 auto;
+  max-width: 1360px;
+  padding: 120px 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  position: relative;
+  z-index: 1;
+}
+
+.title {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Заголовок 2 */
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 115%; /* 73.6px */
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.cardList {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.card {
+  display: flex;
+  padding: 40px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  border-radius: 10px;
+  background: rgb(255 255 255 / 80%);
+
+  /* тень и бэк */
+  box-shadow: 2px 2px 23px 1px rgb(0 0 0 / 25%);
+  backdrop-filter: blur(5px);
+}
+
+.boldText {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Даты и локация */
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 36px */
+}
+
+.highlighted {
+  color: var(--purple)
+}
+
+.subtitle {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* Даты и локация */
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 36px */
+}
+
+.questionList {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.questionText {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 28.6px */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.questionNumber {
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 72px */
+}
+
+.green {
+  color: var(--light-green);
+}
+
+.orange {
+  color: var(--orange);
+}
+
+.cyan {
+  color: var(--cyan);
+}
+
+.subtext {
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+
+  /* подписи */
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%; /* 28.6px */
+}
+
+.detailText{
+  color: #000;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 36px */
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.formItem {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.formLabel {
+  color: #000;
+  font-family: var(--font-family);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%; /* 36px */
+}
+
+.input {
+  width: 630px;
+}
+
+.formButton {
+  font-size: 44px;
+  padding: 24px;
+  margin: 0 auto;
+}
+
+.greenCurve {
+  top: 100px;
+  right: 0;
+}
+
+.cyanCurve {
+  top: 20%;
+  left: 0;
+}
+
+@media (width < 768px) {
+  .container {
+    max-width: 365px;
+    padding: 50px 0;
+  }
+
+  .content {
+    gap: 30px;
+  }
+
+  .title {
+    font-size: 24px;
+    letter-spacing: 0;
+  }
+  
+  .cardList {
+    gap: 10px;
+  }
+
+  .card {
+    gap: 12px;
+    padding: 16px 10px;
+  }
+
+  .boldText {
+    font-size: 14px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .questionList {
+    gap: 12px;
+  }
+
+  .questionText {
+    font-size: 12px;
+    gap: 8px;
+  }
+
+  .questionNumber {
+    font-size: 30px;
+  }
+
+  .subtext {
+    font-size: 12px;
+  }
+
+  .detailText {
+    font-size: 12px;
+  }
+
+  .formItem {
+    gap: 12px;
+  }
+
+  .formLabel {
+    font-size: 14px;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .formButton {
+    font-size: 12px;
+    padding: 10px 8px;
+    width: 100%;
+  }
+
+  .greenCurve {
+    display: none;
+  }
+
+  .cyanCurve {
+    display: none;
+  }
+}

@@ -158,3 +158,95 @@
   grid-column: 2;
   grid-row: 8;
 }
+
+@media (width < 768px) {
+  .firstStep {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+  }
+
+  .formItem {
+    gap: 16px;
+  }
+
+  .formItem:nth-child(3) {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  
+  .formItem:nth-child(4) {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  
+  .formItem:nth-child(5) {
+    grid-column: 1;
+    grid-row: 5;
+  }
+  
+  .formItem:nth-child(6) {
+    grid-column: 1;
+    grid-row: 6;
+  }
+  
+  .formItem:nth-child(7) {
+    grid-column: 1;
+    grid-row: 7;
+  }
+  
+  .formItem:nth-child(8) {
+    grid-column: 1;
+    grid-row: 8;
+  }
+  
+  .formItem:nth-child(9) {
+    grid-column: 1;
+    grid-row: 9;
+  }
+  
+  .formItem:nth-child(10) {
+    grid-column: 1;
+    grid-row: 10;
+  }
+  
+  .formItem:nth-child(11) {
+    grid-column: 1;
+    grid-row: 11;
+  }
+  
+  .formItem:nth-child(12) {
+    grid-column: 1;
+    grid-row: 12;
+  }
+
+  .formLabel {
+    font-size: 16px;
+  }
+
+  .firstBlock {
+    gap: 10px;
+    align-items: center;
+  }
+
+  .itemDesc {
+    gap: 10px;
+  }
+
+  .itemList{
+    &_text {
+      font-size: 10px;
+    }
+  }
+
+  .itemHeader {
+    gap: 8px;
+  }
+
+  .help {
+    font-size: 12px;
+  }
+
+  .labelForInput {
+    display: none;
+  }
+}

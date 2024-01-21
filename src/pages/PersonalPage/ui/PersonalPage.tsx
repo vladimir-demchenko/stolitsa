@@ -9,6 +9,8 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import { SelectShift } from 'features/SelectShift/ui/SelectShift';
 import { ConfirmModal } from 'features/ConfirmModal';
+import { useNavigate } from 'react-router';
+import { RoutePath } from 'shared/config/router';
 
 const mockFirstname = 'Андрей';
 const mockLastname = 'Иванов';
@@ -28,6 +30,7 @@ const mockShift = {
 export const PersonalPage = () => {
   const [open, setOpen] = useState(false);
   const [confirm, setConfirm] = useState(false);
+  const navigate = useNavigate();
 
   const onCancel = () => {
     setOpen(false);
@@ -66,11 +69,11 @@ export const PersonalPage = () => {
         </div>
         <div className={classNames(cls.card, {}, [cls.aboutCard])}>
           <h2 className={cls.titleCard}>Обо мне</h2>
-          <Button theme={ButtonTheme.BLUE} className={cls.contentButton}>Заполнить информацию о себе</Button>
+          <Button onClick={() => navigate(RoutePath.form)} theme={ButtonTheme.BLUE} className={cls.contentButton}>Заполнить информацию о себе</Button>
         </div>
         <div className={classNames(cls.card, {}, [cls.creativeCard])}>
           <h2 className={cls.titleCard}>Творческое задание</h2>
-          <Button className={cls.contentButton}>Выполнить творческое задание</Button>
+          <Button onClick={() => navigate(RoutePath.creative_task)} className={cls.contentButton}>Выполнить творческое задание</Button>
         </div>
         <div className={classNames(cls.card, {}, [cls.reminderCard])}>
           <p className={cls.reminderText}>Для того чтобы твоя смена прошла комфортно, предлагаем ознакомится с памяткой</p>

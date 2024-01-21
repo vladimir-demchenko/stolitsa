@@ -54,10 +54,19 @@
   }
 
   .greenCurve {
-    width: 384px;
-    height: 219px;
     transform: rotate(-86deg);
-    top: 450px;
-    right: -100px;
+    top: 230px;
+    right: -95%;
+  }
+
+  .questionButton {
+    font-size: 12px;
+    padding: 8px;
+    gap: 8px;
+
+    & > svg {
+      width: 20px;
+      height: 16px;
+    } 
   }
 }

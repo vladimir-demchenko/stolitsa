@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: column;
   gap: 80px;
-  padding: 40px;
+  padding: 40px 10px;
 }
 
 .title {
   color: #000;
   font-feature-settings: 'clig' off, 'liga' off;
+  font-family: var(--font-family);
 
   /* Заголовок 2 */
   font-size: 64px;
@@ -26,11 +27,12 @@
   gap: 80px;
   position: relative;
   z-index: 1;
+  font-family: var(--font-family);
 }
 
 .itemsList {
   gap: 38px 20px;
-  grid-template-columns: repeat(3, 380px) !important;
+  grid-template-columns: repeat(3, 430px) !important;
 }
 
 @media (width <= 768px) {
@@ -49,6 +51,6 @@
   }
 
   .itemsList {
-    grid-template-columns: repeat(1, 1fr) !important;
+    grid-template-columns: repeat(1, 230px) !important;
   }
 }

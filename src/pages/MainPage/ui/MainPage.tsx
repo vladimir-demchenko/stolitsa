@@ -11,7 +11,7 @@ import { Footer } from 'widgets/Footer';
 
 export const MainPage: FC = () => {
   return (
-    <div className={cls.h1}>
+    <>
       <Promo />
       <Hero />
       <Carousel />
@@ -20,6 +20,6 @@ export const MainPage: FC = () => {
       <FAQ />
       <Partners />
       <Footer />
-    </div>
+    </>
   );
 };

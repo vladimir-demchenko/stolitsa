@@ -4,10 +4,13 @@ import { FirstStep, SecondStep } from 'features/FormStep';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useCallback, useState } from 'react';
 import { classNames } from 'shared/lib/classNames';
+import { useNavigate } from 'react-router';
+import { RoutePath } from 'shared/config/router';
 
 export const FormPage = () => {
   const [form] = Form.useForm();
   const [step, setStep] = useState('1');
+  const navigate = useNavigate();
 
   const content = useCallback((step: string) => {
     switch (step) {
@@ -29,11 +32,9 @@ export const FormPage = () => {
           </span>
         </div>
         <p className={cls.hint}>* обязательные к заполнению поля</p>
-        <Form layout='vertical' form={form} name='form' onFinish={(values) => console.log(values)}>
-          {/* <FirstStep /> */}
-          {/* <SecondStep /> */}
+        <Form layout='vertical' form={form} name='form' onFinish={(values) => navigate(RoutePath.profile)}>
           {content(step)}
-          {step === '1' ? <Button onClick={() => setStep('2')} className={cls.fromButton} theme={ButtonTheme.GREEN}>Продолжить</Button> : <Button className={cls.fromButton} theme={ButtonTheme.GREEN} type='submit'>Сохранить</Button>}
+          {step === '1' ? <Button onClick={() => setStep('2')} className={cls.formButton} theme={ButtonTheme.GREEN}>Продолжить</Button> : <Button onClick={() => form.submit()} className={cls.formButton} theme={ButtonTheme.GREEN}>Сохранить</Button>}
         </Form>
       </div>
       <svg className={classNames('curves', {}, [cls.greenCurve])} xmlns="http://www.w3.org/2000/svg" width="443" height="871" viewBox="0 0 443 871" fill="none">
