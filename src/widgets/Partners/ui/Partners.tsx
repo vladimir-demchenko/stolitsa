@@ -10,11 +10,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { A11y, Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
+import { Bg } from 'shared/ui/Bg/Bg';
 
 export const Partners = () => {
   return (
     <div className={classNames('container', {}, [cls.partners])}>
-      <div className={cls.content}>
+      <Bg />
+      <div className={classNames('content', {}, [cls.content])}>
         <h2 className={cls.title}>при поддержке</h2>
         <div className={cls.partnersList}>
           <div className={cls.slide}>

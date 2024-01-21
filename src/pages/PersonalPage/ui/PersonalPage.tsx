@@ -22,7 +22,7 @@ const expireTime = '2023-05-20';
 const mockShift = {
   date: '29 июня—2 июля',
   title: 'Объединяй',
-  tags: ['обмен опытом'],
+  tags: 'обмен опытом',
   descriptions: ['Лидеры молодежных сообществ', 'Реализовывать идеи', 'Объединять единомышленников', 'Обмениваться опытом'],
   expireTime: '2023-05-20'
 }
@@ -41,54 +41,56 @@ export const PersonalPage = () => {
   }
 
   return (
-    <div className={cls.personal}>
+    <>
       <div className={cls.header}>
         <FlowerLogo className={cls.logo} />
         <p className={cls.helloText}>Привет, {mockFirstname}!</p>
       </div>
-      <div className={cls.container}>
-        <div className={classNames(cls.card, {}, [cls.personalCard])}>
-          <div className={cls.avatar}>
-            <img className={cls.avatarImg} alt='avatar' src={mockUser} />
-          </div>
-          <div className={cls.personalInfo}>
-            <p className={cls.infoName}>{mockFirstname} {mockLastname}</p>
-            <div className={cls.personalInfoAdditional}>
-              <p className={cls.infoText}>{age} лет</p>
-              <p className={cls.infoText}>{email}</p>
+      <div className={cls.personal}>
+        <div className={cls.container}>
+          <div className={classNames(cls.card, {}, [cls.personalCard])}>
+            <div className={cls.avatar}>
+              <img className={cls.avatarImg} alt='avatar' src={mockUser} />
+            </div>
+            <div className={cls.personalInfo}>
+              <p className={cls.infoName}>{mockFirstname} {mockLastname}</p>
+              <div className={cls.personalInfoAdditional}>
+                <p className={cls.infoText}>{age} лет</p>
+                <p className={cls.infoText}>{email}</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className={classNames(cls.card, {}, [cls.shiftCard])}>
-          <div className={cls.headerCard}>
-            <h2 className={cls.titleCard}>Смена</h2>
-            {mockSelected && <Button onClick={() => setOpen(true)} className={cls.changeButton} theme={ButtonTheme.GREEN}>Изменить смену</Button>}
+          <div className={classNames(cls.card, {}, [cls.shiftCard])}>
+            <div className={cls.headerCard}>
+              <h2 className={cls.titleCard}>Смена</h2>
+              {mockSelected && <Button onClick={() => setOpen(true)} className={cls.changeButton} theme={ButtonTheme.GREEN}>Изменить смену</Button>}
+            </div>
+            {!mockSelected && <Button onClick={() => setOpen(true)} className={cls.contentButton} theme={ButtonTheme.GREEN}>Выбрать смену</Button>}
+            {mockSelected && <SelectedShift item={mockShift} />}
           </div>
-          {!mockSelected && <Button onClick={() => setOpen(true)} className={cls.contentButton} theme={ButtonTheme.GREEN}>Выбрать смену</Button>}
-          {mockSelected && <SelectedShift item={mockShift} />}
+          <div className={classNames(cls.card, {}, [cls.aboutCard])}>
+            <h2 className={cls.titleCard}>Обо мне</h2>
+            <Button onClick={() => navigate(RoutePath.form)} theme={ButtonTheme.BLUE} className={cls.contentButton}>Заполнить информацию о себе</Button>
+          </div>
+          <div className={classNames(cls.card, {}, [cls.creativeCard])}>
+            <h2 className={cls.titleCard}>Творческое задание</h2>
+            <Button onClick={() => navigate(RoutePath.creative_task)} className={cls.contentButton}>Выполнить творческое задание</Button>
+          </div>
+          <div className={classNames(cls.card, {}, [cls.reminderCard])}>
+            <p className={cls.reminderText}>Для того чтобы твоя смена прошла комфортно, предлагаем ознакомится с памяткой</p>
+            <Button theme={ButtonTheme.INVERT_BLUE} className={cls.contentButton}>Памятка</Button>
+          </div>
         </div>
-        <div className={classNames(cls.card, {}, [cls.aboutCard])}>
-          <h2 className={cls.titleCard}>Обо мне</h2>
-          <Button onClick={() => navigate(RoutePath.form)} theme={ButtonTheme.BLUE} className={cls.contentButton}>Заполнить информацию о себе</Button>
-        </div>
-        <div className={classNames(cls.card, {}, [cls.creativeCard])}>
-          <h2 className={cls.titleCard}>Творческое задание</h2>
-          <Button onClick={() => navigate(RoutePath.creative_task)} className={cls.contentButton}>Выполнить творческое задание</Button>
-        </div>
-        <div className={classNames(cls.card, {}, [cls.reminderCard])}>
-          <p className={cls.reminderText}>Для того чтобы твоя смена прошла комфортно, предлагаем ознакомится с памяткой</p>
-          <Button theme={ButtonTheme.INVERT_BLUE} className={cls.contentButton}>Памятка</Button>
-        </div>
+        {mockSelected &&
+          <div className={cls.confirmShift}>
+            <h2 className={cls.title}>Подача заявки <span className={cls.highlighted}>до {dayjs(expireTime).locale('ru').format('D MMMM')}</span></h2>
+            <Button onClick={() => setConfirm(true)} className={cls.confirmButton} theme={ButtonTheme.PURPLE}>Отправить заявку</Button>
+            <p className={cls.subtext}>После подтверждения изменения вносить нельзя</p>
+          </div>}
+        <SelectShift open={open} onCancel={onCancel} />
+        <ConfirmModal open={confirm} onCancel={onCancelConfirm} />
       </div>
-      {mockSelected &&
-        <div className={cls.confirmShift}>
-          <h2 className={cls.title}>Подача заявки <span className={cls.highlighted}>до {dayjs(expireTime).locale('ru').format('D MMMM')}</span></h2>
-          <Button onClick={() => setConfirm(true)} className={cls.confirmButton} theme={ButtonTheme.PURPLE}>Отправить заявку</Button>
-          <p className={cls.subtext}>После подтверждения изменения вносить нельзя</p>
-        </div>}
       <Footer />
-      <SelectShift open={open} onCancel={onCancel} />
-      <ConfirmModal open={confirm} onCancel={onCancelConfirm} />
-    </div>
+    </>
   )
 }

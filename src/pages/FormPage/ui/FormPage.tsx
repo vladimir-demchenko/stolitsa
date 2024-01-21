@@ -22,9 +22,8 @@ export const FormPage = () => {
   }, [step])
 
   return (
-
-    <div className={cls.container}>
-      <div className={cls.content}>
+    <div className={'container'}>
+      <div className={classNames(cls.content, {}, ['content'])}>
         <div className={cls.titleWrapper}>
           <h2 className={cls.title}>Заполни анкету</h2>
           <span className={cls.highlighted}>

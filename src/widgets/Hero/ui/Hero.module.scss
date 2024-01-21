@@ -73,14 +73,13 @@
 }
 
 .blueCurve {
-  right: -20%;
+  right: -10px;
   bottom:-650px;
 }
 
 @media (width <= 768px) {
-  .hero {
+  .content {
     gap: 30px;
-    
   }
 
   .heroGrid {

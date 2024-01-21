@@ -17,10 +17,10 @@ function getColor(index: number) {
 }
 
 export const ScheduleItem = ({ title, date, tags, descriptions, expireTime }: ItemType) => {
-  const [modal, setModal] = useState({ open: false, item: { title: '', date: '', descriptions: [''], expireTime: '' } })
+  const [modal, setModal] = useState({ open: false, item: { title: '', date: '', tags: '', descriptions: [''], expireTime: '' } })
 
   const onCancel = () => {
-    setModal({ open: false, item: { title: '', date: '', descriptions: [''], expireTime: '' } })
+    setModal({ open: false, item: { title: '', date: '', tags: '', descriptions: [''], expireTime: '' } })
   }
 
   return (
@@ -28,14 +28,12 @@ export const ScheduleItem = ({ title, date, tags, descriptions, expireTime }: It
       <p className={cls.date}>{date}</p>
       <div className={cls.header}>
         <h3 className={cls.title}>{title}</h3>
-        <Button theme={ButtonTheme.CLEAR} onClick={() => setModal({ open: true, item: { date: date, title: title, descriptions: descriptions, expireTime: expireTime } })}>
+        <Button theme={ButtonTheme.CLEAR} onClick={() => setModal({ open: true, item: { date: date, title: title, tags: tags, descriptions: descriptions, expireTime: expireTime } })}>
           <CollapseArrow className={cls.arrow} />
         </Button>
       </div>
       <div className={cls.tagsList}>
-        {tags.map((tag, index) => (
-          <span key={index} className={classNames(cls.tag, {}, [cls[getColor(index)]])}>{tag}</span>
-        ))}
+        <span className={classNames(cls.tag, {}, [cls.purple])}>{tags}</span>
       </div>
       <ScheduleModal open={modal.open} onCancel={onCancel} item={modal.item} />
     </div>

@@ -9,19 +9,69 @@ html {
 }
 
 .app {
+  display: grid;
+  grid-template-columns: [full-width-start] minmax(40px, 1fr) [content-start] min(100% - 80px, 1360px) [content-end] minmax(40px, 1fr) [full-width-end];
   position: relative;
   overflow-x: hidden;
 }
 
+
+.full-width > *:not(.promoBg),
+ {
+  grid-column: content;
+}
+
+.full-width > .promoBg {
+  grid-column: full-width;
+}
+
+.promo-container {
+  position: relative;
+  background-color: var(--cyan);
+}
+
+.app > .full-width {
+  display: grid;
+  grid-template-columns: inherit;
+  grid-column: full-width;
+}
+
 .curves {
+  grid-column: content;
   position: absolute;
   z-index: 0;
 }
 
 .container {
-  max-width: 1360px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: inherit;
+  grid-column: full-width;
+  position: relative;
+}
+
+.bgL {
+  grid-column: full-width-start / content-start;
+  grid-row: 1;
+  background-color: var(--cyan);
+  position: relative;
+  z-index: 1;
+}
+
+.bgR {
+  grid-column: content-end / full-width-end;
+  grid-row: 1;
+  background-color: var(--cyan);
+  position: relative;
+  z-index: 1;
+}
+
+.content {
   padding: 240px 0 0;
-  margin: 0 auto;
+  grid-row: 1;
+  grid-column: content;
+  position: relative;
+  z-index: 1;
 }
 
 @media (width <= 768px) {
@@ -29,9 +79,7 @@ html {
     overflow-x: hidden;
   }
 
-  .container {
-    max-width: 343px;
+  .content {
     padding: 50px 0 0;
-    margin: 0 auto;
   }
 }

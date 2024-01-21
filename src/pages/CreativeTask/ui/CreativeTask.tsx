@@ -5,14 +5,16 @@ import { Input } from 'shared/ui/Input/Input';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useNavigate } from 'react-router';
 import { RoutePath } from 'shared/config/router';
+import { Bg } from 'shared/ui/Bg/Bg';
 
 export const CreativeTask = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
 
   return (
-    <div className={cls.container}>
-      <div className={cls.content}>
+    <div className={'container'}>
+      <Bg />
+      <div className={classNames(cls.content, {}, ['content'])}>
         <h2 className={cls.title}>Выполни задание</h2>
         <div className={cls.cardList}>
           <div className={cls.card}>

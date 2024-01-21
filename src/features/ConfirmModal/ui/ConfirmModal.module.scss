@@ -8,6 +8,7 @@
 .title {
   color: var(--black);
   font-feature-settings: 'clig' off, 'liga' off;
+  font-family: var(--font-family);
 
   /* Заголовок смен */
   font-size: 26px;
@@ -20,6 +21,7 @@
 .subtext {
   color:#909090;
   font-feature-settings: 'clig' off, 'liga' off;
+  font-family: var(--font-family);
   font-size: 18px;
   font-style: normal;
   font-weight: 400;

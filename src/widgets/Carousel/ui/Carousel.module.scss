@@ -80,7 +80,7 @@
 
 .greenCurve {
   top: 10%;
-  left: 0;
+  left: -10px;
 }
 
 .notActive {
@@ -122,6 +122,7 @@
 @media (width <= 768px) {
   .title {
     font-size: 24px;
+    letter-spacing: 0;
   }
 
   .header {

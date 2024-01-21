@@ -1,16 +1,20 @@
 .personal {
+  grid-column: content;
   display: flex;
   flex-direction: column;
   gap: 70px;
+  margin-bottom: 70px;
 }
 
 .header {
+  grid-column: full-width;
   display: flex;
   padding: 40px;
   justify-content: space-between;
   align-items: center;
   border-radius: 0 0 40px 40px;
   background: var(--purple);
+  margin-bottom: 70px;
 }
 
 .helloText {

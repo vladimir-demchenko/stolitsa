@@ -3,15 +3,19 @@ import cls from './ScheduleSection.module.scss';
 import { classNames } from 'shared/lib/classNames';
 import { ScheduleConst } from '../model/const';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Bg } from 'shared/ui/Bg/Bg';
 
 export const ScheduleSection = () => {
   return (
-    <div className={classNames('container', {}, [cls.schedule])}>
-      <h2 className={cls.title}>Выбирай смену <br />и подавай заявку!</h2>
-      <div className={cls.blockList}>
-        {ScheduleConst.map((block) => (
-          <ScheduleBlock key={block.month} block={block} />
-        ))}
+    <div id="schedule" className={classNames('container', {}, [cls.schedule])}>
+      <Bg />
+      <div className={'content'}>
+        <h2 className={cls.title}>Выбирай смену <br />и подавай заявку!</h2>
+        <div className={cls.blockList}>
+          {ScheduleConst.map((block) => (
+            <ScheduleBlock key={block.month} block={block} />
+          ))}
+        </div>
       </div>
       <svg className={classNames('curves', {}, [cls.greenCurve])} xmlns="http://www.w3.org/2000/svg" width="830" height="721" viewBox="0 0 830 721" fill="none">
         <path d="M937.499 38C806.499 -128.5 44 512.5 12 268.5C-20 24.5001 479.023 173.066 714.244 365.755C841.5 470 444.859 533.57 759.137 647.002C879.937 690.602 883.804 707.835 870.637 711.002" stroke="#ABC704" stroke-width="20" stroke-linecap="round" />

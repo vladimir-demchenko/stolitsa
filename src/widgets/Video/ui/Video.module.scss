@@ -42,7 +42,7 @@
 }
 
 .purpleCurve {
-  right: 0;
+  right: -10px;
   top: 200px;
 }
 
@@ -59,6 +59,7 @@
   .title {
     width: 100%;
     font-size: 24px;
+    letter-spacing: 0;
   }
 
   .videoWrapper {

@@ -1,7 +1,23 @@
+.footerContainer {
+  display: grid;
+  grid-template-columns: inherit;
+  grid-column: full-width;
+  background-color: var(--cyan);
+}
+
 .footer {
+  display: grid;
+  grid-template-columns: inherit;
+  grid-column: full-width;
   border-radius: 20px 20px 0 0;
-  background-color: var(--purple);
+  background: var(--purple);
+  position: relative;
   padding: 50px 40px 80px;
+  z-index: 2;
+
+  & > * {
+    grid-column: content;
+  }
 }
 
 .footerGrid {

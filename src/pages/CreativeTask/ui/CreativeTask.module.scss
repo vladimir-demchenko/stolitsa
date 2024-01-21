@@ -1,15 +1,10 @@
-.container {
-  margin: 0 auto;
-  max-width: 1360px;
-  padding: 120px 0;
-}
-
 .content {
   display: flex;
   flex-direction: column;
   gap: 100px;
   position: relative;
   z-index: 1;
+  padding: 120px 0 0 !important;
 }
 
 .title {
@@ -161,12 +156,12 @@
 
 .greenCurve {
   top: 100px;
-  right: 0;
+  right: -10px;
 }
 
 .cyanCurve {
   top: 20%;
-  left: 0;
+  left: -10px;
 }
 
 @media (width < 768px) {

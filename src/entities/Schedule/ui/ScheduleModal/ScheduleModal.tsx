@@ -11,7 +11,7 @@ import { isMobile } from 'react-device-detect';
 interface ScheduleModalProps {
   open: boolean;
   onCancel: (...args: unknown[]) => void;
-  item?: Omit<ItemType, 'tags'>;
+  item?: ItemType;
 }
 
 function getColor(index: number) {
@@ -47,9 +47,10 @@ export const ScheduleModal = ({ open, onCancel, item }: ScheduleModalProps) => {
               <CollapseArrowUp />
             </Button>
           </div>
+          <span className={cls.first}>{item?.tags}</span>
           <div className={cls.tagsList}>
-            {item?.descriptions?.map((tag, index) => (
-              <span className={classNames(cls.tag, { [cls.first]: index === 0 })}>{tag}</span>
+            {item?.descriptions?.map((description, index) => (
+              <span className={classNames(cls.description)}>{description}</span>
             ))}
           </div>
           <Button theme={ButtonTheme.PURPLE} className={cls.modalButton}>Подать заявку</Button>

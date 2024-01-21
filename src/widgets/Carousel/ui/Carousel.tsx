@@ -16,6 +16,7 @@ import 'swiper/css/pagination';
 import { motion } from 'framer-motion';
 import { useMemo, useState } from 'react';
 import { useDebounce } from 'shared/lib/useDebounce';
+import { Bg } from 'shared/ui/Bg/Bg';
 
 
 const slides = [
@@ -61,7 +62,8 @@ export const Carousel = () => {
 
   return (
     <div className={classNames('container', {}, [cls.carousel])}>
-      <div className={cls.content}>
+      <Bg />
+      <div className={'content'}>
         <div className={cls.header}>
           <h2 className={cls.title}>ты сможешь</h2>
           <motion.div animate={{ rotate: [90 * (test - 1), 90 * test] }} transition={{ duration: 1, ease: 'linear', type: 'spring' }} key={test}>

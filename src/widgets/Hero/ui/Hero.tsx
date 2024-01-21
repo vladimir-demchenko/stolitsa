@@ -3,11 +3,13 @@ import HeroImg from 'shared/assets/img/heroImg.png';
 
 import cls from './Hero.module.scss'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
+import { Bg } from 'shared/ui/Bg/Bg';
 
 export const Hero = () => {
   return (
     <div className={classNames('container', {}, [cls.hero])}>
-      <div className={cls.content}>
+      <Bg />
+      <div className={classNames('content', {}, [cls.content])}>
         <h2 className={cls.title}>молодёжный палаточный патриотический слёт <span className={cls.highlighted}>«STOлица.Лето»</span></h2>
         <div className={cls.heroGrid}>
           <div className={cls.imgContainer}>
@@ -18,7 +20,7 @@ export const Hero = () => {
           </div>
           <p className={cls.heroText}>Образовательный и командообразующий
             палаточный слёт для молодёжного актива города Москвы.</p>
-          <Button theme={ButtonTheme.GREEN} className={cls.heroButton}>Подать заявку</Button>
+          <Button onClick={() => location.href = "#schedule"} theme={ButtonTheme.GREEN} className={cls.heroButton}>Подать заявку</Button>
         </div>
       </div>
       <svg className={classNames('curves', {}, [cls.blueCurve])} xmlns="http://www.w3.org/2000/svg" width="261" height="838" viewBox="0 0 261 838" fill="none">
