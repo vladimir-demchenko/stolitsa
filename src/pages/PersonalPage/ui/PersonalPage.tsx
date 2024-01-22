@@ -11,6 +11,7 @@ import { SelectShift } from 'features/SelectShift/ui/SelectShift';
 import { ConfirmModal } from 'features/ConfirmModal';
 import { useNavigate } from 'react-router';
 import { RoutePath } from 'shared/config/router';
+import Pdf from 'shared/assets/doc/памятка 2024 .pdf';
 
 const mockFirstname = 'Андрей';
 const mockLastname = 'Иванов';
@@ -39,6 +40,13 @@ export const PersonalPage = () => {
   const onCancelConfirm = () => {
     setConfirm(false);
   }
+
+  const handlePreviewCertificate = () => {
+    const pdfPreviewWindow = window.open();
+    if (pdfPreviewWindow) {
+      pdfPreviewWindow.location.href = Pdf;
+    }
+  };
 
   return (
     <>
@@ -78,7 +86,7 @@ export const PersonalPage = () => {
           </div>
           <div className={classNames(cls.card, {}, [cls.reminderCard])}>
             <p className={cls.reminderText}>Для того, чтобы твоя смена прошла комфортно, предлагаем ознакомиться с памяткой участника:</p>
-            <Button theme={ButtonTheme.INVERT_BLUE} className={cls.contentButton}>Памятка участника</Button>
+            <Button onClick={handlePreviewCertificate} theme={ButtonTheme.INVERT_BLUE} className={cls.contentButton}>Памятка участника</Button>
           </div>
         </div>
         {mockSelected &&
