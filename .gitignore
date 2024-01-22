@@ -11,4 +11,3 @@ build
 .env.development
 .vscode
 package-lock.json
-*.mp4
