@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames';
 import Placeholder from 'shared/assets/img/placeholder.png';
 import { Videojs } from 'shared/ui/Videojs';
-import VideoSrc from 'shared/assets/video/STOлица.mp4';
+import VideoSrc from 'shared/assets/video/stolitsa.mp4';
 // import SourceVideo from 'shared/assets/video/STOлица.Лето_промо.mp4';
 import 'video.js/dist/video-js.css';
 
