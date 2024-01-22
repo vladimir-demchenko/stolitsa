@@ -22,7 +22,7 @@ const expireTime = '2023-05-20';
 const mockShift = {
   date: '29 июня—2 июля',
   title: 'Объединяй',
-  tags: 'обмен опытом',
+  tags: 'лидеры молодёжных сообществ',
   descriptions: ['Лидеры молодёжных сообществ', 'Реализовывать идеи', 'Объединять единомышленников', 'Обмениваться опытом'],
   expireTime: '2023-05-20'
 }
@@ -77,7 +77,7 @@ export const PersonalPage = () => {
             <Button onClick={() => navigate(RoutePath.creative_task)} className={cls.contentButton}>Выполнить творческое задание</Button>
           </div>
           <div className={classNames(cls.card, {}, [cls.reminderCard])}>
-            <p className={cls.reminderText}>Для того чтобы твоя смена прошла комфортно, предлагаем ознакомится с памяткой участника</p>
+            <p className={cls.reminderText}>Для того, чтобы твоя смена прошла комфортно, предлагаем ознакомиться с памяткой участника:</p>
             <Button theme={ButtonTheme.INVERT_BLUE} className={cls.contentButton}>Памятка участника</Button>
           </div>
         </div>
