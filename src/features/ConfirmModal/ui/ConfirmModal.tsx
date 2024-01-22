@@ -1,7 +1,7 @@
 import { Modal } from 'antd';
 import cls from './ConfirmModal.module.scss';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { isMobile } from 'react-device-detect';
+import { useMediaQuery } from 'react-responsive';
 
 interface ConfirmModalProps {
   open: boolean;
@@ -9,6 +9,7 @@ interface ConfirmModalProps {
 }
 
 export const ConfirmModal = ({ open, onCancel }: ConfirmModalProps) => {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   return (
     <Modal
       open={open}

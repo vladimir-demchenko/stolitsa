@@ -3,7 +3,6 @@ import Flower from 'shared/assets/icons/flower.svg'
 import FlowerMobile from 'shared/assets/icons/flower_mobile.svg';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { A11y, Pagination, Autoplay, Navigation } from 'swiper/modules';
-import { isMobile } from 'react-device-detect';
 import FirstSlide from 'shared/assets/img/slide_1.png';
 import SecondSlide from 'shared/assets/img/slide_2.png';
 import ThirdSlide from 'shared/assets/img/slide_3.png';
@@ -18,6 +17,7 @@ import { motion } from 'framer-motion';
 import { useMemo, useState } from 'react';
 import { useDebounce } from 'shared/lib/useDebounce';
 import { Bg } from 'shared/ui/Bg/Bg';
+import { useMediaQuery } from 'react-responsive';
 
 
 const slides = [
@@ -49,6 +49,7 @@ const slides = [
 
 export const Carousel = () => {
   const [test, setTest] = useState<number>(0);
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   const getActiveSlides = useMemo(() => {
     return Array.from(Array(test + 1).keys())

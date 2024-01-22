@@ -8,9 +8,10 @@ import UploadIcon from 'shared/assets/icons/upload.svg';
 
 import './Upload.scss';
 import { Checkbox } from 'shared/ui/Checkbox';
-import { isMobile } from 'react-device-detect';
+import { useMediaQuery } from 'react-responsive';
 
 export const FirstStep = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   return (
     <div className={cls.firstStep}>
       <Form.Item noStyle required>

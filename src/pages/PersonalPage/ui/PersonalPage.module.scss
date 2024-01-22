@@ -205,6 +205,12 @@
   line-height: 120%; /* 21.6px */
 }
 
+@media (width <= 1100px) {
+  .confirmShift {
+    width: 100%;
+  }
+}
+
 @media (width<= 768px) {
   .personal {
     gap: 50px;
@@ -278,10 +284,6 @@
 
   .reminderText {
     font-size: 12px;
-  }
-
-  .confirmShift {
-    width: 335px;
   }
 
   .title {

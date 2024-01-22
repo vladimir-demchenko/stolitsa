@@ -3,11 +3,12 @@ import LogoFooterMobile from 'shared/assets/icons/logo_footer_mobile.svg';
 import TelegramIcon from 'shared/assets/icons/telegram_icon.svg';
 import EmailIcon from 'shared/assets/icons/email_icon.svg';
 import cls from './Footer.module.scss';
-import { isMobile } from 'react-device-detect';
 import { classNames } from 'shared/lib/classNames';
 import { Bg } from 'shared/ui/Bg/Bg';
+import { useMediaQuery } from 'react-responsive';
 
 export const Footer = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   return (
     <footer className={classNames(cls.footerContainer, {}, [])}>
       <div className={cls.footer}>

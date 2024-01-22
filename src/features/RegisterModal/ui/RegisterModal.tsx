@@ -1,12 +1,13 @@
 import { ConfigProvider, Form, Input, Modal } from 'antd'
 import cls from './RegisterModal.module.scss'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
-import { isMobile } from 'react-device-detect'
 import { useNavigate } from 'react-router'
 import { RoutePath } from 'shared/config/router'
+import { useMediaQuery } from 'react-responsive'
 
 export const RegisterModal = ({ open, onCancel }: { open: boolean, onCancel: (...args: unknown[]) => void }) => {
   const navigate = useNavigate();
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   return (
     <ConfigProvider

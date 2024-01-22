@@ -3,7 +3,7 @@ import cls from './SelectShift.module.scss';
 import { BlockType } from 'entities/Schedule/model/types';
 import { ScheduleBlock } from 'entities/Schedule';
 import { ScheduleConst } from 'widgets/ScheduleSection/model/const';
-import { isMobile } from 'react-device-detect';
+import { useMediaQuery } from 'react-responsive';
 
 interface SelectShiftProps {
   open: boolean;
@@ -11,6 +11,8 @@ interface SelectShiftProps {
 }
 
 export const SelectShift = ({ open, onCancel }: SelectShiftProps) => {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
   return (
     <Modal
       open={open}

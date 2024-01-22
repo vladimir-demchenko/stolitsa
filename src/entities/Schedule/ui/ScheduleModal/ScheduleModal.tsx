@@ -6,7 +6,7 @@ import CollapseArrowUp from 'shared/assets/icons/collapseArrowUp.svg';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ru';
-import { isMobile } from 'react-device-detect';
+import { useMediaQuery } from 'react-responsive';
 
 interface ScheduleModalProps {
   open: boolean;
@@ -23,6 +23,7 @@ function getColor(index: number) {
 }
 
 export const ScheduleModal = ({ open, onCancel, item }: ScheduleModalProps) => {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   return (
     <ConfigProvider
       theme={{

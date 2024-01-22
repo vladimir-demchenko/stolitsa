@@ -243,3 +243,15 @@
     display: none;
   }
 }
+
+@media (width <=470px) {
+  .detailText {
+    font-size: 10px;
+  }
+}
+
+@media (width <=420px) {
+  .detailText {
+    font-size: 8px;
+  }
+}
