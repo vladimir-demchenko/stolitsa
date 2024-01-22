@@ -67,6 +67,12 @@
   gap: 10px;
 }
 
+@media (width<1500px) {
+  .footerContainer {
+    background-color: transparent;
+  }
+}
+
 @media (width <= 768px) {
   .footer {
     padding: 12px 10px 20px;

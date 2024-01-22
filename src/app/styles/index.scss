@@ -10,7 +10,7 @@ html {
 
 .app {
   display: grid;
-  grid-template-columns: [full-width-start] minmax(40px, 1fr) [content-start] min(100% - 80px, 1360px) [content-end] minmax(40px, 1fr) [full-width-end];
+  grid-template-columns: [full-width-start bg-l-start] minmax(0, 1fr) [bg-l-end] minmax(10px, 70px) [content-start] min(100% - 140px, 1360px) [content-end] minmax(10px, 70px) [bg-r-start] minmax(0, 1fr) [full-width-end bg-r-end];
   position: relative;
   overflow-x: hidden;
 }
@@ -44,14 +44,13 @@ html {
 
 .container {
   display: grid;
-  gap: 10px;
   grid-template-columns: inherit;
   grid-column: full-width;
   position: relative;
 }
 
 .bgL {
-  grid-column: full-width-start / content-start;
+  grid-column: bg-l;
   grid-row: 1;
   background-color: var(--cyan);
   position: relative;
@@ -59,7 +58,7 @@ html {
 }
 
 .bgR {
-  grid-column: content-end / full-width-end;
+  grid-column: bg-r;
   grid-row: 1;
   background-color: var(--cyan);
   position: relative;
@@ -72,6 +71,12 @@ html {
   grid-column: content;
   position: relative;
   z-index: 1;
+}
+
+@media (width<1500px) {
+  .promo-container {
+    background-color: transparent;
+  }
 }
 
 @media (width <= 768px) {

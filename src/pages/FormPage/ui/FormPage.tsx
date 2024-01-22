@@ -6,6 +6,7 @@ import { useCallback, useState } from 'react';
 import { classNames } from 'shared/lib/classNames';
 import { useNavigate } from 'react-router';
 import { RoutePath } from 'shared/config/router';
+import { Bg } from 'shared/ui/Bg/Bg';
 
 export const FormPage = () => {
   const [form] = Form.useForm();
@@ -23,6 +24,7 @@ export const FormPage = () => {
 
   return (
     <div className={'container'}>
+      <Bg />
       <div className={classNames(cls.content, {}, ['content'])}>
         <div className={cls.titleWrapper}>
           <h2 className={cls.title}>Заполни анкету</h2>

@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames';
 import Flower from 'shared/assets/icons/flower.svg'
 import FlowerMobile from 'shared/assets/icons/flower_mobile.svg';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { A11y, Pagination } from 'swiper/modules';
+import { A11y, Pagination, Autoplay, Navigation } from 'swiper/modules';
 import { isMobile } from 'react-device-detect';
 import FirstSlide from 'shared/assets/img/slide_1.png';
 import SecondSlide from 'shared/assets/img/slide_2.png';
@@ -13,6 +13,7 @@ import cls from './Carousel.module.scss';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 import { motion } from 'framer-motion';
 import { useMemo, useState } from 'react';
 import { useDebounce } from 'shared/lib/useDebounce';
@@ -84,9 +85,11 @@ export const Carousel = () => {
         </div>
         <div>
           <Swiper
-            modules={[A11y, Pagination]}
+            modules={[A11y, Pagination, Navigation, Autoplay]}
             slidesPerView={isMobile ? 1 : 2}
             centeredSlides
+            autoplay={{ delay: 2000 }}
+            navigation
             pagination={{ clickable: true }}
             loop
             spaceBetween={20}

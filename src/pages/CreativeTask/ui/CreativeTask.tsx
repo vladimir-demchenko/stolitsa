@@ -18,7 +18,7 @@ export const CreativeTask = () => {
         <h2 className={cls.title}>Выполни задание</h2>
         <div className={cls.cardList}>
           <div className={cls.card}>
-            <p className={cls.boldText}>Для подачи заявки тебе необходимо выполнить творческоезадание — <span className={cls.highlighted}>снять презентационный ролик</span></p>
+            <p className={cls.boldText}>Для подачи заявки тебе необходимо выполнить творческое задание — <span className={cls.highlighted}>снять презентационный ролик</span></p>
           </div>
           <div className={cls.card}>
             <h3 className={cls.subtitle}>В ролике тебе необходимо ответить на три вопроса:</h3>
@@ -30,9 +30,9 @@ export const CreativeTask = () => {
             <p className={cls.subtext}>Приветствуется креативный подход в съемке ролика.</p>
           </div>
           <div className={cls.card}>
-            <p className={cls.detailText}>Ролик должен быть опубликован на личной странице всоциальной сети ВКонтакте. Не забудь указать хештеги <br /><span className={cls.bold}>#STOлица_Лето</span>
+            <p className={cls.detailText}>Ролик должен быть опубликован на личной странице в социальной сети ВКонтакте. Не забудь указать хештеги <br /><span className={cls.bold}>#STOлица_Лето</span>
               <br /><span className={cls.bold}>#Москва_молодёжная_столица_России</span>
-              <br />и убедиться, что твоя страницы открыта</p>
+              <br />и убедиться, что твоя страница открыта</p>
           </div>
           <div className={cls.card}>
             <Form form={form} name='creative' onFinish={(values) => navigate(RoutePath.profile)}>

@@ -31,7 +31,7 @@
 .blocksList {
   display: grid;
   gap: 38px 20px;
-  grid-template-columns: repeat(3, 440px);
+  grid-template-columns: repeat(auto-fill, minmax(255px, 440px));
 }
 
 @media (width <= 768px) {
@@ -41,9 +41,5 @@
 
   .title {
     font-size: 24px;
-  }
-
-  .blocksList {
-    grid-template-columns: repeat(1, 1fr);
   }
 }

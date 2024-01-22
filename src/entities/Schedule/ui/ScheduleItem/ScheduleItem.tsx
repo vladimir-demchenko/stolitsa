@@ -23,17 +23,21 @@ export const ScheduleItem = ({ title, date, tags, descriptions, expireTime }: It
     setModal({ open: false, item: { title: '', date: '', tags: '', descriptions: [''], expireTime: '' } })
   }
 
+  console.log(modal)
+
   return (
-    <div className={cls.card} >
-      <p className={cls.date}>{date}</p>
-      <div className={cls.header}>
-        <h3 className={cls.title}>{title}</h3>
-        <Button theme={ButtonTheme.CLEAR} onClick={() => setModal({ open: true, item: { date: date, title: title, tags: tags, descriptions: descriptions, expireTime: expireTime } })}>
-          <CollapseArrow className={cls.arrow} />
-        </Button>
-      </div>
-      <div className={cls.tagsList}>
-        <span className={classNames(cls.tag, {}, [cls.purple])}>{descriptions[0]}</span>
+    <div>
+      <div className={cls.card} onClick={() => setModal({ open: true, item: { date: date, title: title, tags: tags, descriptions: descriptions, expireTime: expireTime } })}>
+        <p className={cls.date}>{date}</p>
+        <div className={cls.header}>
+          <h3 className={cls.title}>{title}</h3>
+          <Button theme={ButtonTheme.CLEAR} >
+            <CollapseArrow className={cls.arrow} />
+          </Button>
+        </div>
+        <div className={cls.tagsList}>
+          <span className={classNames(cls.tag, {}, [cls.purple])}>{descriptions[0]}</span>
+        </div>
       </div>
       <ScheduleModal open={modal.open} onCancel={onCancel} item={modal.item} />
     </div>
