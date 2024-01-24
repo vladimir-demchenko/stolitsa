@@ -1,0 +1,114 @@
+.promo-container {
+  position: relative;
+}
+
+.promo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(0deg, rgb(0 0 0 / 20%) 0%, rgb(0 0 0 / 20%) 100%), url('/src/shared/assets/img/promoBg.png'), lightgray 50%; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  z-index: 1;
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.logoLink {
+  width: 100%;
+  height: auto;
+}
+
+.title {
+  color: #FFF;
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 115%; /* 73.6px */
+  text-transform: uppercase;
+}
+
+.logo {
+  width: 550px;
+  height: auto;
+}
+
+@keyframes scroll-reveal {
+  to {
+    transform: scale(1);
+  }
+}
+
+/* stylelint-disable-next-line media-feature-name-no-vendor-prefix */
+@media only screen and (device-width <= 428px) and (device-heigt: 926px) and (-webkit-device-pixel-ratio: 3) {
+  .promo {
+    height: 100svh;
+  }
+
+  .logoWrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .logo {
+    width: 320px;
+  }
+
+  .logoLink {
+    width: 320px;
+  }
+  
+  .title {
+    font-size: 24px;
+  }
+
+  .promoButton {
+    width: 200px;
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
+@media (width <=786px) {
+  .promo {
+    height: 100svh;
+  }
+
+  .logoWrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .logo {
+    width: 320px;
+  }
+
+  .logoLink {
+    width: 320px;
+  }
+
+  .promoButton {
+    width: 200px;
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .curved {
+    left: -10px;
+    bottom: -525px;
+  }
+}
