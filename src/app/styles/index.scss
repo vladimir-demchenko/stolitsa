@@ -23,6 +23,9 @@ html {
 
 .full-width > .promoBg {
   grid-column: full-width;
+  display: grid;
+  grid-template-columns: inherit;
+  justify-items: center;
 }
 
 .promo-container {

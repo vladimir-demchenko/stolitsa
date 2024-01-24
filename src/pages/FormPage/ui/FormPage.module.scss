@@ -71,6 +71,16 @@
   right: -20%;
 }
 
+@media (768px<width<=1024px) {
+  .title {
+    font-size: 50px;
+  }
+  
+  .highlighted {
+    font-size: 50px;
+  }
+}
+
 @media (width <= 768px) {
   .container {
     max-width: 365px;

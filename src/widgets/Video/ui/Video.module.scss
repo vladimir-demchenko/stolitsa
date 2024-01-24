@@ -51,6 +51,16 @@
   left: -70px;
 }
 
+@media (768px<width <=1024px) {
+  .title {
+    font-size: 56px;
+  }
+
+  .videoWrapper {
+    width: 100%;
+  }
+}
+
 @media (width <=768px) {
   .video {
     gap: 30px;

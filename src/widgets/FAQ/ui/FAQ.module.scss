@@ -47,6 +47,22 @@
   right: -220px;
 }
 
+@media (768px<width <=1024px) {
+  .title {
+    font-size: 56px;
+  }
+
+  .questionButton {
+    font-size: 18px;
+    gap: 12px;
+
+    & > svg {
+      width: 20px;
+      height: 16px;
+    } 
+  }
+}
+
 @media (width <= 768px) {
   .title {
     font-size: 24px;

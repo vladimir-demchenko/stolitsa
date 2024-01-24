@@ -244,6 +244,12 @@
   }
 }
 
+@media (768px<width <=970px) {
+  .detailText {
+    font-size: 20px;
+  }
+}
+
 @media (width <=470px) {
   .detailText {
     font-size: 10px;

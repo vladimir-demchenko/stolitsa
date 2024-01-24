@@ -12,7 +12,9 @@
 
 .header {
   display: flex;
-  gap: 266px;
+  gap: 18px;
+  width: 100%;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -116,6 +118,16 @@
 
   &Active {
     fill: var(--cyan)
+  }
+}
+
+@media (768px<width <=1024px) {
+  .title {
+    font-size: 56px;
+  }
+
+  .slideTitle {
+    font-size: 18px;
   }
 }
 

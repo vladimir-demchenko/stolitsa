@@ -7,7 +7,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 130px;
   height: 100vh;
   background: linear-gradient(0deg, rgb(0 0 0 / 20%) 0%, rgb(0 0 0 / 20%) 100%), url('/src/shared/assets/img/promoBg.png'), lightgray 50%; 
   border-radius: 0 0 40px 40px;
@@ -25,8 +24,8 @@
 }
 
 .logoLink {
-  width: auto;
-  height: 100%;
+  width: 100%;
+  height: auto;
 }
 
 .promoButton {
@@ -59,7 +58,7 @@
 
   .logoWrapper {
     flex-direction: column;
-    gap: 15px;
+    gap: 40px;
   }
 
   .logo {

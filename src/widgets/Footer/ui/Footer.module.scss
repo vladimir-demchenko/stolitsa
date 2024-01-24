@@ -73,6 +73,20 @@
   }
 }
 
+@media (768px<width <=1024px) {
+  .footerGrid {
+    gap: 70px;
+  }
+
+  .footerSubtitle {
+    font-size: 20px;
+  }
+
+  .footerLink {
+    font-size: 12px;
+  }
+}
+
 @media (width <= 768px) {
   .footer {
     padding: 12px 10px 20px;
