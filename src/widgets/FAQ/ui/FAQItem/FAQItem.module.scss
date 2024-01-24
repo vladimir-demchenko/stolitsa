@@ -42,6 +42,14 @@
   line-height: 130%; /* 28.6px */
 }
 
+.link {
+  color: var(--black);
+
+  &:active {
+    color: var(--black);
+  }
+}
+
 @media (width <= 768px) {
   .faqContainer {
     padding: 12px;

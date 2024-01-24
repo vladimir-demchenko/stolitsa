@@ -55,7 +55,7 @@ export const ScheduleModal = ({ open, onCancel, item }: ScheduleModalProps) => {
             ))}
           </div>
           <Button theme={ButtonTheme.PURPLE} className={cls.modalButton}>Подать заявку</Button>
-          <p className={cls.expireTime}>Прием подачи заявок до {dayjs(item?.expireTime).locale('ru').format('D MMMM')}</p>
+          <p className={cls.expireTime}>Прием заявок до {dayjs(item?.expireTime).locale('ru').format('D MMMM')}</p>
         </div>
       </Modal>
     </ConfigProvider>

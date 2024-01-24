@@ -5,6 +5,7 @@ import { faqConst } from '../model/const';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import TelegramIcon from 'shared/assets/icons/telegram_icon.svg';
 import { Bg } from 'shared/ui/Bg/Bg';
+import { FAQItemStatic } from './FAQItem/FAQItemStatic';
 
 export const FAQ = () => {
   return (
@@ -16,6 +17,7 @@ export const FAQ = () => {
           {faqConst.map((faq) => (
             <FAQItem key={faq.id} question={faq.question} answer={faq.answer} />
           ))}
+          <FAQItemStatic />
         </div>
         <Button onClick={() => window.location.href = "https://t.me/STOlitsa_Leto"} className={cls.questionButton} theme={ButtonTheme.BLUE}><TelegramIcon /> Напиши нам, если остались вопросы</Button>
       </div>
