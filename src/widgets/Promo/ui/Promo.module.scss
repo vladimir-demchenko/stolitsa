@@ -50,6 +50,33 @@
   }
 }
 
+/* stylelint-disable-next-line media-feature-name-no-vendor-prefix */
+@media only screen and (device-width <= 428px) and (device-heigt: 926px) and (-webkit-device-pixel-ratio: 3) {
+  .promo {
+    height: 100svh;
+    border-radius: 0 0 10.417px 10.417px;
+  }
+
+  .logoWrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .logo {
+    width: 320px;
+  }
+
+  .logoLink {
+    width: 320px;
+  }
+
+  .promoButton {
+    width: 200px;
+    font-size: 12px;
+    padding: 8px;
+  }
+}
+
 @media (width <=786px) {
   .promo {
     height: 100svh;
