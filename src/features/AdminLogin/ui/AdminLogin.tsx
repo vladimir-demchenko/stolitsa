@@ -4,7 +4,6 @@ import { RoutePath } from 'shared/config/router';
 
 import { useLogin } from '../api/loginRequest';
 
-import cls from './LoginForm.module.scss';
 
 export function AdminLogin() {
   const navigate = useNavigate();
@@ -24,7 +23,7 @@ export function AdminLogin() {
           localStorage.setItem('user', result.uid);
           navigate('/main');
         } else {
-          navigate('/approve', { state: { userId: result.uid } });
+          navigate('/admin');
         }
       })
       .catch((err) => {
@@ -50,7 +49,6 @@ export function AdminLogin() {
     <Form
       form={form}
       name="login"
-      className={cls.loginForm}
       layout="vertical"
       autoComplete="off"
       size="large"
@@ -61,17 +59,17 @@ export function AdminLogin() {
         name="login"
         rules={[{ message: 'Пожалуйста введите e-mail!' }]}
       >
-        <Input placeholder="E-mail" className={cls.loginInput} />
+        <Input placeholder="E-mail" />
       </Form.Item>
 
       <Form.Item
         name="password"
         rules={[{ message: 'Пожалуйста введите пароль!' }]}
       >
-        <Input.Password placeholder="Пароль" className={cls.loginInput} />
+        <Input.Password placeholder="Пароль" />
       </Form.Item>
       <Form.Item>
-        <Button className={cls.submitButton} type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit">
           Войти
         </Button>
       </Form.Item>

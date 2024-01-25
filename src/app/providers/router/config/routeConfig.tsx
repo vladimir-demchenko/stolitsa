@@ -1,3 +1,5 @@
+import { Admin } from 'pages/Admin';
+import { AdminLoginPage } from 'pages/AdminPage';
 import { CreativeTask } from 'pages/CreativeTask';
 import { FormPage } from 'pages/FormPage';
 import { MainPage } from 'pages/MainPage';
@@ -23,5 +25,13 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.CREATIVE_TASK]: {
     path: RoutePath.creative_task,
     element: <CreativeTask />
+  },
+  [AppRoutes.ADMIN_LOGIN]: {
+    path: RoutePath.admin_login,
+    element: <AdminLoginPage />
+  },
+  [AppRoutes.ADMIN]: {
+    path: RoutePath.admin,
+    element: <Admin />
   }
 }
