@@ -8,8 +8,6 @@ export const Videojs = (props: any) => {
   const playerRef = useRef<Player | null>(null);
   const { options, onReady } = props;
 
-  console.log(videojs.options);
-
   useEffect(() => {
     if (!playerRef.current) {
       const videoElement = document.createElement('video-js');

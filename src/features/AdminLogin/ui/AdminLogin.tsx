@@ -14,7 +14,6 @@ export function AdminLogin() {
     login(values)
       .unwrap()
       .then((result) => {
-        console.log(result)
         if (result?.tokens) {
           localStorage.setItem('token', JSON?.stringify(result?.tokens));
         }

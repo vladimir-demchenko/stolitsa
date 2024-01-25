@@ -19,7 +19,6 @@ export const RegisterModal = ({ open, onCancel }: { open: boolean, onCancel: (..
   const [messageApi, contextHolder] = message.useMessage()
 
   const handleFinish = (values: any) => {
-    console.log(values, dayjs(values.year.value + '-' + values.month.value + '-' + values.day.value));
     registration({
       lastname: values.name?.split(' ')[0],
       firstname: values.name?.split(' ')[1],

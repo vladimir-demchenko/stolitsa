@@ -28,7 +28,6 @@ const baseQueryWithReauth: BaseQueryFn<
   FetchBaseQueryError
 > = async (args, api, extraOptions) => {
   await mutex.waitForUnlock();
-  console.log(args);
   let result = await baseQuery(args, api, extraOptions);
   const token = localStorage.getItem('token') || '';
   if (result.error && result.error.status === 401 && token) {
