@@ -23,8 +23,6 @@ export const ScheduleItem = ({ title, date, tags, descriptions, expireTime }: It
     setModal({ open: false, item: { title: '', date: '', tags: '', descriptions: [''], expireTime: '' } })
   }
 
-  console.log(modal)
-
   return (
     <div>
       <div className={cls.card} onClick={() => setModal({ open: true, item: { date: date, title: title, tags: tags, descriptions: descriptions, expireTime: expireTime } })}>
