@@ -6,6 +6,8 @@ import cls from './Footer.module.scss';
 import { classNames } from 'shared/lib/classNames';
 import { Bg } from 'shared/ui/Bg/Bg';
 import { useMediaQuery } from 'react-responsive';
+import Policy from 'shared/assets/doc/Политика_конфиденциальности.pdf';
+import Statement from 'shared/assets/doc/ПОЛОЖЕНИЕ_о_Молодежном_палаточном_патриотическом_слете_STOлицаЛето.pdf';
 
 export const Footer = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
@@ -19,8 +21,8 @@ export const Footer = () => {
           <div className={cls.footerDocuments}>
             <h4 className={cls.footerSubtitle}>Документы</h4>
             <ul className={cls.footerList}>
-              <li><a className={cls.footerLink} href="">Положение конкурсного отбора</a></li>
-              <li><a className={cls.footerLink} href="">Политика конфиденциальности</a></li>
+              <li><a className={cls.footerLink} href={Statement} target='_blank'>Положение конкурсного отбора</a></li>
+              <li><a className={cls.footerLink} href={Policy} target='_blank'>Политика конфиденциальности</a></li>
             </ul>
           </div>
           <div className={cls.footerSocial}>

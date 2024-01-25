@@ -9,7 +9,7 @@ import dayjs from 'dayjs'
 import duration from 'dayjs/plugin/duration';
 import { daysOption, monthOptions, yearOptions } from '../model/const'
 import { Checkbox } from 'shared/ui/Checkbox'
-import Pdf from 'shared/assets/doc/ПОЛОЖЕНИЕ_о_Молодежном_палаточном_патриотическом_слете_STOлицаЛето.pdf'
+import Pdf from 'shared/assets/doc/Политика_конфиденциальности.pdf'
 import { useRegistration } from '../api/registerApi'
 
 export const RegisterModal = ({ open, onCancel }: { open: boolean, onCancel: (...args: unknown[]) => void }) => {
@@ -168,7 +168,7 @@ export const RegisterModal = ({ open, onCancel }: { open: boolean, onCancel: (..
               <Form.Item valuePropName='checked' name='agree' noStyle required>
                 <Checkbox>Согласние на обработку <a className={cls.link} href={Pdf} target='_blank'>персональных данных</a></Checkbox>
               </Form.Item>
-              <Form.Item noStyle className={cls.item}><Button type='submit' theme={ButtonTheme.GREEN} className={cls.button}>Войти</Button></Form.Item>
+              <Form.Item noStyle className={cls.item}><Button type='submit' theme={ButtonTheme.GREEN} className={cls.button}>Зарегистроваться</Button></Form.Item>
             </div>
           </Form>
         </div>
