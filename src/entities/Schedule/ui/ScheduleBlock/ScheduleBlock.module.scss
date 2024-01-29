@@ -34,7 +34,7 @@
   grid-template-columns: repeat(auto-fill, minmax(255px, 440px));
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .block {
     gap: 12px;
   }

@@ -3,7 +3,7 @@
   height: 163px !important;
 }
 
-@media (width <=768px) {
+@media (max-width: 768px) {
   .ant-upload-select {
     width: 77px !important;
     height: 77px !important;

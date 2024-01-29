@@ -47,13 +47,13 @@
   bottom: -30%;
 }
 
-@media (768px<width <=1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .title {
     font-size: 56px;
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .schedule {
     gap: 30px;
   }

@@ -76,13 +76,13 @@ html {
   z-index: 1;
 }
 
-@media (width<1500px) {
+@media (max-width: 1500px) {
   .promo-container {
     background-color: transparent;
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   :root {
     overflow-x: hidden;
   }

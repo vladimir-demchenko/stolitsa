@@ -46,7 +46,7 @@
   font-size: 20px;
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .modal {
     padding: 0;
   }

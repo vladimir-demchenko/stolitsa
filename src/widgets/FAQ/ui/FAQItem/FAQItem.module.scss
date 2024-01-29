@@ -50,7 +50,7 @@
   }
 }
 
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .faqContainer {
     padding: 12px;
     gap: 8px;
