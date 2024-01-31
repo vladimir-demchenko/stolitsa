@@ -5,12 +5,15 @@ import { Input } from 'shared/ui/Input/Input';
 import { classNames } from 'shared/lib/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import UploadIcon from 'shared/assets/icons/upload.svg';
-
+import InputMask from 'react-input-mask';
 import './Upload.scss';
 import { Checkbox } from 'shared/ui/Checkbox';
 import { useMediaQuery } from 'react-responsive';
+import { useState } from 'react';
 
 export const FirstStep = () => {
+  const [test, setTest] = useState('мужской');
+  console.log(test)
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   return (
     <div className={cls.firstStep}>
@@ -51,10 +54,10 @@ export const FirstStep = () => {
           </div>
         </div>
       </Form.Item>
-      <Form.Item noStyle required name='pol'>
+      <Form.Item noStyle required>
         <div className={cls.formItem}>
           <label className={cls.formLabel}>Выбери пол</label>
-          <RadioButton options={[{ value: 'мужской', content: 'мужской' }, { value: 'женский', content: 'женский' }]} />
+          <RadioButton name='sex' value={test} onChange={(event) => setTest(event.target.value)} options={[{ value: 'мужской', content: 'мужской' }, { value: 'женский', content: 'женский' }]} />
         </div>
       </Form.Item>
       <Form.Item noStyle required name='gr'>
@@ -62,7 +65,7 @@ export const FirstStep = () => {
           <div className={cls.itemHeader}>
             <label className={cls.formLabel}>Гражданство</label>
           </div>
-          <Checkbox value={'1'}>Российская Федерация</Checkbox>
+          <Checkbox value={'Российская Федерация'}>Российская Федерация</Checkbox>
         </div>
       </Form.Item>
       <div className={cls.formItem}>
@@ -71,7 +74,7 @@ export const FirstStep = () => {
           <Form.Item noStyle required name='seria'>
             <div className={cls.inputWrapper}>
               <span className={cls.labelForInput}>серия</span>
-              <Input placeholder={isMobile ? 'серия' : '1234'} />
+              <InputMask mask={'9999'} />
             </div>
           </Form.Item>
           <Form.Item noStyle required name='nomer'>

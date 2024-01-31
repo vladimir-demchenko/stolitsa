@@ -10,7 +10,8 @@ export enum ButtonTheme {
   INVERT_BLUE = 'invertBlue',
   PURPLE = 'purple',
   CLEAR = 'clear',
-  BORDERED = 'bordered'
+  BORDERED = 'bordered',
+  LINK = 'link'
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

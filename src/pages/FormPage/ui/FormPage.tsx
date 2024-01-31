@@ -33,9 +33,9 @@ export const FormPage = () => {
           </span>
         </div>
         <p className={cls.hint}>* обязательные к заполнению поля</p>
-        <Form layout='vertical' form={form} name='form' onFinish={(values) => navigate(RoutePath.profile)}>
+        <Form layout='vertical' form={form} name='form' onFinish={(values) => console.log(values)}>
           {content(step)}
-          {step === '1' ? <Button onClick={() => setStep('2')} className={cls.formButton} theme={ButtonTheme.GREEN}>Продолжить</Button> : <Button onClick={() => form.submit()} className={cls.formButton} theme={ButtonTheme.GREEN}>Сохранить</Button>}
+          {step === '1' ? <Button onClick={() => console.log(form.getFieldsValue())} className={cls.formButton} theme={ButtonTheme.GREEN}>Продолжить</Button> : <Button onClick={() => form.submit()} className={cls.formButton} theme={ButtonTheme.GREEN}>Сохранить</Button>}
         </Form>
       </div>
       <svg className={classNames('curves', {}, [cls.greenCurve])} xmlns="http://www.w3.org/2000/svg" width="443" height="871" viewBox="0 0 443 871" fill="none">
