@@ -5,8 +5,9 @@ const personalApi = api.injectEndpoints({
     getCurrent: build.query({
       query: () => ({
         url: '/users/current',
-      })
-    })
+      }),
+      providesTags: ['User']
+    }),
   })
 })
 

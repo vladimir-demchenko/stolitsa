@@ -1,6 +1,6 @@
 import FlowerLogo from 'shared/assets/icons/flower_logo.svg';
 import cls from './PersonalPage.module.scss';
-import mockUser from 'shared/assets/img/mockUser.png';
+import avatarPlaceholder from 'shared/assets/img/avatar-placeholder.png';
 import { Footer } from 'widgets/Footer';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { classNames } from 'shared/lib/classNames';
@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router';
 import { RoutePath } from 'shared/config/router';
 import Pdf from 'shared/assets/doc/памятка 2024 .pdf';
 import { useCurrent } from '../api/personalApi';
+import { useDownloadFiles } from 'features/FormStep/api/stepApi';
 
 dayjs.extend(duration);
 const mockFirstname = 'Андрей';
@@ -46,6 +47,7 @@ function getSuffix(year: number) {
 
 export const PersonalPage = () => {
   const { data, isLoading } = useCurrent(null);
+  const { data: fileData } = useDownloadFiles(data?.avatar_key, { skip: !data?.avatar_key });
   const [open, setOpen] = useState(false);
   const [confirm, setConfirm] = useState(false);
   const navigate = useNavigate();
@@ -69,6 +71,18 @@ export const PersonalPage = () => {
     }
   };
 
+  const blobUrl = useMemo(
+    () => {
+      if (!fileData) {
+        return null;
+      }
+
+      return window.URL.createObjectURL(new Blob([fileData]))
+    },
+    [fileData]
+  );
+
+
   if (isLoading) {
     return <div>Loading...</div>
   }
@@ -83,7 +97,7 @@ export const PersonalPage = () => {
         <div className={cls.container}>
           <div className={classNames(cls.card, {}, [cls.personalCard])}>
             <div className={cls.avatar}>
-              <img className={cls.avatarImg} alt='avatar' src={''} />
+              <img className={cls.avatarImg} alt='avatar' src={blobUrl ? blobUrl : avatarPlaceholder} />
             </div>
             <div className={cls.personalInfo}>
               <p className={cls.infoName}>{data?.firstname} {data?.lastname}</p>
@@ -96,27 +110,27 @@ export const PersonalPage = () => {
           <div className={classNames(cls.card, {}, [cls.shiftCard])}>
             <div className={cls.headerCard}>
               <h2 className={cls.titleCard}>Смена</h2>
-              {data?.shift && <Button onClick={() => setOpen(true)} className={cls.changeButton} theme={ButtonTheme.GREEN}>Изменить смену</Button>}
+              {data?.shift && !data.approve_shift && <Button onClick={() => setOpen(true)} className={cls.changeButton} theme={ButtonTheme.GREEN}>Изменить смену</Button>}
             </div>
-            {!data?.shift && <Button disabled onClick={() => setOpen(true)} className={cls.contentButton} theme={ButtonTheme.GREEN}>Выбрать смену</Button>}
-            {data?.shift && <SelectedShift item={mockShift} />}
+            {!data?.shift && <Button onClick={() => setOpen(true)} className={cls.contentButton} theme={ButtonTheme.GREEN}>Выбрать смену</Button>}
+            {data?.shift && <SelectedShift item={data?.shift} />}
           </div>
           <div className={classNames(cls.card, {}, [cls.aboutCard])}>
             <h2 className={cls.titleCard}>Обо мне</h2>
-            <Button disabled onClick={() => navigate(RoutePath.form)} theme={ButtonTheme.BLUE} className={cls.contentButton}>Заполнить информацию о себе</Button>
+            <Button onClick={() => navigate(RoutePath.form)} theme={ButtonTheme.BLUE} className={cls.contentButton}>Заполнить информацию о себе</Button>
           </div>
           <div className={classNames(cls.card, {}, [cls.creativeCard])}>
             <h2 className={cls.titleCard}>Творческое задание</h2>
-            <Button disabled onClick={() => navigate(RoutePath.creative_task)} className={cls.contentButton}>Выполнить творческое задание</Button>
+            <Button onClick={() => navigate(RoutePath.creative_task)} className={cls.contentButton}>Выполнить творческое задание</Button>
           </div>
           <div className={classNames(cls.card, {}, [cls.reminderCard])}>
             <p className={cls.reminderText}>Для того, чтобы твоя смена прошла комфортно, предлагаем ознакомиться с памяткой участника:</p>
             <Button onClick={handlePreviewCertificate} theme={ButtonTheme.INVERT_BLUE} className={cls.contentButton}>Памятка участника</Button>
           </div>
         </div>
-        {data.shift &&
+        {data?.shift && !data?.approve_shift &&
           <div className={cls.confirmShift}>
-            <h2 className={cls.title}>Подача заявки <span className={cls.highlighted}>до {dayjs(expireTime).locale('ru').format('D MMMM')}</span></h2>
+            <h2 className={cls.title}>Подача заявки <span className={cls.highlighted}>до {dayjs(data?.shift.expire_time).locale('ru').format('D MMMM')}</span></h2>
             <Button onClick={() => setConfirm(true)} className={cls.confirmButton} theme={ButtonTheme.PURPLE}>Отправить заявку</Button>
             <p className={cls.subtext}>После подтверждения изменения вносить нельзя</p>
           </div>}

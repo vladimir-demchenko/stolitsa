@@ -12,6 +12,7 @@ import { Checkbox } from 'shared/ui/Checkbox'
 import Pdf from 'shared/assets/doc/Политика_конфиденциальности.pdf'
 import { useForgot, useLogin, useRegistration } from '../api/registerApi'
 import { useCallback, useState } from 'react'
+import { useUserShift } from 'entities/Schedule/model/scheduleApi'
 
 export const RegisterModal = ({ open, onCancel }: { open: boolean, onCancel: (...args: unknown[]) => void }) => {
   const navigate = useNavigate();
@@ -67,6 +68,8 @@ const LoginLayout = ({ onCancel, setContentType }: { onCancel: (...args: unknown
   const [messageApi, contextHolder] = message.useMessage();
   const [form] = Form.useForm();
   const navigate = useNavigate();
+  const [userShift] = useUserShift();
+  const shiftID = localStorage.getItem('shiftID');
 
   const handleFinish = (values: any) => {
     login(values)
@@ -75,6 +78,18 @@ const LoginLayout = ({ onCancel, setContentType }: { onCancel: (...args: unknown
         localStorage.setItem('token', JSON?.stringify(res?.tokens));
         localStorage.setItem('role', res?.roles[0]?.name);
         localStorage.setItem('user', res.uid);
+        if (shiftID) {
+          userShift({
+            id: res.uid,
+            shiftID: shiftID
+          })
+            .unwrap()
+            .then(() => {
+              if (shiftID) {
+                localStorage.removeItem('shiftID');
+              }
+            })
+        }
         onCancel();
         navigate(RoutePath.profile);
       })

@@ -88,6 +88,13 @@
   gap: 15px;
 }
 
+.formButton {
+  font-size: 44px;
+  padding: 24px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
 @media (max-width: 768px) {
   .secondStep {
     gap: 10px;
@@ -103,5 +110,12 @@
 
   .formLabel {
     font-size: 14px;
+  }
+  
+  .formButton {
+    font-size: 12px;
+    padding: 10px 8px;
+    width: 100%;
+    margin-top: 30px;
   }
 }

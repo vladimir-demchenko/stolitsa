@@ -1,19 +1,32 @@
 import { ScheduleBlock } from 'entities/Schedule';
 import cls from './ScheduleSection.module.scss';
 import { classNames } from 'shared/lib/classNames';
-import { ScheduleConst } from '../model/const';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Bg } from 'shared/ui/Bg/Bg';
+import { useGetBlocks } from 'features/SelectShift/api/selectShiftApi';
+import { RegisterModal } from 'features/RegisterModal/ui/RegisterModal';
+import { useState } from 'react';
 
 export const ScheduleSection = () => {
+  const [open, setOpen] = useState(false);
+  const { data, isLoading } = useGetBlocks(null);
+
+  const onCancel = () => {
+    setOpen(false);
+  }
+
+  if (isLoading) {
+    return null;
+  }
+
   return (
     <div id="schedule" className={classNames('container', {}, [cls.schedule])}>
       <Bg />
       <div className={'content'}>
         <h2 className={cls.title}>Выбирай смену <br />и подавай заявку!</h2>
         <div className={cls.blockList}>
-          {ScheduleConst.map((block) => (
-            <ScheduleBlock key={block.month} block={block} />
+          {data?.map((block) => (
+            <ScheduleBlock setOpen={setOpen} key={block.month} block={block} />
           ))}
         </div>
       </div>
@@ -29,6 +42,7 @@ export const ScheduleSection = () => {
       <svg className={classNames('curves', {}, [cls.purpleCurve])} xmlns="http://www.w3.org/2000/svg" width="479" height="864" viewBox="0 0 479 864" fill="none">
         <path d="M557.64 10.6071C501.665 98.4461 -39.5191 301.979 13.7995 182.198C50.4556 99.8487 286.453 117.045 328.074 189.279C375.116 270.92 246.165 481.836 140.352 525.137C34.5396 568.439 52.2338 442.515 154.125 427.371C256.017 412.226 327.426 543.688 207.347 738.756C96.391 919.003 437.486 847.632 535.5 789.003" stroke="#701487" stroke-width="20" stroke-linecap="round" />
       </svg>
+      <RegisterModal onCancel={onCancel} open={open} />
     </div>
   )
 }

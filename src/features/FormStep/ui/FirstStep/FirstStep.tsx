@@ -5,19 +5,82 @@ import { Input } from 'shared/ui/Input/Input';
 import { classNames } from 'shared/lib/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import UploadIcon from 'shared/assets/icons/upload.svg';
-import InputMask from 'react-input-mask';
+import { MaskedInput } from 'antd-mask-input';
 import './Upload.scss';
 import { Checkbox } from 'shared/ui/Checkbox';
 import { useMediaQuery } from 'react-responsive';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import { useDownloadFiles, useUploadFiles } from 'features/FormStep/api/stepApi';
 
-export const FirstStep = () => {
+export const FirstStep = ({ userData, formValues, setFormValues, hidden }: any) => {
+  const [fileKey, setFileKey] = useState<string>(userData?.avatar_key ? userData?.avatar_key : null);
+  const [uploadFiles] = useUploadFiles();
+  const { data } = useDownloadFiles(fileKey, { skip: !fileKey });
   const [test, setTest] = useState('мужской');
-  console.log(test)
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+  const normFile = (e: any) => {
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e?.fileList;
+  };
+
+  const blobUrl = useMemo(
+    () => {
+      if (!data) {
+        return null;
+      }
+
+      return window.URL.createObjectURL(new Blob([data]))
+    },
+    [data]
+  );
+
+  const uploadData = (options: any) => {
+    const { file, onSuccess, onError } = options;
+
+    const fmData = new FormData();
+    fmData.append('image', file);
+    uploadFiles(fmData)
+      .unwrap()
+      .then((result) => {
+        file.uid = result.key;
+        setFileKey(result.key);
+        onSuccess('Ok');
+      })
+      .catch((err) => onError(err));
+    onSuccess('Ok');
+    return {
+      abort() {
+        console.log('upload progress is aborted!');
+      },
+    };
+  };
+
+  console.log(userData);
+
+  const getInitialValues = (userData: any) => ({
+    ...userData,
+    avatar_key: userData?.avatar_key ? [
+      {
+        uid: userData?.avatar_key,
+        name: userData?.avatar_key,
+        status: 'done',
+      },
+    ]
+      : [],
+    passport_number: `${userData?.passport_number}`,
+    passport_series: `${userData?.passport_series}`,
+    place_of_birth: userData?.place_of_birth,
+    citizenship: userData?.citizenship ? true : false,
+    vk_link: userData?.vk_link,
+  })
+
+
   return (
-    <div className={cls.firstStep}>
-      <Form.Item noStyle required>
+    <Form layout='vertical' name='step1' hidden={hidden} initialValues={getInitialValues(userData)}>
+      <div className={cls.firstStep}>
         <div className={classNames(cls.firstBlock, {}, [cls.formItem])}>
           <div>
             <ConfigProvider
@@ -31,16 +94,25 @@ export const FirstStep = () => {
                 },
               }}
             >
-              <Upload
-                name="avatar"
-                listType='picture-card'
-                showUploadList={false}
-                className={cls.upload}
-              >
-                <Button theme={ButtonTheme.CLEAR}>
-                  <UploadIcon className='upload-icon' />
-                </Button>
-              </Upload>
+              <Form.Item rules={[
+                {
+                  required: true,
+                  message: 'Обязательное поле',
+                },
+              ]} valuePropName='filleList' getValueFromEvent={normFile} noStyle required name='avatar_key'>
+                <Upload
+                  name="avatar"
+                  accept='.png, .jpg, .jpeg'
+                  maxCount={1}
+                  showUploadList={false}
+                  customRequest={uploadData}
+                  className={cls.upload}
+                >
+                  {blobUrl ? <img src={blobUrl} alt='avatar' style={{ width: '100%' }} /> : (<Button theme={ButtonTheme.CLEAR}>
+                    <UploadIcon className='upload-icon' />
+                  </Button>)}
+                </Upload>
+              </Form.Item>
             </ConfigProvider>
           </div>
           <div className={cls.itemDesc}>
@@ -53,107 +125,166 @@ export const FirstStep = () => {
             </ul>
           </div>
         </div>
-      </Form.Item>
-      <Form.Item noStyle required>
-        <div className={cls.formItem}>
-          <label className={cls.formLabel}>Выбери пол</label>
-          <RadioButton name='sex' value={test} onChange={(event) => setTest(event.target.value)} options={[{ value: 'мужской', content: 'мужской' }, { value: 'женский', content: 'женский' }]} />
-        </div>
-      </Form.Item>
-      <Form.Item noStyle required name='gr'>
+        <Form.Item noStyle required>
+          <div className={cls.formItem}>
+            <label className={cls.formLabel}>Выбери пол</label>
+            <RadioButton name='sex' value={formValues} onChange={(event) => setFormValues(event.target.value)} options={[{ value: 'мужской', content: 'мужской' }, { value: 'женский', content: 'женский' }]} />
+          </div>
+        </Form.Item>
         <div className={cls.formItem}>
           <div className={cls.itemHeader}>
             <label className={cls.formLabel}>Гражданство</label>
           </div>
-          <Checkbox value={'Российская Федерация'}>Российская Федерация</Checkbox>
+          <Form.Item rules={[
+            {
+              required: true,
+              message: 'Обязательное поле',
+            },
+          ]} noStyle required name='citizenship' valuePropName='checked'>
+            <Checkbox value={'Российская Федерация'}>Российская Федерация</Checkbox>
+          </Form.Item>
         </div>
-      </Form.Item>
-      <div className={cls.formItem}>
-        <label className={cls.formLabel}>Паспорт</label>
-        <div className={cls.inputsWrapper}>
-          <Form.Item noStyle required name='seria'>
+        <div className={cls.formItem}>
+          <label className={cls.formLabel}>Паспорт</label>
+          <div className={cls.inputsWrapper}>
             <div className={cls.inputWrapper}>
               <span className={cls.labelForInput}>серия</span>
-              <InputMask mask={'9999'} />
+              <Form.Item rules={[
+                {
+                  required: true,
+                  message: 'Обязательное поле',
+                },
+              ]} required name='passport_series'>
+                <MaskedInput className={cls.maskedInput} maskOptions={{ placeholderChar: '#' }} mask={'0000'} placeholder='1234' />
+              </Form.Item>
             </div>
-          </Form.Item>
-          <Form.Item noStyle required name='nomer'>
             <div className={cls.inputWrapper}>
               <span className={cls.labelForInput}>номер</span>
-              <Input placeholder={isMobile ? 'номер' : '123456'} />
+              <Form.Item rules={[
+                {
+                  required: true,
+                  message: 'Обязательное поле',
+                },
+              ]} required name='passport_number'>
+                <MaskedInput className={cls.maskedInput} maskOptions={{ placeholderChar: '#' }} mask={'000000'} placeholder='123456' />
+              </Form.Item>
             </div>
-          </Form.Item>
+          </div>
         </div>
-      </div>
-      <Form.Item noStyle required name='mesto'>
         <div className={cls.formItem}>
           <div className={cls.itemHeader}>
             <label className={cls.formLabel}>Место рождения</label>
             <p className={cls.help}>как в паспорте</p>
           </div>
-          <Input placeholder='Введи адрес' />
+          <Form.Item rules={[
+            {
+              required: true,
+              message: 'Обязательное поле',
+            },
+          ]} noStyle required name='place_of_birth'>
+            <Input placeholder='Введи адрес' />
+          </Form.Item>
         </div>
-      </Form.Item>
-      <Form.Item noStyle required name='fac_liv'>
         <div className={cls.formItem}>
           <div className={cls.itemHeader}>
             <label className={cls.formLabel}>Место проживания</label>
             <p className={cls.help}>фактическое</p>
           </div>
-          <Input placeholder='Введи адрес' />
+          <Form.Item rules={[
+            {
+              required: true,
+              message: 'Обязательное поле',
+            },
+          ]} noStyle required name='actual_living'>
+            <Input placeholder='Введи адрес' />
+          </Form.Item>
         </div>
-      </Form.Item>
-      <Form.Item noStyle required name='liv'>
         <div className={cls.formItem}>
           <div className={cls.itemHeader}>
             <label className={cls.formLabel}>Место проживания</label>
             <p className={cls.help}>по прописке</p>
           </div>
-          <Input placeholder='Введи адрес' />
+          <Form.Item rules={[
+            {
+              required: true,
+              message: 'Обязательное поле',
+            },
+          ]} noStyle required name='registration_living'>
+            <Input placeholder='Введи адрес' />
+          </Form.Item>
         </div>
-      </Form.Item>
-      <Form.Item noStyle required name='stud'>
         <div className={cls.formItem}>
           <div className={cls.itemHeader}>
             <label className={cls.formLabel}>Место учёбы/работы</label>
             <p className={cls.help}>полное наименование учебного заведения или организации</p>
           </div>
-          <Input placeholder='Введи название' />
+          <Form.Item rules={[
+            {
+              required: true,
+              message: 'Обязательное поле',
+            },
+          ]} noStyle required name='place_of_work'>
+            <Input placeholder='Введи название' />
+          </Form.Item>
         </div>
-      </Form.Item>
-      <Form.Item noStyle required name='gde'>
         <div className={cls.formItem}>
           <div className={cls.itemHeader}>
             <label className={cls.formLabel}>Занимаемая должность</label>
             <p className={cls.help}>если ты указал учебное заведение, можешь написать «студент»</p>
           </div>
-          <Input placeholder='Введи должность' />
+          <Form.Item rules={[
+            {
+              required: true,
+              message: 'Обязательное поле',
+            },
+          ]} noStyle required name='position'>
+            <Input placeholder='Введи должность' />
+          </Form.Item>
         </div>
-      </Form.Item>
-      <Form.Item noStyle required name='num'>
         <div className={cls.formItem}>
           <div className={cls.itemHeader}>
             <label className={cls.formLabel}>Номер телефона</label>
           </div>
-          <Input placeholder='+7 (000) 000-00-00' />
+          <Form.Item rules={[
+            {
+              required: true,
+              message: 'Обязательное поле',
+            },
+          ]} noStyle required name='phone'>
+            <MaskedInput className={cls.maskedInput} maskOptions={{ placeholderChar: '#', lazy: false, autofix: true }} mask={'{+7} (000) 000-00-00'} placeholder='+7 (000) 000-00-00' />
+          </Form.Item>
         </div>
-      </Form.Item>
-      <Form.Item noStyle required name='tg'>
         <div className={cls.formItem}>
           <div className={cls.itemHeader}>
             <label className={cls.formLabel}>Никнейм в Telegram</label>
           </div>
-          <Input placeholder='@ name' />
+          <Form.Item rules={[
+            {
+              required: true,
+              message: 'Обязательное поле',
+            },
+          ]} noStyle required name='tg_name'>
+            <MaskedInput className={cls.maskedInput} maskOptions={{ placeholderChar: '#', lazy: true, autofix: true }} mask={'{@}[******************************************]'} placeholder='@ name' />
+          </Form.Item>
         </div>
-      </Form.Item>
-      <Form.Item noStyle required name='vk'>
         <div className={cls.formItem}>
           <div className={cls.itemHeader}>
             <label className={cls.formLabel}>Ссылка на страницу Вконтакте</label>
           </div>
-          <Input placeholder='vk.com/ name' />
+          <Form.Item rules={[
+            {
+              required: true,
+              message: 'Обязательное поле',
+            },
+          ]} noStyle required name='vk_link'>
+            <Input placeholder='vk.com/ name' />
+          </Form.Item>
         </div>
+      </div>
+      <Form.Item>
+        <Button type='submit' className={cls.formButton} theme={ButtonTheme.GREEN}>Продолжить</Button>
+
       </Form.Item>
-    </div>
+    </Form>
   )
 }

@@ -4,6 +4,7 @@ import { BlockType } from 'entities/Schedule/model/types';
 import { ScheduleBlock } from 'entities/Schedule';
 import { ScheduleConst } from 'widgets/ScheduleSection/model/const';
 import { useMediaQuery } from 'react-responsive';
+import { useGetBlocks } from '../api/selectShiftApi';
 
 interface SelectShiftProps {
   open: boolean;
@@ -11,7 +12,14 @@ interface SelectShiftProps {
 }
 
 export const SelectShift = ({ open, onCancel }: SelectShiftProps) => {
+  const { data, isLoading } = useGetBlocks(null);
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+  console.log(data);
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <Modal
@@ -24,7 +32,7 @@ export const SelectShift = ({ open, onCancel }: SelectShiftProps) => {
       <div className={cls.modal}>
         <h2 className={cls.title}>Выбери смену</h2>
         <div className={cls.blockList}>
-          {ScheduleConst.map((block) => (
+          {data?.map((block) => (
             <ScheduleBlock key={block.month} block={block} className={cls.itemsList} />
           ))}
         </div>

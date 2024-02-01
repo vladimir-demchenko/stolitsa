@@ -1,18 +1,29 @@
 import { classNames } from 'shared/lib/classNames';
 import cls from './CreativeTask.module.scss';
-import { Form } from 'antd';
+import { Form, message } from 'antd';
 import { Input } from 'shared/ui/Input/Input';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useNavigate } from 'react-router';
 import { RoutePath } from 'shared/config/router';
 import { Bg } from 'shared/ui/Bg/Bg';
+import { useCreativeTask } from '../api/creativeApi';
+import { useCurrent } from 'features/FormStep/api/stepApi';
 
 export const CreativeTask = () => {
+  const [creativeTask] = useCreativeTask();
+  const { data, isLoading } = useCurrent(null);
   const [form] = Form.useForm();
   const navigate = useNavigate();
+  const id = localStorage.getItem('user');
+  const [messageApi, contextHolder] = message.useMessage();
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div className={'container'}>
+      {contextHolder}
       <Bg />
       <div className={classNames(cls.content, {}, ['content'])}>
         <h2 className={cls.title}>Выполни задание</h2>
@@ -35,13 +46,22 @@ export const CreativeTask = () => {
               <br />и убедиться, что твоя страница открыта</p>
           </div>
           <div className={cls.card}>
-            <Form form={form} name='creative' onFinish={(values) => navigate(RoutePath.profile)}>
-              <Form.Item noStyle required name='link'>
-                <div className={cls.formItem}>
-                  <label className={cls.formLabel}>Добавь ссылку на видео</label>
+            <Form form={form} name='creative' onFinish={(values) => {
+              creativeTask({
+                id: id,
+                creative_task: values.link
+              })
+                .then(() => {
+                  messageApi.success('Ссылка добавлена!');
+                  navigate(RoutePath.profile);
+                })
+            }}>
+              <div className={cls.formItem}>
+                <label className={cls.formLabel}>Добавь ссылку на видео</label>
+                <Form.Item initialValue={data?.creative_task} noStyle required name='link'>
                   <Input className={cls.input} placeholder='vk.com/video' />
-                </div>
-              </Form.Item>
+                </Form.Item>
+              </div>
             </Form>
           </div>
         </div>

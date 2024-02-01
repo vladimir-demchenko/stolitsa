@@ -1,7 +1,8 @@
-import { Modal } from 'antd';
+import { Modal, message } from 'antd';
 import cls from './ConfirmModal.module.scss';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { useMediaQuery } from 'react-responsive';
+import { useConfirmShift } from '../api/confirmApi';
 
 interface ConfirmModalProps {
   open: boolean;
@@ -10,6 +11,22 @@ interface ConfirmModalProps {
 
 export const ConfirmModal = ({ open, onCancel }: ConfirmModalProps) => {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const id = localStorage.getItem('user');
+  const [confirmShift] = useConfirmShift();
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const handleConfirm = () => {
+    confirmShift({
+      id: id,
+      approve_shift: true
+    })
+      .unwrap()
+      .then(() => {
+        messageApi.success('Смена подтверждена!');
+        onCancel();
+      })
+  }
+
   return (
     <Modal
       open={open}
@@ -18,12 +35,13 @@ export const ConfirmModal = ({ open, onCancel }: ConfirmModalProps) => {
       footer={[]}
       closeIcon={false}
     >
+      {contextHolder}
       <div className={cls.modal}>
         <h3 className={cls.title}>Ты уверен, что хочешь отправить заявку?</h3>
         <p className={cls.subtext}>После подтверждения изменения вносить нельзя</p>
         <div className={cls.buttonWrapper}>
           <Button onClick={onCancel} className={cls.cancelBtn} theme={ButtonTheme.BORDERED}>Отменить</Button>
-          <Button className={cls.confirmBtn}>Подтвердить</Button>
+          <Button onClick={handleConfirm} className={cls.confirmBtn}>Подтвердить</Button>
         </div>
       </div>
     </Modal>

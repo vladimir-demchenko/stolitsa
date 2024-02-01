@@ -1,13 +1,13 @@
 export interface ItemType {
+  id: string;
   title: string;
   date: string;
-  tags: string;
   descriptions: string[];
-  expireTime: string;
+  expire_time: string;
 }
 
 export interface BlockType {
   month: string;
   color: string;
-  items: ItemType[];
+  shifts: ItemType[];
 }

@@ -10,15 +10,16 @@ import 'swiper/css';
 interface ScheduleBlockProps {
   block: BlockType;
   className?: string;
+  setOpen?: any;
 }
 
-export const ScheduleBlock = ({ block: { month, items, color }, className }: ScheduleBlockProps) => {
+export const ScheduleBlock = ({ block: { month, shifts, color }, className, setOpen }: ScheduleBlockProps) => {
   return (
     <div className={cls.block}>
       <h2 className={classNames(cls.title, {}, [cls[color]])}>{month}</h2>
       <div className={classNames(cls.blocksList, {}, [className])}>
-        {items.map((item) => (
-          <ScheduleItem key={item.date} date={item.date} title={item.title} tags={item.tags} descriptions={item.descriptions} expireTime={item.expireTime} />
+        {shifts.map((shift) => (
+          <ScheduleItem key={shift.id} item={shift} setOpen={setOpen} />
         ))}
       </div>
     </div>

@@ -7,11 +7,13 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ru';
 import { useMediaQuery } from 'react-responsive';
+import { useUserShift } from 'entities/Schedule/model/scheduleApi';
 
 interface ScheduleModalProps {
   open: boolean;
   onCancel: (...args: unknown[]) => void;
   item?: ItemType;
+  setOpen?: any;
 }
 
 function getColor(index: number) {
@@ -22,8 +24,31 @@ function getColor(index: number) {
   }
 }
 
-export const ScheduleModal = ({ open, onCancel, item }: ScheduleModalProps) => {
+export const ScheduleModal = ({ open, onCancel, item, setOpen }: ScheduleModalProps) => {
+  const [userShift] = useUserShift();
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const userId = localStorage.getItem('user');
+
+  const handleShift = () => {
+    userShift({
+      id: userId,
+      shiftID: item?.id
+    }).unwrap()
+      .then(() => {
+        const shiftID = localStorage.getItem('shiftID');
+        if (shiftID) {
+          localStorage.removeItem('shiftID');
+        }
+      })
+      .catch((error) => {
+        if (error.status === 401) {
+          localStorage.setItem('shiftID', item ? item.id : '');
+          onCancel();
+          setOpen(true);
+        }
+      })
+  }
+
   return (
     <ConfigProvider
       theme={{
@@ -54,8 +79,8 @@ export const ScheduleModal = ({ open, onCancel, item }: ScheduleModalProps) => {
               <span key={index} className={classNames(cls.description, { [cls.first]: index === 0 })}>{description}</span>
             ))}
           </div>
-          {/* <Button theme={ButtonTheme.PURPLE} className={cls.modalButton}>Подать заявку</Button> */}
-          <p className={cls.expireTime}>Прием заявок до {dayjs(item?.expireTime).locale('ru').format('D MMMM')}</p>
+          <Button onClick={handleShift} theme={ButtonTheme.PURPLE} className={cls.modalButton}>Подать заявку</Button>
+          <p className={cls.expireTime}>Прием заявок до {dayjs(item?.expire_time).locale('ru').format('D MMMM')}</p>
         </div>
       </Modal>
     </ConfigProvider>

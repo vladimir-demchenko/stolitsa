@@ -16,16 +16,16 @@ function getColor(index: number) {
   }
 }
 
-export const ScheduleItem = ({ title, date, tags, descriptions, expireTime }: ItemType) => {
-  const [modal, setModal] = useState({ open: false, item: { title: '', date: '', tags: '', descriptions: [''], expireTime: '' } })
+export const ScheduleItem = ({ item: { id, title, date, descriptions, expire_time }, setOpen }: { item: ItemType, setOpen?: any }) => {
+  const [modal, setModal] = useState({ open: false, item: { id: '', title: '', date: '', descriptions: [''], expire_time: '' } })
 
   const onCancel = () => {
-    setModal({ open: false, item: { title: '', date: '', tags: '', descriptions: [''], expireTime: '' } })
+    setModal({ open: false, item: { id: '', title: '', date: '', descriptions: [''], expire_time: '' } })
   }
 
   return (
     <div>
-      <div className={cls.card} onClick={() => setModal({ open: true, item: { date: date, title: title, tags: tags, descriptions: descriptions, expireTime: expireTime } })}>
+      <div className={cls.card} onClick={() => setModal({ open: true, item: { id: id, date: date, title: title, descriptions: descriptions, expire_time: expire_time } })}>
         <p className={cls.date}>{date}</p>
         <div className={cls.header}>
           <h3 className={cls.title}>{title}</h3>
@@ -37,7 +37,7 @@ export const ScheduleItem = ({ title, date, tags, descriptions, expireTime }: It
           <span className={classNames(cls.tag, {}, [cls.purple])}>{descriptions[0]}</span>
         </div>
       </div>
-      <ScheduleModal open={modal.open} onCancel={onCancel} item={modal.item} />
+      <ScheduleModal setOpen={setOpen} open={modal.open} onCancel={onCancel} item={modal.item} />
     </div>
   )
 }

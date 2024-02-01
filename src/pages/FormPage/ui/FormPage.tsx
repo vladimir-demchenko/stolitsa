@@ -1,29 +1,43 @@
-import { Form } from 'antd';
+import { Form, message } from 'antd';
 import cls from './FormPage.module.scss';
 import { FirstStep, SecondStep } from 'features/FormStep';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { classNames } from 'shared/lib/classNames';
 import { useNavigate } from 'react-router';
 import { RoutePath } from 'shared/config/router';
 import { Bg } from 'shared/ui/Bg/Bg';
+import { useCurrent, useUpdateUsersInfo } from 'features/FormStep/api/stepApi';
 
 export const FormPage = () => {
-  const [form] = Form.useForm();
+  const { data, isLoading } = useCurrent(null);
   const [step, setStep] = useState('1');
   const navigate = useNavigate();
+  const [sex, setSex] = useState(data?.sex ?? 'мужской');
+  const illnessInitialValue = data?.illness ? data?.illness === 'Нет' ? { illness: data?.illness ?? '', illnessValue: '' } : { illness: 'yes', illnessValue: data?.illness } : { illness: '', illnessValue: '' }
+  const [check, setCheck] = useState(illnessInitialValue);
+  const [updateInfo] = useUpdateUsersInfo();
+  const id = localStorage.getItem('user');
+  const [messageApi, contextHolder] = message.useMessage();
 
-  const content = useCallback((step: string) => {
-    switch (step) {
-      case '1':
-        return <FirstStep />
-      case '2': return <SecondStep />
-      default: return <FirstStep />
+  const handleChange = (e: any) => {
+    setCheck((prev) => ({ ...prev, illness: e.target?.value }))
+  }
+
+  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
+    if (check.illness === 'yes') {
+      setCheck((prev) => ({ ...prev, illnessValue: e.target.value }))
     }
-  }, [step])
+  }
+
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div className={'container'}>
+      {contextHolder}
       <Bg />
       <div className={classNames(cls.content, {}, ['content'])}>
         <div className={cls.titleWrapper}>
@@ -33,10 +47,48 @@ export const FormPage = () => {
           </span>
         </div>
         <p className={cls.hint}>* обязательные к заполнению поля</p>
-        <Form layout='vertical' form={form} name='form' onFinish={(values) => console.log(values)}>
-          {content(step)}
-          {step === '1' ? <Button onClick={() => console.log(form.getFieldsValue())} className={cls.formButton} theme={ButtonTheme.GREEN}>Продолжить</Button> : <Button onClick={() => form.submit()} className={cls.formButton} theme={ButtonTheme.GREEN}>Сохранить</Button>}
-        </Form>
+        <Form.Provider onFormFinish={
+          (name, { values, forms }) => {
+            if (name === 'step1') {
+              console.log(values, forms.step1.getFieldValue('avatar_key'))
+              setStep('2');
+            }
+
+            if (name === 'step2') {
+              const step1 = forms.step1.getFieldsValue();
+              console.log(values, step1)
+              updateInfo({
+                id: id,
+                phone: step1.phone,
+                avatar_key: step1.avatar_key[0].originFileObj ? step1.avatar_key[0].originFileObj.uid : step1.avatar_key[0].uid,
+                citizenship: step1.citizenship ? 'Российская Федерация' : '',
+                sex: sex,
+                passport_number: parseInt(step1.passport_number),
+                passport_series: parseInt(step1.passport_series),
+                place_of_birth: step1.place_of_birth,
+                place_of_work: step1.place_of_work,
+                actual_living: step1.actual_living,
+                registration_living: step1.registration_living,
+                position: step1.position,
+                tg_name: step1.tg_name,
+                vk_link: step1.vk_link,
+                illness: check.illness === 'Нет' ? check.illness : check.illnessValue,
+                find_out: values.find_out,
+                future_skills: values.future_skills,
+                about_yourself: values.about_yourself,
+                take_part: values.take_part
+              })
+                .then(() => {
+                  messageApi.success('Данные успешно отправлены!')
+                  navigate(RoutePath.profile)
+                })
+            }
+          }
+        }>
+          <FirstStep userData={data} formValues={sex} setFormValues={setSex} hidden={step === '2'} />
+          <SecondStep userData={data} check={check} handleChange={handleChange} handleInput={handleInput} hidden={step === '1'} />
+          {/* {step === '1' ?  : <Button onClick={() => form.submit()} className={cls.formButton} theme={ButtonTheme.GREEN}>Сохранить</Button>} */}
+        </Form.Provider>
       </div>
       <svg className={classNames('curves', {}, [cls.greenCurve])} xmlns="http://www.w3.org/2000/svg" width="443" height="871" viewBox="0 0 443 871" fill="none">
         <path d="M467.001 763.001C-156 1125.5 233.5 355.5 120 399.001C-112.224 488.004 39.5006 104 450 10.5007" stroke="#ABC704" stroke-width="20" stroke-linecap="round" />
