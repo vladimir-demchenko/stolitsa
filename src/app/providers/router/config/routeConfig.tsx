@@ -7,7 +7,10 @@ import { PersonalPage } from 'pages/PersonalPage';
 import { RouteProps } from 'react-router';
 import { AppRoutes, RoutePath } from 'shared/config/router';
 
-export type AppRoutesProps = RouteProps;
+export type AppRoutesProps = RouteProps & {
+  authOnly?: boolean;
+  role?: string;
+};
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.MAIN]: {
@@ -16,15 +19,18 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   },
   [AppRoutes.PROFILE]: {
     path: RoutePath.profile,
-    element: <PersonalPage />
+    element: <PersonalPage />,
+    authOnly: true
   },
   [AppRoutes.FORM]: {
     path: RoutePath.form,
-    element: <FormPage />
+    element: <FormPage />,
+    authOnly: true
   },
   [AppRoutes.CREATIVE_TASK]: {
     path: RoutePath.creative_task,
-    element: <CreativeTask />
+    element: <CreativeTask />,
+    authOnly: true
   },
   [AppRoutes.ADMIN_LOGIN]: {
     path: RoutePath.admin_login,
@@ -32,6 +38,8 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   },
   [AppRoutes.ADMIN]: {
     path: RoutePath.admin,
-    element: <Admin />
+    element: <Admin />,
+    authOnly: true,
+    role: 'admin'
   }
 }

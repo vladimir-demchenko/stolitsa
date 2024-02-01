@@ -63,7 +63,7 @@ export const Carousel = () => {
   const handleSwipeDebounce = useDebounce(handleSwipe, 200);
 
   return (
-    <div className={classNames('container', {}, [cls.carousel])}>
+    <section className={classNames('container', {}, [cls.carousel])}>
       <Bg />
       <div className={'content'}>
         <div className={cls.header}>
@@ -113,6 +113,6 @@ export const Carousel = () => {
       <svg className={classNames('curves', {}, [cls.greenCurve])} xmlns="http://www.w3.org/2000/svg" width="461" height="936" viewBox="0 0 461 936" fill="none">
         <path d="M-69.477 926.003C425.504 862.028 609.018 490.537 298.138 575.139C2.44761 655.608 94.1142 206.707 -58.4884 355.724C-156.147 451.088 29.2998 547.144 137.269 419.534C312.623 212.28 27.9891 -30.9691 -30.5179 15.8564" stroke="#ABC704" stroke-width="20" stroke-linecap="round" />
       </svg>
-    </div>
+    </section>
   )
 }

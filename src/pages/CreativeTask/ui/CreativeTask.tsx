@@ -46,15 +46,19 @@ export const CreativeTask = () => {
               <br />и убедиться, что твоя страница открыта</p>
           </div>
           <div className={cls.card}>
-            <Form form={form} name='creative' onFinish={(values) => {
-              creativeTask({
-                id: id,
-                creative_task: values.link
-              })
-                .then(() => {
-                  messageApi.success('Ссылка добавлена!');
-                  navigate(RoutePath.profile);
+            <Form disabled={data?.approve_shift} form={form} name='creative' onFinish={(values) => {
+              if (data?.approve_shift) {
+                navigate(RoutePath.profile);
+              } else {
+                creativeTask({
+                  id: id,
+                  creative_task: values.link
                 })
+                  .then(() => {
+                    messageApi.success('Ссылка добавлена!');
+                    navigate(RoutePath.profile);
+                  })
+              }
             }}>
               <div className={cls.formItem}>
                 <label className={cls.formLabel}>Добавь ссылку на видео</label>
@@ -65,7 +69,7 @@ export const CreativeTask = () => {
             </Form>
           </div>
         </div>
-        <Button onClick={() => form.submit()} className={cls.formButton} theme={ButtonTheme.GREEN}>Сохранить</Button>
+        <Button onClick={() => form.submit()} className={cls.formButton} theme={ButtonTheme.GREEN}>{data?.approve_shift ? 'Личный кабинет' : 'Сохранить'}</Button>
       </div>
       <svg className={classNames('curves', {}, [cls.greenCurve])} xmlns="http://www.w3.org/2000/svg" width="350" height="1105" viewBox="0 0 350 1105" fill="none">
         <path d="M424.515 260C434.466 286.405 200.183 -119.357 65.0154 52.9999C-123.984 294 625.256 553.092 498.015 497C322.21 419.5 -209.985 457.5 111.516 709C389.032 926.092 52.8845 1157 440.516 1079.5" stroke="#ABC704" stroke-width="20" stroke-linecap="round" />

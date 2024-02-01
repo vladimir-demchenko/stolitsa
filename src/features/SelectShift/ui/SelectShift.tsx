@@ -2,7 +2,6 @@ import { Modal } from 'antd';
 import cls from './SelectShift.module.scss';
 import { BlockType } from 'entities/Schedule/model/types';
 import { ScheduleBlock } from 'entities/Schedule';
-import { ScheduleConst } from 'widgets/ScheduleSection/model/const';
 import { useMediaQuery } from 'react-responsive';
 import { useGetBlocks } from '../api/selectShiftApi';
 
@@ -25,7 +24,6 @@ export const SelectShift = ({ open, onCancel }: SelectShiftProps) => {
     <Modal
       open={open}
       onCancel={onCancel}
-      closeIcon={false}
       width={isMobile ? 300 : 1400}
       footer={[]}
     >

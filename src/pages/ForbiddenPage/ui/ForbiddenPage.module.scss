@@ -1,0 +1,97 @@
+.promo-container {
+  position: relative;
+}
+
+.promo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(0deg, rgb(0 0 0 / 20%) 0%, rgb(0 0 0 / 20%) 100%), url('/src/shared/assets/img/promoBg.png'), lightgray 50%; 
+  border-radius: 0 0 40px 40px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  z-index: 1;
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.title {
+  color: #FFF;
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 115%; /* 73.6px */
+  text-transform: uppercase;
+}
+
+.logoLink {
+  width: 100%;
+  height: auto;
+}
+
+.promoButton {
+  width: 670px;
+  font-size: 44px;
+  padding: 24px;
+}
+
+.curved {
+  left: -70px;
+  bottom: -60%;
+}
+
+.logo {
+  width: 550px;
+  height: auto;
+}
+
+@keyframes scroll-reveal {
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 786px) {
+  .promo {
+    height: 100svh;
+    border-radius: 0 0 10.417px 10.417px;
+  }
+
+  .logoWrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .logo {
+    width: 320px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .logoLink {
+    width: 320px;
+  }
+
+  .promoButton {
+    width: 200px;
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .curved {
+    left: -10px;
+    bottom: -525px;
+  }
+}

@@ -16,16 +16,16 @@ function getColor(index: number) {
   }
 }
 
-export const ScheduleItem = ({ item: { id, title, date, descriptions, expire_time }, setOpen }: { item: ItemType, setOpen?: any }) => {
-  const [modal, setModal] = useState({ open: false, item: { id: '', title: '', date: '', descriptions: [''], expire_time: '' } })
+export const ScheduleItem = ({ item: { id, title, date, descriptions, expire_time, open_reg }, setOpen }: { item: ItemType, setOpen?: any }) => {
+  const [modal, setModal] = useState({ open: false, item: { id: '', title: '', date: '', descriptions: [''], expire_time: '', open_reg: true } })
 
   const onCancel = () => {
-    setModal({ open: false, item: { id: '', title: '', date: '', descriptions: [''], expire_time: '' } })
+    setModal({ open: false, item: { id: '', title: '', date: '', descriptions: [''], expire_time: '', open_reg: true } })
   }
 
   return (
     <div>
-      <div className={cls.card} onClick={() => setModal({ open: true, item: { id: id, date: date, title: title, descriptions: descriptions, expire_time: expire_time } })}>
+      <div className={cls.card} onClick={() => setModal({ open: true, item: { id: id, date: date, title: title, descriptions: descriptions, expire_time: expire_time, open_reg: open_reg } })}>
         <p className={cls.date}>{date}</p>
         <div className={cls.header}>
           <h3 className={cls.title}>{title}</h3>

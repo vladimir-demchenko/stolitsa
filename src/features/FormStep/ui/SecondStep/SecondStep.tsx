@@ -9,7 +9,7 @@ import UploadIcon from 'shared/assets/icons/upload.svg';
 import { Checkbox } from 'shared/ui/Checkbox';
 import { ChangeEvent, useState } from 'react';
 
-export const SecondStep = ({ userData, check, handleChange, handleInput, hidden }: any) => {
+export const SecondStep = ({ userData, check, handleChange, handleInput, hidden, disabled }: any) => {
   // const [check, setCheck] = useState({ illness: '', illnessValue: '' });
 
   // const handleChange = (e: any) => {
@@ -23,7 +23,7 @@ export const SecondStep = ({ userData, check, handleChange, handleInput, hidden 
   // }
 
   return (
-    <Form layout='vertical' name='step2' hidden={hidden} initialValues={userData}>
+    <Form disabled={disabled} layout='vertical' name='step2' hidden={hidden} initialValues={userData}>
       <div className={cls.secondStep}>
         <Form.Item noStyle required>
           <div className={cls.formItem}>
@@ -70,7 +70,7 @@ export const SecondStep = ({ userData, check, handleChange, handleInput, hidden 
         </div>
       </div>
       <Form.Item>
-        <Button type='submit' className={cls.formButton} theme={ButtonTheme.GREEN}>Сохранить</Button>
+        <Button type='submit' className={cls.formButton} theme={ButtonTheme.GREEN}>{disabled ? 'Личный кабинет' : 'Сохранить'}</Button>
       </Form.Item>
     </Form>
   )

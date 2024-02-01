@@ -18,8 +18,8 @@ export function AdminLogin() {
           localStorage.setItem('token', JSON?.stringify(result?.tokens));
         }
         localStorage.setItem('role', result?.roles[0]?.name);
+        localStorage.setItem('user', result.uid);
         if (result.confirmed) {
-          localStorage.setItem('user', result.uid);
           navigate('/main');
         } else {
           navigate('/admin');

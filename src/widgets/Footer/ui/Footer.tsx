@@ -21,7 +21,7 @@ export const Footer = () => {
           <div className={cls.footerDocuments}>
             <h4 className={cls.footerSubtitle}>Документы</h4>
             <ul className={cls.footerList}>
-              <li><a className={cls.footerLink} href={Statement} target='_blank'>Положение конкурсного отбора</a></li>
+              <li><a className={cls.footerLink} href={Statement} target='_blank'>Положение о слёте</a></li>
               <li><a className={cls.footerLink} href={Policy} target='_blank'>Политика конфиденциальности</a></li>
             </ul>
           </div>

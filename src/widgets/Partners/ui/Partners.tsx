@@ -14,7 +14,7 @@ import { Bg } from 'shared/ui/Bg/Bg';
 
 export const Partners = () => {
   return (
-    <div className={classNames('container', {}, [cls.partners])}>
+    <section className={classNames('container', {}, [cls.partners])}>
       <Bg />
       <div className={classNames('content', {}, [cls.content])}>
         <h2 className={cls.title}>при поддержке</h2>
@@ -51,6 +51,6 @@ export const Partners = () => {
       <svg className={classNames('curves', {}, [cls.blueCurve])} xmlns="http://www.w3.org/2000/svg" width="585" height="520" viewBox="0 0 585 520" fill="none">
         <path d="M7.62573 7.70215C80.4583 6.97297 231.573 35.5254 253.37 155.568C280.616 305.622 141.597 215.185 156.575 317.189C171.553 419.194 535.101 315.88 571.323 385.301C607.545 454.721 463.25 448.28 475.397 511.626" stroke="#255FA5" stroke-width="15" stroke-linecap="round" />
       </svg> */}
-    </div>
+    </section>
   )
 }

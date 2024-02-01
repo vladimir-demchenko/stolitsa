@@ -82,6 +82,16 @@ export const PersonalPage = () => {
     [fileData]
   );
 
+  const allow = useMemo(() => {
+    if (!data) {
+      return false;
+    }
+
+    const { firstname, secondname, lastname, ...dataWithoutName } = data
+
+    return Object?.values(dataWithoutName)?.includes(null)
+  }, [data]);
+
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -90,7 +100,9 @@ export const PersonalPage = () => {
   return (
     <>
       <div className={cls.header}>
-        <FlowerLogo className={cls.logo} />
+        <Button theme={ButtonTheme.CLEAR} className={cls.mainPageButton} onClick={() => navigate(RoutePath.main)}>
+          <FlowerLogo className={cls.logo} />
+        </Button>
         <p className={cls.helloText}>Привет, {data?.firstname}!</p>
       </div>
       <div className={cls.personal}>
@@ -135,7 +147,7 @@ export const PersonalPage = () => {
             <p className={cls.subtext}>После подтверждения изменения вносить нельзя</p>
           </div>}
         <SelectShift open={open} onCancel={onCancel} />
-        <ConfirmModal open={confirm} onCancel={onCancelConfirm} />
+        <ConfirmModal allow={!allow} open={confirm} onCancel={onCancelConfirm} />
       </div>
       <Footer />
     </>

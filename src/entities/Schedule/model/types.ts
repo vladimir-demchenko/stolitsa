@@ -4,6 +4,7 @@ export interface ItemType {
   date: string;
   descriptions: string[];
   expire_time: string;
+  open_reg: boolean;
 }
 
 export interface BlockType {

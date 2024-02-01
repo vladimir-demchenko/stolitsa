@@ -31,7 +31,7 @@ export const Video = () => {
   }
 
   return (
-    <div className={classNames('container', {}, [])}>
+    <section className={classNames('container', {}, [])}>
       <Bg />
       <div className={classNames('content', {}, [cls.video])}>
         <h2 className={cls.title}>как это было в <span className={cls.highlighted}>2023</span> году?</h2>
@@ -45,6 +45,6 @@ export const Video = () => {
       <svg className={classNames('curves', {}, [cls.orangeCurve])} xmlns="http://www.w3.org/2000/svg" width="492" height="656" viewBox="0 0 492 656" fill="none">
         <path d="M-40.5004 62.9998C435.5 -164.5 307.759 417.979 409.562 402.838C511.366 387.698 502.295 274.861 396.572 318.141C290.849 361.42 84.4489 399.904 133.002 562.556C171.875 692.78 396.555 594.332 216.266 490.099C35.9765 385.866 -42.9238 459.948 -42.935 645.825" stroke="#FD7D32" stroke-width="20" stroke-linecap="round" />
       </svg>
-    </div>
+    </section>
   )
 }

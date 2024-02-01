@@ -62,7 +62,7 @@ export const Checkbox = (props: CheckboxProps) => {
 
   return (
     <label className={cls.checkboxWrapper}>
-      <span className={classNames(cls.checkbox, { [cls.checkbox_checked]: value }, [className])} title={title} style={style}>
+      <span className={classNames(cls.checkbox, { [cls.checkbox_checked]: value, [cls.disabled]: disabled }, [className])} title={title} style={style}>
         <input
           {...inputProps}
           className={cls.checkbox_input}

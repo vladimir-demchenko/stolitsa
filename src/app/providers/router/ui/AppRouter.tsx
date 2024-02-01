@@ -1,6 +1,8 @@
 import { Suspense, useCallback } from 'react';
 import { AppRoutesProps, routeConfig } from '../config/routeConfig';
 import { Route, Routes } from 'react-router';
+import { RequireAuth } from './RequireAuth';
+import { ForbiddenPage } from 'pages/ForbiddenPage';
 
 export function AppRouter() {
   const renderWithWrapper = useCallback((route: AppRoutesProps) => {
@@ -14,7 +16,9 @@ export function AppRouter() {
       <Route
         key={route.path}
         path={route.path}
-        element={element}
+        element={route.authOnly ? (
+          <RequireAuth role={route.role}>{element}</RequireAuth>
+        ) : (element)}
       />
     )
   }, []);
@@ -22,6 +26,7 @@ export function AppRouter() {
   return (
     <Routes>
       {Object.values(routeConfig).map(renderWithWrapper)}
+      <Route element={<ForbiddenPage />} path="/forbidden" />
     </Routes>
   )
 }

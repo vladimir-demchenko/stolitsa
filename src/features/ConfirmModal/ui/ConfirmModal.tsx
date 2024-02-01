@@ -7,24 +7,29 @@ import { useConfirmShift } from '../api/confirmApi';
 interface ConfirmModalProps {
   open: boolean;
   onCancel: (...args: unknown[]) => void;
+  allow: boolean;
 }
 
-export const ConfirmModal = ({ open, onCancel }: ConfirmModalProps) => {
+export const ConfirmModal = ({ open, onCancel, allow }: ConfirmModalProps) => {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const id = localStorage.getItem('user');
   const [confirmShift] = useConfirmShift();
   const [messageApi, contextHolder] = message.useMessage();
 
   const handleConfirm = () => {
-    confirmShift({
-      id: id,
-      approve_shift: true
-    })
-      .unwrap()
-      .then(() => {
-        messageApi.success('Смена подтверждена!');
-        onCancel();
+    if (allow) {
+      confirmShift({
+        id: id,
+        approve_shift: true
       })
+        .unwrap()
+        .then(() => {
+          messageApi.success('Смена подтверждена!');
+          onCancel();
+        })
+    } else {
+      messageApi.error('Не все данные заполнены!')
+    }
   }
 
   return (

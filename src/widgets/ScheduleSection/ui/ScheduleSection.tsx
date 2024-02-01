@@ -20,7 +20,7 @@ export const ScheduleSection = () => {
   }
 
   return (
-    <div id="schedule" className={classNames('container', {}, [cls.schedule])}>
+    <section id="schedule" className={classNames('container', {}, [cls.schedule])}>
       <Bg />
       <div className={'content'}>
         <h2 className={cls.title}>Выбирай смену <br />и подавай заявку!</h2>
@@ -43,6 +43,6 @@ export const ScheduleSection = () => {
         <path d="M557.64 10.6071C501.665 98.4461 -39.5191 301.979 13.7995 182.198C50.4556 99.8487 286.453 117.045 328.074 189.279C375.116 270.92 246.165 481.836 140.352 525.137C34.5396 568.439 52.2338 442.515 154.125 427.371C256.017 412.226 327.426 543.688 207.347 738.756C96.391 919.003 437.486 847.632 535.5 789.003" stroke="#701487" stroke-width="20" stroke-linecap="round" />
       </svg>
       <RegisterModal onCancel={onCancel} open={open} />
-    </div>
+    </section>
   )
 }

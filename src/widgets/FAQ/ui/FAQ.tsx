@@ -9,7 +9,7 @@ import { FAQItemStatic } from './FAQItem/FAQItemStatic';
 
 export const FAQ = () => {
   return (
-    <div className={classNames('container', {}, [cls.faq])}>
+    <section className={classNames('container', {}, [cls.faq])}>
       <Bg />
       <div className='content'>
         <h2 className={cls.title}>ТВОИ ВОПРОСЫ</h2>
@@ -24,6 +24,6 @@ export const FAQ = () => {
       <svg className={classNames('curves', {}, [cls.greenCurve])} xmlns="http://www.w3.org/2000/svg" width="874" height="497" viewBox="0 0 874 497" fill="none">
         <path d="M866 489.399C766.666 458.065 430 -12.0001 559.5 8.49987C648.53 22.5934 693 255 634 313.899C567.316 380.468 330.212 310.5 261 219.5C191.787 128.5 318 113 359 207.5C400 302 291.5 405 71.9997 339.5C27.4997 326.221 -33.5002 342.5 48.4998 422" stroke="#ABC704" stroke-width="15" stroke-linecap="round" />
       </svg>
-    </div>
+    </section>
   )
 }

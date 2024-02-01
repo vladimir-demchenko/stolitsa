@@ -1,0 +1,11 @@
+User-agent: Yandex
+Disallow: /admin
+Disallow: /admin_login
+
+User-agent: Googlebot
+Disallow: /admin
+Disallow: /admin_login
+
+User-agent: *
+Disallow: /admin
+Disallow: /admin_login

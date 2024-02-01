@@ -12,7 +12,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useMemo, useState } from 'react';
 import { useDownloadFiles, useUploadFiles } from 'features/FormStep/api/stepApi';
 
-export const FirstStep = ({ userData, formValues, setFormValues, hidden }: any) => {
+export const FirstStep = ({ userData, formValues, setFormValues, hidden, disabled }: any) => {
   const [fileKey, setFileKey] = useState<string>(userData?.avatar_key ? userData?.avatar_key : null);
   const [uploadFiles] = useUploadFiles();
   const { data } = useDownloadFiles(fileKey, { skip: !fileKey });
@@ -79,7 +79,7 @@ export const FirstStep = ({ userData, formValues, setFormValues, hidden }: any) 
 
 
   return (
-    <Form layout='vertical' name='step1' hidden={hidden} initialValues={getInitialValues(userData)}>
+    <Form disabled={disabled} layout='vertical' name='step1' hidden={hidden} initialValues={getInitialValues(userData)}>
       <div className={cls.firstStep}>
         <div className={classNames(cls.firstBlock, {}, [cls.formItem])}>
           <div>
@@ -141,7 +141,7 @@ export const FirstStep = ({ userData, formValues, setFormValues, hidden }: any) 
               message: 'Обязательное поле',
             },
           ]} noStyle required name='citizenship' valuePropName='checked'>
-            <Checkbox value={'Российская Федерация'}>Российская Федерация</Checkbox>
+            <Checkbox disabled={disabled} value={'Российская Федерация'}>Российская Федерация</Checkbox>
           </Form.Item>
         </div>
         <div className={cls.formItem}>
@@ -155,7 +155,7 @@ export const FirstStep = ({ userData, formValues, setFormValues, hidden }: any) 
                   message: 'Обязательное поле',
                 },
               ]} required name='passport_series'>
-                <MaskedInput className={cls.maskedInput} maskOptions={{ placeholderChar: '#' }} mask={'0000'} placeholder='1234' />
+                <MaskedInput disabled={disabled} className={cls.maskedInput} maskOptions={{ placeholderChar: '#' }} mask={'0000'} placeholder='1234' />
               </Form.Item>
             </div>
             <div className={cls.inputWrapper}>
@@ -166,7 +166,7 @@ export const FirstStep = ({ userData, formValues, setFormValues, hidden }: any) 
                   message: 'Обязательное поле',
                 },
               ]} required name='passport_number'>
-                <MaskedInput className={cls.maskedInput} maskOptions={{ placeholderChar: '#' }} mask={'000000'} placeholder='123456' />
+                <MaskedInput disabled={disabled} className={cls.maskedInput} maskOptions={{ placeholderChar: '#' }} mask={'000000'} placeholder='123456' />
               </Form.Item>
             </div>
           </div>
@@ -251,7 +251,7 @@ export const FirstStep = ({ userData, formValues, setFormValues, hidden }: any) 
               message: 'Обязательное поле',
             },
           ]} noStyle required name='phone'>
-            <MaskedInput className={cls.maskedInput} maskOptions={{ placeholderChar: '#', lazy: false, autofix: true }} mask={'{+7} (000) 000-00-00'} placeholder='+7 (000) 000-00-00' />
+            <MaskedInput disabled={disabled} className={cls.maskedInput} maskOptions={{ placeholderChar: '#', lazy: false, autofix: true }} mask={'{+7} (000) 000-00-00'} placeholder='+7 (000) 000-00-00' />
           </Form.Item>
         </div>
         <div className={cls.formItem}>
@@ -264,7 +264,7 @@ export const FirstStep = ({ userData, formValues, setFormValues, hidden }: any) 
               message: 'Обязательное поле',
             },
           ]} noStyle required name='tg_name'>
-            <MaskedInput className={cls.maskedInput} maskOptions={{ placeholderChar: '#', lazy: true, autofix: true }} mask={'{@}[******************************************]'} placeholder='@ name' />
+            <MaskedInput disabled={disabled} className={cls.maskedInput} maskOptions={{ placeholderChar: '#', lazy: true, autofix: true }} mask={'{@}[******************************************]'} placeholder='@ name' />
           </Form.Item>
         </div>
         <div className={cls.formItem}>

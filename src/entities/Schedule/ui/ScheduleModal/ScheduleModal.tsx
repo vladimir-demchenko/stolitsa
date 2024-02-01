@@ -1,4 +1,4 @@
-import { ConfigProvider, Modal } from 'antd';
+import { ConfigProvider, Modal, message } from 'antd';
 import cls from './ScheduleModal.module.scss';
 import { ItemType } from 'entities/Schedule/model/types';
 import { classNames } from 'shared/lib/classNames';
@@ -28,6 +28,7 @@ export const ScheduleModal = ({ open, onCancel, item, setOpen }: ScheduleModalPr
   const [userShift] = useUserShift();
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const userId = localStorage.getItem('user');
+  const [messageApi, contextHolder] = message.useMessage();
 
   const handleShift = () => {
     userShift({
@@ -39,6 +40,8 @@ export const ScheduleModal = ({ open, onCancel, item, setOpen }: ScheduleModalPr
         if (shiftID) {
           localStorage.removeItem('shiftID');
         }
+        messageApi.success('Смена добавлена!');
+        onCancel();
       })
       .catch((error) => {
         if (error.status === 401) {
@@ -57,6 +60,7 @@ export const ScheduleModal = ({ open, onCancel, item, setOpen }: ScheduleModalPr
         }
       }}
     >
+      {contextHolder}
       <Modal
         title=''
         open={open}
@@ -79,7 +83,7 @@ export const ScheduleModal = ({ open, onCancel, item, setOpen }: ScheduleModalPr
               <span key={index} className={classNames(cls.description, { [cls.first]: index === 0 })}>{description}</span>
             ))}
           </div>
-          <Button onClick={handleShift} theme={ButtonTheme.PURPLE} className={cls.modalButton}>Подать заявку</Button>
+          {item?.open_reg && <Button onClick={handleShift} theme={ButtonTheme.PURPLE} className={cls.modalButton}>Подать заявку</Button>}
           <p className={cls.expireTime}>Прием заявок до {dayjs(item?.expire_time).locale('ru').format('D MMMM')}</p>
         </div>
       </Modal>

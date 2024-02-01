@@ -7,7 +7,7 @@ import { Bg } from 'shared/ui/Bg/Bg';
 
 export const Hero = () => {
   return (
-    <div className={classNames('container', {}, [cls.hero])}>
+    <section className={classNames('container', {}, [cls.hero])}>
       <Bg />
       <div className={classNames('content', {}, [cls.content])}>
         <h2 className={cls.title}>молодёжный палаточный патриотический слёт <span className={cls.highlighted}>«STOлица.Лето»</span></h2>
@@ -26,6 +26,6 @@ export const Hero = () => {
       <svg className={classNames('curves', {}, [cls.blueCurve])} xmlns="http://www.w3.org/2000/svg" width="261" height="838" viewBox="0 0 261 838" fill="none">
         <path d="M415.25 11.2358C-184.442 -8.21771 339.752 432.842 82.9601 656.674C-173.832 880.507 331.054 820.582 331.054 820.582" stroke="#01B2E0" stroke-width="20" stroke-linecap="round" />
       </svg>
-    </div>
+    </section>
   )
 }
