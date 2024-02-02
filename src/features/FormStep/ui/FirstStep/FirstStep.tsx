@@ -46,8 +46,6 @@ export const FirstStep = ({ userData, formValues, setFormValues, hidden, disable
 
     const fmData = new FormData();
     fmData.append('image', file);
-    console.log(options);
-    console.log(fmData);
     uploadFiles(fmData)
       .unwrap()
       .then((result) => {
@@ -116,9 +114,7 @@ export const FirstStep = ({ userData, formValues, setFormValues, hidden, disable
                   accept='.png, .jpg, .jpeg'
                   maxCount={1}
                   showUploadList={false}
-                  capture='environment'
                   customRequest={uploadData}
-                  onChange={(info) => console.log(info)}
                   className={cls.upload}
                 >
                   {blobUrl ? <img src={blobUrl} alt='avatar' style={{ width: '100%' }} /> : (<Button theme={ButtonTheme.CLEAR}>

@@ -271,7 +271,12 @@ const RegisterLayout = ({ onCancel, setContentType }: { onCancel: (...args: unkn
               />
             </Form.Item>
           </div>
-          <Form.Item valuePropName='checked' name='agree' noStyle required>
+          <Form.Item valuePropName='checked' rules={[
+            {
+              validator: (_, value) =>
+                value ? Promise.resolve() : Promise.reject(new Error('Обязательное поле')),
+            },
+          ]} name='agree' required>
             <Checkbox>Согласние на обработку <a className={cls.link} href={Pdf} target='_blank'>персональных данных</a></Checkbox>
           </Form.Item>
           <Form.Item name='button' className={cls.item}><Button type='submit' theme={ButtonTheme.GREEN} className={cls.button}>Зарегистроваться</Button></Form.Item>
