@@ -16,7 +16,7 @@ function getColor(index: number) {
   }
 }
 
-export const ScheduleItem = ({ item: { id, title, date, descriptions, expire_time, open_reg }, setOpen }: { item: ItemType, setOpen?: any }) => {
+export const ScheduleItem = ({ item: { id, title, date, descriptions, expire_time, open_reg }, setOpen, selectCancel }: { item: ItemType, setOpen?: any, selectCancel?: (...args: unknown[]) => void; }) => {
   const [modal, setModal] = useState({ open: false, item: { id: '', title: '', date: '', descriptions: [''], expire_time: '', open_reg: true } })
 
   const onCancel = () => {
@@ -37,7 +37,7 @@ export const ScheduleItem = ({ item: { id, title, date, descriptions, expire_tim
           <span className={classNames(cls.tag, {}, [cls.purple])}>{descriptions[0]}</span>
         </div>
       </div>
-      <ScheduleModal setOpen={setOpen} open={modal.open} onCancel={onCancel} item={modal.item} />
+      <ScheduleModal selectCancel={selectCancel} setOpen={setOpen} open={modal.open} onCancel={onCancel} item={modal.item} />
     </div>
   )
 }

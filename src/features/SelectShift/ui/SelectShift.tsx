@@ -31,7 +31,7 @@ export const SelectShift = ({ open, onCancel }: SelectShiftProps) => {
         <h2 className={cls.title}>Выбери смену</h2>
         <div className={cls.blockList}>
           {data?.map((block) => (
-            <ScheduleBlock key={block.month} block={block} className={cls.itemsList} />
+            <ScheduleBlock selectCancel={onCancel} key={block.month} block={block} className={cls.itemsList} />
           ))}
         </div>
       </div>

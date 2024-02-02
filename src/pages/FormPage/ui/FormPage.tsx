@@ -54,6 +54,7 @@ export const FormPage = () => {
         <Form.Provider onFormFinish={
           (name, { values, forms }) => {
             if (name === 'step1') {
+              console.log(values)
               setStep('2');
             }
 

@@ -6,6 +6,17 @@
   margin-bottom: 70px;
 }
 
+.backButton {
+  color: var(--black);
+  width: fit-content;
+}
+
+.wrapper {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
 .header {
   grid-column: full-width;
   display: flex;

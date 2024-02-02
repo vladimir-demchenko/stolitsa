@@ -14,6 +14,7 @@ interface ScheduleModalProps {
   onCancel: (...args: unknown[]) => void;
   item?: ItemType;
   setOpen?: any;
+  selectCancel?: (...args: unknown[]) => void;
 }
 
 function getColor(index: number) {
@@ -24,7 +25,7 @@ function getColor(index: number) {
   }
 }
 
-export const ScheduleModal = ({ open, onCancel, item, setOpen }: ScheduleModalProps) => {
+export const ScheduleModal = ({ open, onCancel, item, setOpen, selectCancel }: ScheduleModalProps) => {
   const [userShift] = useUserShift();
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const userId = localStorage.getItem('user');
@@ -41,6 +42,7 @@ export const ScheduleModal = ({ open, onCancel, item, setOpen }: ScheduleModalPr
           localStorage.removeItem('shiftID');
         }
         messageApi.success('Смена добавлена!');
+        selectCancel?.();
         onCancel();
       })
       .catch((error) => {
@@ -48,6 +50,8 @@ export const ScheduleModal = ({ open, onCancel, item, setOpen }: ScheduleModalPr
           localStorage.setItem('shiftID', item ? item.id : '');
           onCancel();
           setOpen(true);
+        } else {
+          messageApi.error(error.data.message)
         }
       })
   }

@@ -7,7 +7,8 @@ const creativeApi = api.injectEndpoints({
         url: '/users/creative_task',
         method: 'PATCH',
         body
-      })
+      }),
+      invalidatesTags: ['User']
     })
   })
 })

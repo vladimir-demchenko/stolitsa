@@ -5,14 +5,16 @@
 
 html {
   font-family: Unbounded, sans-serif;
-  overflow-x: hidden;
+
+  // overflow-x: hidden;overflow-x
 }
 
 .app {
   display: grid;
   grid-template-columns: [full-width-start bg-l-start] minmax(0, 1fr) [bg-l-end] minmax(10px, 70px) [content-start] min(100% - 140px, 1360px) [content-end] minmax(10px, 70px) [bg-r-start] minmax(0, 1fr) [full-width-end bg-r-end];
   position: relative;
-  overflow-x: hidden;
+
+  // overflow-x: hidden;overflow-x
 }
 
 
@@ -84,7 +86,7 @@ html {
 
 @media (max-width: 768px) {
   :root {
-    overflow-x: hidden;
+    // overflow-x: hidden;overflow-x
   }
 
   .content {

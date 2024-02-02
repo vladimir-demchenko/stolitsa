@@ -15,6 +15,9 @@ import { RoutePath } from 'shared/config/router';
 import Pdf from 'shared/assets/doc/памятка 2024 .pdf';
 import { useCurrent } from '../api/personalApi';
 import { useDownloadFiles } from 'features/FormStep/api/stepApi';
+import Logout from 'shared/assets/icons/logout.svg';
+import { useDispatch } from 'react-redux';
+import { api } from 'shared/api/api';
 
 dayjs.extend(duration);
 const mockFirstname = 'Андрей';
@@ -50,6 +53,7 @@ export const PersonalPage = () => {
   const { data: fileData } = useDownloadFiles(data?.avatar_key, { skip: !data?.avatar_key });
   const [open, setOpen] = useState(false);
   const [confirm, setConfirm] = useState(false);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const age = useMemo(() => {
@@ -92,6 +96,12 @@ export const PersonalPage = () => {
     return Object?.values(dataWithoutName)?.includes(null)
   }, [data]);
 
+  const handleLogout = () => {
+    localStorage.clear();
+    dispatch(api.util.resetApiState());
+    navigate(RoutePath.main);
+  }
+
 
   if (isLoading) {
     return <div>Loading...</div>
@@ -103,10 +113,14 @@ export const PersonalPage = () => {
         <Button theme={ButtonTheme.CLEAR} className={cls.mainPageButton} onClick={() => navigate(RoutePath.main)}>
           <FlowerLogo className={cls.logo} />
         </Button>
-        <p className={cls.helloText}>Привет, {data?.firstname}!</p>
+        <div className={cls.wrapper}>
+          <p className={cls.helloText}>Привет, {data?.firstname}!</p>
+          <Button theme={ButtonTheme.CLEAR} onClick={handleLogout}><Logout /></Button>
+        </div>
       </div>
       <div className={cls.personal}>
         <div className={cls.container}>
+          <Button theme={ButtonTheme.LINK} onClick={() => navigate(RoutePath.main)} className={cls.backButton}>Вернуться на главную</Button>
           <div className={classNames(cls.card, {}, [cls.personalCard])}>
             <div className={cls.avatar}>
               <img className={cls.avatarImg} alt='avatar' src={blobUrl ? blobUrl : avatarPlaceholder} />

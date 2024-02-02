@@ -31,8 +31,8 @@ export const SecondStep = ({ userData, check, handleChange, handleInput, hidden,
               <label className={cls.formLabel}>Имеются ли у тебя хронические заболевания или иные медицинские противопоказания?</label>
             </div>
             <div className={cls.checkboxWrapper}>
-              <Checkbox onChange={handleChange} checked={check.illness === 'Нет'} name='illness' value='Нет'>Нет</Checkbox>
-              <Checkbox onChange={handleChange} checked={check.illness === 'yes'} name='illness' value='yes'><Input onChange={handleInput} value={check.illnessValue} className={cls.innerInput} placeholder='Если да, то перечисли' /></Checkbox>
+              <Checkbox disabled={disabled} onChange={handleChange} checked={check.illness === 'Нет'} name='illness' value='Нет'>Нет</Checkbox>
+              <Checkbox disabled={disabled} onChange={handleChange} checked={check.illness === 'yes'} name='illness' value='yes'><Input onChange={handleInput} value={check.illnessValue} className={cls.innerInput} placeholder='Если да, то перечисли' /></Checkbox>
             </div>
           </div>
         </Form.Item>
