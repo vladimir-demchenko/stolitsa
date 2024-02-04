@@ -1,1 +1,1 @@
-export * from './ui/CreativeTask';
+export { CreativeTaskAsync as CreativeTask } from './ui/CreativeTask.async';

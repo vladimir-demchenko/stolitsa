@@ -1,5 +1,8 @@
 import { Admin } from 'pages/Admin';
+import { AdminFAQs } from 'pages/AdminFAQs';
 import { AdminLoginPage } from 'pages/AdminPage';
+import { AdminShifts } from 'pages/AdminShifts';
+import { AdminUserProfile } from 'pages/AdminUsersProfile';
 import { CreativeTask } from 'pages/CreativeTask';
 import { FormPage } from 'pages/FormPage';
 import { MainPage } from 'pages/MainPage';
@@ -39,6 +42,30 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
   [AppRoutes.ADMIN]: {
     path: RoutePath.admin,
     element: <Admin />,
+    authOnly: true,
+    role: 'admin'
+  },
+  [AppRoutes.ADMIN_USERS]: {
+    path: RoutePath.admin_users,
+    element: <Admin />,
+    authOnly: true,
+    role: 'admin'
+  },
+  [AppRoutes.ADMIN_USERS_PROFILE]: {
+    path: `${RoutePath.admin_users_profile}:id`,
+    element: <AdminUserProfile />,
+    authOnly: true,
+    role: 'admin'
+  },
+  [AppRoutes.ADMIN_FAQS]: {
+    path: RoutePath.admin_faqs,
+    element: <AdminFAQs />,
+    authOnly: true,
+    role: 'admin'
+  },
+  [AppRoutes.ADMIN_SHIFTS]: {
+    path: RoutePath.admin_shifts,
+    element: <AdminShifts />,
     authOnly: true,
     role: 'admin'
   }

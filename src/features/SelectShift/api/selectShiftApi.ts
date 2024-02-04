@@ -6,7 +6,8 @@ const selectShiftApi = api.injectEndpoints({
     getBlocks: build.query<BlockType[], null>({
       query: () => ({
         url: '/blocks',
-      })
+      }),
+      providesTags: ['Shifts']
     })
   })
 })

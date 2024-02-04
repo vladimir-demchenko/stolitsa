@@ -1,1 +1,1 @@
-export * from './ui/FormPage';
+export { FormPageAsync as FormPage } from './ui/FormPage.async';

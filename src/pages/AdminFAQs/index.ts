@@ -1,0 +1,1 @@
+export { AdminFAQsAsync as AdminFAQs } from './ui/AdminFAQs.async';

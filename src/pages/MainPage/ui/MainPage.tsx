@@ -9,9 +9,9 @@ import { FAQ } from 'widgets/FAQ';
 import { Partners } from 'widgets/Partners';
 import { Footer } from 'widgets/Footer';
 
-export const MainPage: FC = () => {
+const MainPage: FC = () => {
   return (
-    <>
+    <div className='app'>
       <Promo />
       <Hero />
       <Carousel />
@@ -20,6 +20,8 @@ export const MainPage: FC = () => {
       <FAQ />
       <Partners />
       <Footer />
-    </>
+    </div>
   );
 };
+
+export default MainPage;

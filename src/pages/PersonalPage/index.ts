@@ -1,1 +1,1 @@
-export * from './ui/PersonalPage';
+export { PersonalPageAsync as PersonalPage } from './ui/PersonalPage.async';

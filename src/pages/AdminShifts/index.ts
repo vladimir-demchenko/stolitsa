@@ -1,0 +1,1 @@
+export { AdminShiftsAsync as AdminShifts } from './ui/AdminShifts.async';

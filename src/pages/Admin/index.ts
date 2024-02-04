@@ -1,1 +1,1 @@
-export * from './ui/Admin';
+export { AdminAsync as Admin } from './ui/Admin.async';

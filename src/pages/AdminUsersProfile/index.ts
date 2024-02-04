@@ -1,0 +1,1 @@
+export {AdminUserProfileAsync as AdminUserProfile} from './ui/AdminUserProfile.async';

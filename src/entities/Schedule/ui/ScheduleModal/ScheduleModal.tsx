@@ -41,17 +41,17 @@ export const ScheduleModal = ({ open, onCancel, item, setOpen, selectCancel }: S
         if (shiftID) {
           localStorage.removeItem('shiftID');
         }
-        messageApi.success('Смена добавлена!');
+        message.success('Смена добавлена!');
         selectCancel?.();
         onCancel();
       })
       .catch((error) => {
-        if (error.status === 401) {
+        if (error.status === 401 || !userId) {
           localStorage.setItem('shiftID', item ? item.id : '');
           onCancel();
           setOpen(true);
         } else {
-          messageApi.error(error.data.message)
+          message.error(error.data.message)
         }
       })
   }

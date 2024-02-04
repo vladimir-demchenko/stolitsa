@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { api } from 'shared/api/api'
 
-export const AdminLoginPage = () => {
+const AdminLoginPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,3 +18,5 @@ export const AdminLoginPage = () => {
     </Flex>
   )
 }
+
+export default AdminLoginPage;

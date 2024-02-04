@@ -6,15 +6,22 @@ import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import TelegramIcon from 'shared/assets/icons/telegram_icon.svg';
 import { Bg } from 'shared/ui/Bg/Bg';
 import { FAQItemStatic } from './FAQItem/FAQItemStatic';
+import { useGetAllFAQs } from '../model/faqApi';
 
 export const FAQ = () => {
+  const { data, isLoading } = useGetAllFAQs(null);
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
   return (
     <section className={classNames('container', {}, [cls.faq])}>
       <Bg />
       <div className='content'>
         <h2 className={cls.title}>ТВОИ ВОПРОСЫ</h2>
         <div className={cls.questionList}>
-          {faqConst.map((faq) => (
+          {data?.map((faq) => (
             <FAQItem key={faq.id} question={faq.question} answer={faq.answer} />
           ))}
           <FAQItemStatic />

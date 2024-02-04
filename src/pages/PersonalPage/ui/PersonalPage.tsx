@@ -48,7 +48,7 @@ function getSuffix(year: number) {
   }
 }
 
-export const PersonalPage = () => {
+const PersonalPage = () => {
   const { data, isLoading } = useCurrent(null);
   const { data: fileData } = useDownloadFiles(data?.avatar_key, { skip: !data?.avatar_key });
   const [open, setOpen] = useState(false);
@@ -108,7 +108,7 @@ export const PersonalPage = () => {
   }
 
   return (
-    <>
+    <div className='app'>
       <div className={cls.header}>
         <Button theme={ButtonTheme.CLEAR} className={cls.mainPageButton} onClick={() => navigate(RoutePath.main)}>
           <FlowerLogo className={cls.logo} />
@@ -164,6 +164,8 @@ export const PersonalPage = () => {
         <ConfirmModal allow={!allow} open={confirm} onCancel={onCancelConfirm} />
       </div>
       <Footer />
-    </>
+    </div>
   )
 }
+
+export default PersonalPage;

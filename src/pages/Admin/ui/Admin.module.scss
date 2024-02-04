@@ -28,6 +28,7 @@
 
 .row{
   height: 108px;
+  cursor: pointer;
 
   &:nth-child(even) {
     background-color: #F2F2F2;
@@ -80,7 +81,6 @@
 }
 
 .pageWrapper {
-  padding-block: 90px;
   grid-column: content;
   width: 100%;
   display: flex;
@@ -137,6 +137,12 @@
 
 .popoverContent {
   display: flex;
-  flex-direction: column;
   gap: 10px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .popoverContent {
+    flex-direction: column;
+  }
 }

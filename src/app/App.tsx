@@ -5,7 +5,7 @@ import './styles/index.scss';
 
 const App = () => {
   return (
-    <div className='app'>
+    <div>
       <Suspense fallback="">
         <AppRouter />
       </Suspense>

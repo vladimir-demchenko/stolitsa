@@ -149,9 +149,8 @@ const RegisterLayout = ({ onCancel, setContentType }: { onCancel: (...args: unkn
       .unwrap()
       .then((res) => {
         localStorage.setItem('token', JSON?.stringify(res?.tokens));
-        messageApi.success('Регистрация прошла успешно!');
+        message.success('Регистрация прошла успешно! Пароль был отправлен на указанную электронную почту. Если пароль не пришел, проверьте папку спам — письмо может быть там');
         setContentType('login');
-        onCancel();
       })
       .catch((err) => {
         form.setFields([
@@ -298,7 +297,7 @@ const ForgotLayout = ({ onCancel, setContentType }: { onCancel: (...args: unknow
     })
       .unwrap()
       .then((res) => {
-        messageApi.success('Сообщение отправлено. Проверьте свой e-mail');
+        message.success('Пароль был отправлен на указанную электронную почту. Если пароль не пришел, проверьте папку спам — письмо может быть там');
         setContentType('login');
       })
       .catch((err) => {
