@@ -24,16 +24,17 @@ import cls from './Admin.module.scss';
 import dayjs from 'dayjs';
 import { AdminPage } from 'widgets/AdminPage';
 import { useDebounce } from 'shared/lib/useDebounce';
+import { UserResponse } from 'pages/AdminUsersProfile/api/types';
 
 
 export default function Admin() {
   const [{ approve_shift, shiftId, name, email, flag }, setFilter] = useState({ approve_shift: '', shiftId: '', name: '', email: '', flag: '' });
-  const queryParams = approve_shift || shiftId || name || email || flag ? { approve_shift, shiftId, name, email, flag } : {};
+  const queryParams = { approve_shift, shiftId, name, email, flag };
   const { data, isLoading } = useGetUsers(queryParams);
   const { data: shiftFilter } = useGetShiftsFilter(null);
   const navigate = useNavigate();
 
-  const columns = useMemo<ColumnDef<any>[]>(
+  const columns = useMemo<ColumnDef<UserResponse>[]>(
     () => [
       {
         header: 'id',
@@ -85,9 +86,34 @@ export default function Admin() {
 
 
   const exportToXlsx = () => {
-    const exportedData = { ...data, "birthday": dayjs(data.birthday).locale('ru').format('DD.MM.YYYY') };
+    const exportedData = data?.map((user) => ({
+      'Почта': user.login,
+      'Фамилия': user.lastname,
+      'Имя': user.firstname,
+      'Отчество': user.secondname,
+      'Дата рождения': dayjs(user.birthday).locale('ru').format('DD.MM.YYYY'),
+      'Пол': user.sex,
+      'Гражданство': user.citizenship,
+      'Телефон': user.phone,
+      'Серия паспорта': user.passport_series,
+      'Номер паспорта': user.passport_number,
+      'Место рождения': user.place_of_birth,
+      'Фактическое место жительства': user.actual_living,
+      'Прописка': user.registration_living,
+      'Место учебы/работы': user.place_of_work,
+      'Должность': user.position,
+      'Телеграм': user.tg_name,
+      'Vk': user.vk_link,
+      'Выбранная смена': user?.shift?.title,
+      'Хронические заболевания': user.illness,
+      'Откуда ты узнал': user.find_out,
+      'Какие навыки ты бы хотел получить': user.future_skills,
+      'О себе': user.about_yourself,
+      'Почему хочешь принять участие': user.take_part,
+      'Творческое задание': user.creative_task,
+    }));
     // @ts-ignore
-    const ws = XLSX.utils.json_to_sheet(data);
+    const ws = XLSX.utils.json_to_sheet(exportedData);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 

@@ -1,8 +1,9 @@
+import { UserResponse } from 'pages/AdminUsersProfile/api/types';
 import { api } from 'shared/api/api';
 
 const adminApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getUsers: build.query({
+    getUsers: build.query<UserResponse[], Record<string, string>>({
       query: ({ approve_shift, shiftId, name, email, flag }) => ({
         url: '/users',
         params: { approve_shift, shiftId, name, email, flag }
