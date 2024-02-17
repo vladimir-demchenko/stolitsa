@@ -3,9 +3,9 @@ import { api } from 'shared/api/api';
 const adminApi = api.injectEndpoints({
   endpoints: (build) => ({
     getUsers: build.query({
-      query: ({ approve_shift, shiftId }) => ({
+      query: ({ approve_shift, shiftId, name, email, flag }) => ({
         url: '/users',
-        params: { approve_shift, shiftId }
+        params: { approve_shift, shiftId, name, email, flag }
       }),
       providesTags: ['User']
     }),

@@ -48,6 +48,19 @@ const adminUserProfileApi = api.injectEndpoints({
         body
       }),
       invalidatesTags: ['User']
+    }),
+    downloadAvatar: build.query({
+      query: (key) => ({
+        url: `/files/${key}`,
+        responseHandler: (response) => response.blob(),
+      }),
+    }),
+    deleteUser: build.mutation({
+      query: (id) => ({
+        url: `/users/${id}`,
+        method: 'DELETE'
+      }),
+      invalidatesTags: ['User']
     })
   })
 })
@@ -58,3 +71,5 @@ export const useUpdateDetailInfo = adminUserProfileApi.useUpdateDetailInfoMutati
 export const useUpdateShift = adminUserProfileApi.useUpdateUserShiftMutation;
 export const useUpdateApprove = adminUserProfileApi.useUpdateApproveMutation;
 export const useUpdateCreativeTask = adminUserProfileApi.useUpdateCreativeTaskMutation;
+export const useDownloadAvatar = adminUserProfileApi.useDownloadAvatarQuery;
+export const useDeleteUser = adminUserProfileApi.useDeleteUserMutation;

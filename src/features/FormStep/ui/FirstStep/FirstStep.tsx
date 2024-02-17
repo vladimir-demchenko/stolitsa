@@ -79,8 +79,6 @@ export const FirstStep = ({ userData, formValues, setFormValues, hidden, disable
       },
     ]
       : [],
-    passport_number: userData?.passport_number ? `${userData?.passport_number}` : null,
-    passport_series: userData?.passport_series ? `${userData?.passport_series}` : null,
     place_of_birth: userData?.place_of_birth,
     citizenship: userData?.citizenship ? true : false,
     vk_link: userData?.vk_link,

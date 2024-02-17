@@ -1,8 +1,11 @@
-import { useParams } from 'react-router'
-import { useGetUser, useUpdateApprove, useUpdateCreativeTask, useUpdateDetailInfo, useUpdatePersonalInfo, useUpdateShift } from '../api/adminUserProfileApi'
+import { useNavigate, useParams } from 'react-router'
+import { useDeleteUser, useDownloadAvatar, useGetUser, useUpdateApprove, useUpdateCreativeTask, useUpdateDetailInfo, useUpdatePersonalInfo, useUpdateShift } from '../api/adminUserProfileApi'
 import { AdminPage } from 'widgets/AdminPage';
-import { Button, Card, Col, DatePicker, Form, Input, Popconfirm, Row, Space, Typography, message } from 'antd';
+import { Button, Card, Checkbox, Col, DatePicker, Form, Input, Popconfirm, Row, Space, Typography, message } from 'antd';
 import dayjs from 'dayjs';
+import { DownloadOutlined } from '@ant-design/icons';
+import { useMemo } from 'react';
+import saveAs from 'file-saver';
 
 
 const AdminUserProfile = () => {
@@ -13,6 +16,9 @@ const AdminUserProfile = () => {
   const [updateUserShift] = useUpdateShift();
   const [updateCreativeTask] = useUpdateCreativeTask();
   const [updateApprove] = useUpdateApprove();
+  const { data: avatarData } = useDownloadAvatar(data?.avatar_key, { skip: !data?.avatar_key });
+  const [deleteUser] = useDeleteUser();
+  const navigate = useNavigate();
 
   const handleResetApprove = () => {
     if (!data?.approve_shift) {
@@ -26,6 +32,23 @@ const AdminUserProfile = () => {
   const handleResetShift = () => {
     updateUserShift({ id: id, shiftID: null })
       .then(() => message.success('Смена сброшена!'))
+  }
+
+  const handleDeleteUser = () => {
+    deleteUser(id)
+      .then(() => {
+        message.success(`Пользователь ${data?.lastname} ${data?.firstname} ${data?.secondname} удален!`)
+        navigate('/admin')
+      })
+  }
+
+  const blobUrl = useMemo(
+    () => window.URL.createObjectURL(new Blob([avatarData])),
+    [avatarData]
+  );
+
+  const handleDownload = () => {
+    saveAs(blobUrl, `${data?.lastname} ${data?.firstname} ${data?.secondname}.${data?.avatar_key.split('.')[1]}`)
   }
 
   if (isLoading) {
@@ -53,6 +76,9 @@ const AdminUserProfile = () => {
         >
           <Card>
             <Form layout='horizontal' name='personalInfo' initialValues={{ ...data, birthday: dayjs(data?.birthday).locale('ru') }}>
+              <Form.Item label='Аватарка'>
+                <Button disabled={!data?.avatar_key} onClick={handleDownload} icon={<DownloadOutlined />}>Скачать</Button>
+              </Form.Item>
               <Form.Item label='Email'>
                 <Typography.Text strong>
                   {data?.login}
@@ -69,6 +95,9 @@ const AdminUserProfile = () => {
               </Form.Item>
               <Form.Item label='Дата рождения' name='birthday'>
                 <DatePicker />
+              </Form.Item>
+              <Form.Item label='Маркер' name='flag' valuePropName='checked'>
+                <Checkbox />
               </Form.Item>
               <Form.Item>
                 <Button type='primary' htmlType='submit'>
@@ -175,17 +204,18 @@ const AdminUserProfile = () => {
               <Button ghost type='primary' onClick={handleResetShift}>
                 Сбросить смену
               </Button>
-              {/* <Popconfirm
+              <Popconfirm
                 title='Вы действительно хотите удалить пользователя?'
                 description='Данное действие нельзя будет отменить!'
                 okText='Да'
                 okType='danger'
                 cancelText='Нет'
+                onConfirm={handleDeleteUser}
               >
                 <Button danger type='primary'>
                   Удалить пользователя
                 </Button>
-              </Popconfirm> */}
+              </Popconfirm>
             </Space>
           </Space>
         </Card>

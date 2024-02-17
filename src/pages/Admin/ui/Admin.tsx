@@ -23,11 +23,12 @@ import { useGetShiftsFilter, useGetUsers } from '../api/adminApi';
 import cls from './Admin.module.scss';
 import dayjs from 'dayjs';
 import { AdminPage } from 'widgets/AdminPage';
+import { useDebounce } from 'shared/lib/useDebounce';
 
 
 export default function Admin() {
-  const [{ approve_shift, shiftId }, setFilter] = useState({ approve_shift: '', shiftId: '' });
-  const queryParams = approve_shift || shiftId ? { approve_shift, shiftId } : {};
+  const [{ approve_shift, shiftId, name, email, flag }, setFilter] = useState({ approve_shift: '', shiftId: '', name: '', email: '', flag: '' });
+  const queryParams = approve_shift || shiftId || name || email || flag ? { approve_shift, shiftId, name, email, flag } : {};
   const { data, isLoading } = useGetUsers(queryParams);
   const { data: shiftFilter } = useGetShiftsFilter(null);
   const navigate = useNavigate();
@@ -84,6 +85,7 @@ export default function Admin() {
 
 
   const exportToXlsx = () => {
+    const exportedData = { ...data, "birthday": dayjs(data.birthday).locale('ru').format('DD.MM.YYYY') };
     // @ts-ignore
     const ws = XLSX.utils.json_to_sheet(data);
     const wb = XLSX.utils.book_new();
@@ -92,6 +94,14 @@ export default function Admin() {
     const file = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
     saveAs(new Blob([file]), 'Пользователи.xlsx');
   };
+
+  const handleUpdate = ({
+    target: { id, value },
+  }: ChangeEvent<HTMLInputElement>) => {
+    setFilter((prev) => ({ ...prev, [id]: id === 'name' ? value.replace(/\s/g, '') : value }))
+  }
+
+  const handleUpdateDebounced = useDebounce(handleUpdate, 500);
 
   const content = (
     <div className={cls.popoverContent}>
@@ -110,6 +120,25 @@ export default function Admin() {
         placeholder='Смена'
         onChange={(value) => setFilter((prev) => ({ ...prev, shiftId: value }))}
         options={shiftFilter?.map((shift: any) => ({ value: shift.id, label: shift.title }))}
+      />
+      <Input
+        placeholder='ФИО'
+        id='name'
+        onChange={handleUpdateDebounced}
+      />
+      <Input
+        placeholder='Email'
+        id='email'
+        onChange={handleUpdateDebounced}
+      />
+      <Select
+        allowClear
+        placeholder='Маркер'
+        onChange={(value) => setFilter((prev) => ({ ...prev, flag: value }))}
+        options={[
+          { value: 'true', label: 'Да' },
+          { value: 'false', label: 'Нет' }
+        ]}
       />
       <Button className={cls.button} onClick={exportToXlsx}>
         Экспортировать

@@ -11,8 +11,8 @@ export interface UserResponse {
   sex: string;
   citizenship: string;
   avatar_key: string;
-  passport_number: number;
-  passport_series: number;
+  passport_number: string;
+  passport_series: string;
   actual_living: string;
   registration_living: string;
   place_of_work: string;
