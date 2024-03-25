@@ -63,7 +63,7 @@ const CreativeTask = () => {
               }}>
                 <div className={cls.formItem}>
                   <label className={cls.formLabel}>Добавь ссылку на видео</label>
-                  <Form.Item initialValue={data?.creative_task} noStyle required name='link'>
+                  <Form.Item rules={[{ pattern: /\b(?:http:\/\/|ftp:\/\/)?(?:m\.)?(?:vk\.ru|vk\.com)\/?/, message: 'Поле заполнено некорректно' }]} initialValue={data?.creative_task} required name='link'>
                     <Input className={cls.input} placeholder='vk.com/video' />
                   </Form.Item>
                 </div>
